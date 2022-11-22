@@ -3,36 +3,24 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
-public class Chicken {
-    private Position position;
+public class Chicken extends Element{
     public Chicken(int x, int y){
-        position =new Position(x,y);
+        super(x,y);
     }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
     public Position MoveUp(){
-        return new Position(position.getX(), position.getY()-1);
+        return new Position(getPosition().getX(), getPosition().getY()-1);
     }
     public Position MoveDown(){
-        return new Position(position.getX(), position.getY()+1);
+        return new Position(getPosition().getX(), getPosition().getY()+1);
     }
     public Position MoveLeft(){
-        return new Position(position.getX()-1, position.getY());
+        return new Position(getPosition().getX()-1, getPosition().getY());
     }
     public Position MoveRight(){
-        return new Position(position.getX()+1, position.getY());
+        return new Position(getPosition().getX()+1, getPosition().getY());
     }
     public void draw(Screen screen){
-        screen.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter('X')[0]);
-        screen.setCharacter(position.getX()+1, position.getY(), TextCharacter.fromCharacter('X')[0]);
-        screen.setCharacter(position.getX()-1, position.getY(), TextCharacter.fromCharacter('X')[0]);
+        screen.setCharacter(getPosition().getX(), getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
 
 }
