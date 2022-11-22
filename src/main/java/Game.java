@@ -9,45 +9,29 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 public class Game {
-    Chicken chicken = new Chicken(5,20);
     private Screen screen;
+    private Linhas linhas;
     public Game(){
         try {
-            TerminalSize terminalSize = new TerminalSize(100, 100);
+            TerminalSize terminalSize = new TerminalSize(220, 50);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null); // we don't need a cursor
-            screen.startScreen(); // screens must be started
-            screen.doResizeIfNecessary(); // resize screen if
-
+            screen.setCursorPosition(null);
+            screen.startScreen();
+            screen.doResizeIfNecessary();
+            linhas = new Linhas(220,50);
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
     }
-    public void MoveChicken(Position position){
-        chicken.setPosition(position);
-    }
-    public void processKey(KeyStroke key){
-        if (key.getKeyType() == KeyType.ArrowUp) {
-            MoveChicken(chicken.MoveUp());
-        }
-        if (key.getKeyType() == KeyType.ArrowDown) {
-            MoveChicken(chicken.MoveDown());
-        }
-        if (key.getKeyType() == KeyType.ArrowLeft) {
-            MoveChicken(chicken.MoveLeft());
-        }
-        if (key.getKeyType() == KeyType.ArrowRight) {
-            MoveChicken(chicken.MoveRight());
-        }
-    }
+
     public void run() throws IOException{
             while (true){
                 draw();
                 KeyStroke key = screen.readInput();
-                processKey(key);
+                linhas.processKey(key);
                 if (key.getKeyType()== KeyType.Character && key.getCharacter() == 'q'){
                     this.screen.close();
                 }
@@ -56,7 +40,7 @@ public class Game {
     }
     private void draw()throws IOException{
         screen.clear();
-        chicken.draw(screen);
+        linhas.draw(screen.newTextGraphics());
         screen.refresh();
     }
     public static void main(String[] args) throws IOException{
