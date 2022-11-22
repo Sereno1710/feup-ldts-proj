@@ -59,4 +59,7 @@ public class Game {
         chicken.draw(screen);
         screen.refresh();
     }
+    public static void main(String[] args) throws IOException{
+        new Game().run();
+    }
 }
