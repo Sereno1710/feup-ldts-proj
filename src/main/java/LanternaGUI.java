@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public interface GUI {
+public interface LanternaGUI {
     ACTION getNextAction() throws IOException;
 
     //void drawTree(Sidewalk sidewalk);

@@ -9,10 +9,10 @@ public abstract class Viewer<T> {
     public T getType() {
         return type;
     }
-    public void draw(GUI gui)throws IOException{
-        gui.clear();
-        drawElements(gui);
-        gui.refresh();
+    public void draw(LanternaGUI lanternaGui)throws IOException{
+        lanternaGui.clear();
+        drawElements(lanternaGui);
+        lanternaGui.refresh();
     }
-    protected abstract void drawElements(GUI gui);
+    protected abstract void drawElements(LanternaGUI lanternaGui);
 }

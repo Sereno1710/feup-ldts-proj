@@ -5,23 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChickenTests {
     private Chicken chicken;
-    private Line line;
+    private Arena arena;
     @BeforeEach
     public void FillAll(){
-        line= new Line(10,10);
+        arena= new Arena(10,10);
         chicken = new Chicken(5,5);
-        line.setChicken(chicken);
+        arena.setChicken(chicken);
     }
     @Test
     public void ChickenMoveUP(){
-        line.moveChicken(chicken.MoveUp());
+        arena.moveChicken(chicken.MoveUp());
         assertEquals(new Position(5,4),chicken.getPosition());
     }
     @Test
     public void ChickenCantMoveUp(){
         chicken.setPosition(new Position(1,0));
-        line.setChicken(chicken);
-        line.moveChicken(chicken.MoveUp());
+        arena.setChicken(chicken);
+        arena.moveChicken(chicken.MoveUp());
         assertEquals(new Position(1,0),chicken.getPosition());
     }
 }
