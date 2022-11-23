@@ -1,3 +1,10 @@
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
+
 import java.util.List;
 
 public class Arena {
@@ -12,6 +19,7 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+        chicken=new Chicken(width/2, height-1);
     }
 
     public int getWidth() {
@@ -40,5 +48,32 @@ public class Arena {
 
     public boolean isEmpty(Position position) {
         return true;
+    }
+    public void draw(TextGraphics graphics){
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#332244"));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+        chicken.draw(graphics);
+    }
+    public void processKey(KeyStroke key){
+        if (key.getKeyType() == KeyType.ArrowUp) {
+            moveChicken(chicken.MoveUp());
+        }
+        if (key.getKeyType() == KeyType.ArrowDown) {
+            moveChicken(chicken.MoveDown());
+        }
+        if (key.getKeyType() == KeyType.ArrowLeft) {
+            moveChicken(chicken.MoveLeft());
+        }
+        if (key.getKeyType() == KeyType.ArrowRight) {
+            moveChicken(chicken.MoveRight());
+        }
+    }
+    public void moveChicken(Position position){
+        if (canMove(position)) {
+            chicken.setPosition(position);
+        }
+    }
+    public boolean canMove(Position position){
+        return ((position.getX() >= 0 && position.getY() >= 0) && (position.getX() < width && position.getY() < height));
     }
 }

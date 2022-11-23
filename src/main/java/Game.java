@@ -9,17 +9,18 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 public class Game {
     private Screen screen;
-    private Line line;
+    private Arena arena;
     public Game(){
         try {
-            TerminalSize terminalSize = new TerminalSize(220, 50);
+            int col=100,row=40;
+            TerminalSize terminalSize = new TerminalSize(col, row);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-            line = new Line(220,50);
+            arena = new Arena(col,row);
         } catch (
                 IOException e) {
             e.printStackTrace();
@@ -30,7 +31,7 @@ public class Game {
         while (true){
             draw();
             KeyStroke key = screen.readInput();
-            line.processKey(key);
+            arena.processKey(key);
             if (key.getKeyType()== KeyType.Character && key.getCharacter() == 'q'){
                 this.screen.close();
             }
@@ -39,7 +40,7 @@ public class Game {
     }
     private void draw()throws IOException{
         screen.clear();
-        line.draw(screen.newTextGraphics());
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
     public static void main(String[] args) throws IOException{
