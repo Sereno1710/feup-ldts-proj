@@ -4,27 +4,26 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 
 import java.util.List;
 
-public class Linhas {
+public class Line {
     private int width;
     private int height;
     private Chicken chicken;
     private List<Tree> trees;
     private List<CarLeft> carsLeft;
     private List<CarRight> carsRight;
-    public Linhas(int width,int height){
-
-        this.height=height;this.width=width;
+    public Line(int width, int height){
+        this.height = height;
+        this.width = width;
         chicken = new Chicken(50,5);
     }
-    public Chicken getChicken() {return chicken;}
-    public void setChicken(Chicken chicken) {this.chicken = chicken;}
-    public List<CarLeft> getCarsLeft() {return carsLeft;}
-    public List<CarRight> getCarsRight() {return carsRight;}
-    public List<Tree> getTrees() {return trees;}
+    public Chicken getChicken() { return chicken; }
+    public void setChicken(Chicken chicken) { this.chicken = chicken; }
+    public List<CarLeft> getCarsLeft() { return carsLeft; }
+    public List<CarRight> getCarsRight() { return carsRight; }
+    public List<Tree> getTrees() { return trees; }
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#332244"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
@@ -50,6 +49,6 @@ public class Linhas {
         }
     }
     public boolean canMove(Position position){
-        return ((position.getX() >= 0 && position.getY() >= 0  ) && (position.getX() < width && position.getY() < height));
+        return ((position.getX() >= 0 && position.getY() >= 0) && (position.getX() < width && position.getY() < height));
     }
 }

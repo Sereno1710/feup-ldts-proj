@@ -1,5 +1,4 @@
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -10,7 +9,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 public class Game {
     private Screen screen;
-    private Linhas linhas;
+    private Line line;
     public Game(){
         try {
             TerminalSize terminalSize = new TerminalSize(220, 50);
@@ -20,7 +19,7 @@ public class Game {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-            linhas = new Linhas(220,50);
+            line = new Line(220,50);
         } catch (
                 IOException e) {
             e.printStackTrace();
@@ -28,19 +27,19 @@ public class Game {
     }
 
     public void run() throws IOException{
-            while (true){
-                draw();
-                KeyStroke key = screen.readInput();
-                linhas.processKey(key);
-                if (key.getKeyType()== KeyType.Character && key.getCharacter() == 'q'){
-                    this.screen.close();
-                }
-                if(key.getKeyType() == KeyType.EOF){break;}
+        while (true){
+            draw();
+            KeyStroke key = screen.readInput();
+            line.processKey(key);
+            if (key.getKeyType()== KeyType.Character && key.getCharacter() == 'q'){
+                this.screen.close();
             }
+            if(key.getKeyType() == KeyType.EOF){break;}
+        }
     }
     private void draw()throws IOException{
         screen.clear();
-        linhas.draw(screen.newTextGraphics());
+        line.draw(screen.newTextGraphics());
         screen.refresh();
     }
     public static void main(String[] args) throws IOException{
