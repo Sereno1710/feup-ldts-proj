@@ -17,4 +17,11 @@ public class ChickenTests {
         line.moveChicken(chicken.MoveUp());
         assertEquals(new Position(5,4),chicken.getPosition());
     }
+    @Test
+    public void ChickenCantMoveUp(){
+        chicken.setPosition(new Position(1,0));
+        line.setChicken(chicken);
+        line.moveChicken(chicken.MoveUp());
+        assertEquals(new Position(1,0),chicken.getPosition());
+    }
 }
