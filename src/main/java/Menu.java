@@ -37,7 +37,7 @@ public class Menu {
         return isSelected(0);
     }
 
-    public int getNumberEntries() {
+    public int getNumberOptions() {
         return this.options.size();
     }
 }
