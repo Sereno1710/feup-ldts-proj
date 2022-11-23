@@ -8,8 +8,8 @@ import com.googlecode.lanterna.input.KeyType;
 import java.util.List;
 
 public class Line {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     private Chicken chicken;
     private List<Tree> trees;
     private List<CarLeft> carsLeft;

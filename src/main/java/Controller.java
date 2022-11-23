@@ -11,5 +11,5 @@ public abstract class Controller<T> {
         return type;
     }
 
-    public abstract void step(Game game, GUI.ACTION action, long time) throws IOException;
+    public abstract void step(Game game, LanternaGUI.ACTION action, long time) throws IOException;
 }
