@@ -3,11 +3,9 @@ import java.io.IOException;
 public interface GUI {
     ACTION getNextAction() throws IOException;
 
-    // void drawTree(Sidewalk sidewalk);
+    //void drawTree(Sidewalk sidewalk);
 
-    void drawCarLeft(Position position);
-
-    void drawCarRight(Position position);
+    void drawCar(Position position);
 
     void drawCoin(Position position);
 
