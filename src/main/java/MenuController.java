@@ -9,14 +9,14 @@ public class MenuController extends Controller<Menu> {
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         switch (action) {
             case UP:
-                getType().previousOption();
+                getModel().previousOption();
                 break;
             case DOWN:
-                getType().nextOption();
+                getModel().nextOption();
                 break;
             case SELECT:
-                if(getType().isSelectedExit()) game.setState(null);
-                if(getType().isSelectedStart()) game.setState(new GameState(new Arena(100,40)));
+                if (getModel().isSelectedExit()) game.setState(null);
+                if (getModel().isSelectedStart()) game.setState(new GameState(new Arena(100,40)));
         }
     }
 }

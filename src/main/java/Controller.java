@@ -1,14 +1,14 @@
 import java.io.IOException;
 
 public abstract class Controller<T> {
-    private final T type;
+    private final T model;
 
-    public Controller(T type) {
-        this.type = type;
+    public Controller(T model) {
+        this.model = model;
     }
 
-    public T getType() {
-        return type;
+    public T getModel() {
+        return model;
     }
 
     public abstract void step(Game game, LanternaGUI.ACTION action, long time) throws IOException;

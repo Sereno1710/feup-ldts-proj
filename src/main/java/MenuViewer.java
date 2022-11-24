@@ -4,13 +4,10 @@ public class MenuViewer extends Viewer<Menu>{
     }
 
     @Override
-    protected void drawElements(LanternaGUI lanternaGui) {
-        lanternaGui.drawText(new Position(5, 5), "Menu", "#FFFFFF");
+    protected void drawElements(LanternaGUI lanternaGUI) {
+        lanternaGUI.drawText(new Position(5, 5), "Menu", "#FFFFFF");
 
-        for (int i = 0; i < getType().getNumberOptions(); i++)
-            lanternaGui.drawText(
-                    new Position(5, 7 + i),
-                    getType().getOption(i),
-                    getType().isSelected(i) ? "#39FF14" : "#EE4B2B");
+        for (int i = 0; i < getModel().getNumberOptions(); i++)
+            lanternaGUI.drawText(new Position(5, 7 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#EE4B2B");
     }
 }

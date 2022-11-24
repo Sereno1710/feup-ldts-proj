@@ -6,25 +6,25 @@ public class ChickenController extends GameController {
     }
 
     private void moveChicken(Position position) {
-        if (getType().isEmpty(position)) {
-            getType().getChicken().setPosition(position);
+        if (getModel().isEmpty(position)) {
+            getModel().getChicken().setPosition(position);
         }
     }
 
     public void moveChickenLeft() {
-        moveChicken(getType().getChicken().getPosition().getLeft());
+        moveChicken(getModel().getChicken().getPosition().getLeft());
     }
 
     public void moveChickenUp() {
-        moveChicken(getType().getChicken().getPosition().getUp());
+        moveChicken(getModel().getChicken().getPosition().getUp());
     }
 
     public void moveChickenRight() {
-        moveChicken(getType().getChicken().getPosition().getRight());
+        moveChicken(getModel().getChicken().getPosition().getRight());
     }
 
     public void moveChickenDown() {
-        moveChicken(getType().getChicken().getPosition().getDown());
+        moveChicken(getModel().getChicken().getPosition().getDown());
     }
 
     @Override
