@@ -47,7 +47,7 @@ public class Arena {
     }
 
     public boolean isEmpty(Position position) {
-        return true;
+        return (position.getX() < width && position.getY() < height && position.getX() >= 0 && position.getY() >= 0);
     }
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#332244"));
