@@ -12,10 +12,12 @@ public abstract class State<T> {
     }
     protected abstract Viewer<T> getViewer();
     protected abstract Controller<T> getController();
-    public T getModel(){return model;}
-    public void step(Game game,LanternaGUI gui, long time) throws IOException{
+    public T getModel() {
+        return model;
+    }
+    public void step(Game game, LanternaGUI gui, long time) throws IOException {
         LanternaGUI.ACTION action = gui.getNextAction();
-        controller.step(game,action,time);
+        controller.step(game, action, time);
         viewer.draw(gui);
     }
 }

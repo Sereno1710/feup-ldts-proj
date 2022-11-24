@@ -1,18 +1,18 @@
 import java.io.IOException;
 
 public abstract class Viewer<T> {
-    private final T type;
+    private final T model;
     public Viewer(T type){
-        this.type=type;
+        this.model = type;
     }
 
-    public T getType() {
-        return type;
+    public T getModel() {
+        return model;
     }
-    public void draw(LanternaGUI lanternaGui)throws IOException{
-        lanternaGui.clear();
-        drawElements(lanternaGui);
-        lanternaGui.refresh();
+    public void draw(LanternaGUI lanternaGUI) throws IOException{
+        lanternaGUI.clear();
+        drawElements(lanternaGUI);
+        lanternaGUI.refresh();
     }
-    protected abstract void drawElements(LanternaGUI lanternaGui);
+    protected abstract void drawElements(LanternaGUI lanternaGUI);
 }

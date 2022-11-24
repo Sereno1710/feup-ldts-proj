@@ -5,17 +5,25 @@ public class GameViewer extends Viewer<Arena>{
         super(arena);
     }
     @Override
-    public void drawElements(LanternaGUI lanternaGui) {
-        drawElement(lanternaGui, getType().getChicken(), new ChickenViewer());
-        //drawLines(gui,getType().getLines(),new LineViewer());
+    public void drawElements(LanternaGUI lanternaGUI) {
+        drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
+        drawLines(lanternaGUI, getModel().getLines());
     }
 
-    private void drawLines(LanternaGUI lanternaGui, List<Line> lines, LineViewer viewer) {
-        for (Line l: lines)
-            viewer.draw(l, lanternaGui);
+    private void drawLines(LanternaGUI lanternaGUI, List<Line> lines) {
+        SidewalkViewer sidewalkViewer = new SidewalkViewer();
+        RoadViewer roadViewer = new RoadViewer();
+        for (Line line : lines) {
+            if (line.getCode() == 'R') {
+                roadViewer.draw((Road) line, lanternaGUI);
+            }
+            else {
+                sidewalkViewer.draw((Sidewalk) line, lanternaGUI);
+            }
+        }
     }
 
-    private <T extends Element> void drawElement(LanternaGUI lanternaGui, T element, ElementViewer<T> viewer) {
-        viewer.draw(element, lanternaGui);
+    private <T extends Element> void drawElement(LanternaGUI lanternaGUI, T element, ElementViewer<T> viewer) {
+        viewer.draw(element, lanternaGUI);
     }
 }

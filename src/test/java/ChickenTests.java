@@ -13,7 +13,7 @@ public class ChickenTests {
         arena.setChicken(chicken);
     }
     @Test
-    public void ChickenMoveUP(){
+    public void ChickenMoveUp(){
         arena.moveChicken(chicken.MoveUp());
         assertEquals(new Position(5,4),chicken.getPosition());
     }

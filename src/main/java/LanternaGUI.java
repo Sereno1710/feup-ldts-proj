@@ -46,7 +46,7 @@ public class LanternaGUI {
         return terminalFactory.createTerminal();
     }
 
-    /*private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
+    /* private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -56,7 +56,7 @@ public class LanternaGUI {
 
         Font loadedFont = font.deriveFont(Font.PLAIN, 25);
         return AWTTerminalFontConfiguration.newInstance(loadedFont);
-    }*/
+    } */
 
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
@@ -75,15 +75,23 @@ public class LanternaGUI {
         return ACTION.NONE;
     }
 
-    //void drawTree(Sidewalk sidewalk);
+    void drawTree(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'T', "#32CD32");
+    }
 
     void drawCar(Position position) {
         drawCharacter(position.getX(), position.getY(), 'D', "#EE4B2B");
     }
 
-    // void drawCoin(Position position) { }
+    void drawSidewalk(Sidewalk sidewalk, int y) {
+        for (Tree tree : sidewalk.getTrees()) {
+            drawTree(tree.getPosition());
+        }
+    }
 
-    // void drawSidewalk(int y) { }
+    void drawRoad(Road road, int y) {
+        // goes through the list of cars and draws them
+    }
 
     void drawChicken(Position position) {
         drawCharacter(position.getX(), position.getY(), 'X', "#FFFF00");

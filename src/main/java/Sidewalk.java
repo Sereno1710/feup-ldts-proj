@@ -2,10 +2,15 @@ import java.util.List;
 
 public class Sidewalk extends Line{
     private List<Tree> trees;
-    private char code='S';
+
     public Sidewalk(int y) {
-        super(y);
+        super(y, 'S');
     }
-    public void randomizeTrees(){
+
+    public void randomizeTrees() {
+    }
+
+    public List<Tree> getTrees() {
+        return trees;
     }
 }

@@ -1,7 +1,6 @@
 import java.io.IOException;
 
 public class CarRightController extends GameController {
-
     public CarRightController(Arena arena) {
         super(arena);
     }
