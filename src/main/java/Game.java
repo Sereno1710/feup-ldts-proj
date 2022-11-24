@@ -6,44 +6,46 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 public class Game {
     private Screen screen;
     private Arena arena;
-    public Game(){
-        try {
-            int col=100,row=40;
-            TerminalSize terminalSize = new TerminalSize(col, row);
-            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-            Terminal terminal = terminalFactory.createTerminal();
-            screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null);
-            screen.startScreen();
-            screen.doResizeIfNecessary();
-            arena = new Arena(col,row);
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
+    private State state;
+    private final LanternaGUI gui;
+    public Game() throws FontFormatException, IOException, URISyntaxException {
+        int col=100,row=40;
+        this.gui = new LanternaGUI(col,row);
+        this.state= new MenuState(new Menu());
+    }
+    public void run() throws IOException{
+
+            int FPS = 40;
+            int frameTime = 1000 / FPS;
+
+            while (this.state != null) {
+                long startTime = System.currentTimeMillis();
+
+                state.step(this, gui, startTime);
+
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                long sleepTime = frameTime - elapsedTime;
+
+                try {
+                    if (sleepTime > 0) Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                }
+            }
+
+            gui.close();
+    }
+    public void setState(State state) {
+        this.state=state;
     }
 
-    public void run() throws IOException{
-        while (true){
-            draw();
-            KeyStroke key = screen.readInput();
-            arena.processKey(key);
-            if (key.getKeyType()== KeyType.Character && key.getCharacter() == 'q'){
-                this.screen.close();
-            }
-            if(key.getKeyType() == KeyType.EOF){break;}
-        }
-    }
-    private void draw()throws IOException{
-        screen.clear();
-        arena.draw(screen.newTextGraphics());
-        screen.refresh();
-    }
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws FontFormatException, IOException, URISyntaxException{
         new Game().run();
     }
 }
