@@ -20,6 +20,7 @@ public class GameViewer extends Viewer<Arena>{
                 sidewalkViewer.draw((Sidewalk) line, lanternaGUI);
             }
         }
+        lanternaGUI.drawSafe();
     }
 
     private <T extends Element> void drawElement(LanternaGUI lanternaGUI, T element, ElementViewer<T> viewer) {

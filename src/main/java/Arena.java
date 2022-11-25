@@ -21,7 +21,7 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
-        chicken=new Chicken(width/2, height-1);
+        chicken = new Chicken(width / 2, height - 7);
         LineCreator();
     }
 
@@ -57,12 +57,12 @@ public class Arena {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         chicken.draw(graphics);
     }
-    public void LineCreator(){
-        int i=6;
-        List<Line> lines =new ArrayList<>();
-        while(i>=6 && i<34){
-            if(i%5==0){
-                Sidewalk ns=new Sidewalk(i++);
+    public void LineCreator() {
+        int i = 6;
+        List<Line> lines = new ArrayList<>();
+        while (i >= 6 && i < 34){
+            if(i % 5 == 0){
+                Sidewalk ns = new Sidewalk(i++);
                 lines.add(ns);
             }
             else {
@@ -73,7 +73,7 @@ public class Arena {
         setLines(lines);
     }
 
-    /*public void processKey(KeyStroke key){
+    public void processKey(KeyStroke key){
         if (key.getKeyType() == KeyType.ArrowUp) {
             moveChicken(chicken.MoveUp());
         }
@@ -86,7 +86,7 @@ public class Arena {
         if (key.getKeyType() == KeyType.ArrowRight) {
             moveChicken(chicken.MoveRight());
         }
-    }*/
+    }
     public void moveChicken(Position position){
         if (canMove(position)) {
             chicken.setPosition(position);
