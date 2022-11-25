@@ -23,8 +23,11 @@ public class GameViewer extends Viewer<Arena> {
         for(Sidewalk s:getModel().getSidewalks()){
             sidewalkViewer.draw(s,lanternaGUI);
         }
-        for(Road r: getModel().getRoads()){
-            roadViewer.draw(r,lanternaGUI);
+        for(Road rl: getModel().getRoadsLeft()){
+            roadViewer.draw(rl,lanternaGUI);
+        }
+        for(Road rd: getModel().getRoadsRight()){
+            roadViewer.draw(rd,lanternaGUI);
         }
         lanternaGUI.drawSafe();
     }

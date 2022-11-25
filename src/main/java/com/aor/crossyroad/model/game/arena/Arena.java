@@ -23,8 +23,8 @@ public class Arena {
     private Chicken chicken;
 
     private List<Sidewalk> sidewalks;
-    private List<Road> roads;
-    // private List<Coin> coins;
+    private List<Road> roadsLeft;
+    private List<Road> roadsRight;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -49,14 +49,22 @@ public class Arena {
         this.chicken = chicken;
     }
 
-    public List<Road> getRoads() {
-        return roads;
+    public List<Road> getRoadsLeft() {
+        return roadsLeft;
+    }
+    public List<Road> getRoadsRight(){
+        return roadsRight;
     }
     public List<Sidewalk> getSidewalks(){return sidewalks;}
 
-    public void setRoads(List<Road> roads) {
-            this.roads = roads;
+    public void setRoadsLeft(List<Road> roads) {
+            this.roadsLeft = roads;
     }
+
+    public void setRoadsRight(List<Road> roads) {
+        this.roadsRight = roads;
+    }
+
     public void setSidewalks(List<Sidewalk> sidewalks){this.sidewalks=sidewalks;}
     public boolean isEmpty(Position position) {
         for (Sidewalk s:sidewalks){
@@ -66,14 +74,21 @@ public class Arena {
                 }
             }
         }
-        /*for (Road r:roads){
-            for (Car c: r.getCars()){
-                if (c.getPosition().equals(position)) {
+        for (Road rl:roadsLeft){
+            for (Car cl: rl.getCars()){
+                if (cl.getPosition().equals(position)) {
                     return false;
                 }
             }
-        }*/
-        return (position.getX() < width && position.getY() < height && position.getX() >= 0 && position.getY() >= 0);
+        }
+        for (Road rr:roadsRight){
+            for (Car cr: rr.getCars()){
+                if (cr.getPosition().equals(position)) {
+                    return false;
+                }
+            }
+        }
+        return (position.getX() < width-1 && position.getY() < height-1 && position.getX() > 0 && position.getY() > 0);
     }
 
     public void draw(TextGraphics graphics){
@@ -83,7 +98,8 @@ public class Arena {
     }
     public void LineCreator() {
         int i = 3;
-        List<Road> roads = new ArrayList<>();
+        List<Road> roadsLeft = new ArrayList<Road>();
+        List<Road> roadsRight=new ArrayList<Road>();
         List<Sidewalk> sidewalks = new ArrayList<>();
         while (i >= 3 && i < 31){
             if((i+3) % 5 == 0){
@@ -93,13 +109,14 @@ public class Arena {
             else {
                 Road nr = new Road(i++);
                 nr.generateCars((i%5>2));
-                roads.add(nr);
+                if(i%5>2)roadsLeft.add(nr);
+                else roadsRight.add(nr);
             }
         }
         setSidewalks(sidewalks);
         RandomizeSidewalks();
-        setRoads(roads);
-
+        setRoadsLeft(roadsLeft);
+        setRoadsRight(roadsRight);
     }
     public void RandomizeSidewalks(){
         for(Sidewalk s:sidewalks){
