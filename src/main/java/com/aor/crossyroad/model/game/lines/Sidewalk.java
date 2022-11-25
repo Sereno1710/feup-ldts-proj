@@ -5,6 +5,7 @@ import com.aor.crossyroad.model.game.lines.Line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Sidewalk extends Line {
     private List<Tree> trees;
@@ -13,13 +14,18 @@ public class Sidewalk extends Line {
         super(y, 'S');
     }
 
-    public void randomizeTrees() {
+    public void randomizeElements() {
+        Random r = new Random();
+        int ran=r.nextInt(0,90);
         trees = new ArrayList<>();
-        trees.add(new Tree(15,15));
+        for(int i=1;i<100;i++){
+            if(i<ran || i>=ran+10){
+                trees.add(new Tree(i,getY()));
+            }
+        }
     }
 
     public List<Tree> getTrees() {
-        randomizeTrees();
         return trees;
     }
 }

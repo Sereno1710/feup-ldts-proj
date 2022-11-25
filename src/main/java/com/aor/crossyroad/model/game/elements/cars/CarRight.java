@@ -7,8 +7,4 @@ public class CarRight extends Car {
         super(x, y);
     }
 
-    @Override
-    public void move() {
-
-    }
 }

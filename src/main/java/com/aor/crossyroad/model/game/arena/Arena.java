@@ -10,8 +10,6 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +17,7 @@ import java.util.List;
 public class Arena {
     private final int width;
     private final int height;
+    private char last_safe='D';
 
     private Chicken chicken;
 
@@ -30,6 +29,7 @@ public class Arena {
         this.height = height;
         chicken = new Chicken(width / 2, height - 7);
         LineCreator();
+        RandomizeSidewalks();
     }
 
     public int getWidth() {
@@ -75,10 +75,10 @@ public class Arena {
         chicken.draw(graphics);
     }
     public void LineCreator() {
-        int i = 6;
+        int i = 3;
         List<Line> lines = new ArrayList<>();
-        while (i >= 6 && i < 34){
-            if(i % 5 == 0){
+        while (i >= 3 && i < 31){
+            if((i+3) % 5 == 0){
                 Sidewalk ns = new Sidewalk(i++);
                 lines.add(ns);
             }
@@ -88,5 +88,12 @@ public class Arena {
             }
         }
         setLines(lines);
+    }
+    public void RandomizeSidewalks(){
+        for(Line l:lines){
+            if (l.getCode()=='S'){
+                l.randomizeElements();
+            }
+        }
     }
 }
