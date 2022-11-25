@@ -1,3 +1,6 @@
+import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.model.game.arena.Arena;
+import com.aor.crossyroad.model.game.elements.Chicken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
