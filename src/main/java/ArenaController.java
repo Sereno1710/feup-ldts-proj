@@ -15,9 +15,9 @@ public class ArenaController extends GameController {
 
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (action == LanternaGUI.ACTION.QUIT){
+        if (action == LanternaGUI.ACTION.QUIT) {
             game.setState(new MenuState(new Menu()));
-            }
+        }
         else {
             chickenController.step(game, action, time);
             carRightController.step(game, action, time);

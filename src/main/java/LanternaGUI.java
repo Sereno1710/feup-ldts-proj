@@ -20,7 +20,6 @@ public class LanternaGUI {
     private Screen screen;
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT};
 
-
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
@@ -89,9 +88,10 @@ public class LanternaGUI {
             drawTree(tree.getPosition());
         }
     }
-    public void drawSafe(int y){
-        for (int i=0;i< 100 ;i++) {
-           drawCharacter(i,y,'_',"white");
+    public void drawSafe(){
+        for (int i = 0; i < 100; i++) {
+           drawCharacter(i, 2,'_',"#FFFFFF");
+           drawCharacter(i, 31, '_', "#FFFFFF");
         }
     }
     void drawRoad(Road road, int y) {
@@ -107,11 +107,13 @@ public class LanternaGUI {
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
+
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
     }
+
     void clear() {
         screen.clear();
     }

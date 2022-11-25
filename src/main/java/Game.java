@@ -8,9 +8,9 @@ public class Game {
     private State state;
     private final LanternaGUI lanternaGUI;
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        int col = 100,row = 40;
-        this.lanternaGUI = new LanternaGUI(col,row);
-        this.state= new MenuState(new Menu());
+        int col = 100, row = 40;
+        this.lanternaGUI = new LanternaGUI(col, row);
+        this.state = new MenuState(new Menu());
     }
     public void run() throws IOException{
         int FPS = 40;
