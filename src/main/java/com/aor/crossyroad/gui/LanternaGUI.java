@@ -90,7 +90,6 @@ public class LanternaGUI {
     }
 
     public void drawSidewalk(Sidewalk sidewalk, int y) {
-
         for (Tree tree : sidewalk.getTrees()) {
             drawTree(tree.getPosition());
         }
