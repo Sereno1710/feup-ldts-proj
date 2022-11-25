@@ -16,5 +16,4 @@ public abstract class Line {
     public  char getCode() {
         return code;
     }
-    public abstract void randomizeElements();
 }

@@ -3,6 +3,7 @@ package com.aor.crossyroad.model.game.arena;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.elements.Tree;
+import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Line;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
@@ -17,19 +18,19 @@ import java.util.List;
 public class Arena {
     private final int width;
     private final int height;
-    private char last_safe='D';
+    //private char last_safe='D';
 
     private Chicken chicken;
 
-    private List<Line> lines;
+    private List<Sidewalk> sidewalks;
+    private List<Road> roads;
     // private List<Coin> coins;
 
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
-        chicken = new Chicken(width / 2, height - 7);
         LineCreator();
-        RandomizeSidewalks();
+        chicken = new Chicken(width / 2, height - 7);
     }
 
     public int getWidth() {
@@ -48,24 +49,30 @@ public class Arena {
         this.chicken = chicken;
     }
 
-    public List<Line> getLines() {
-        return lines;
+    public List<Road> getRoads() {
+        return roads;
     }
+    public List<Sidewalk> getSidewalks(){return sidewalks;}
 
-    public void setLines(List<Line> lines) {
-        this.lines = lines;
+    public void setRoads(List<Road> roads) {
+            this.roads = roads;
     }
+    public void setSidewalks(List<Sidewalk> sidewalks){this.sidewalks=sidewalks;}
     public boolean isEmpty(Position position) {
-        for (Line line:lines){
-            if (line.getCode() == 'S'){
-                Sidewalk ns = new Sidewalk(line.getY());
-                for (Tree e: ns.getTrees()){
-                    if (e.getPosition().equals(position)) {
-                        return false;
-                    }
+        for (Sidewalk s:sidewalks){
+            for (Tree e: s.getTrees()){
+                if (e.getPosition().equals(position)) {
+                    return false;
                 }
             }
         }
+        /*for (Road r:roads){
+            for (Car c: r.getCars()){
+                if (c.getPosition().equals(position)) {
+                    return false;
+                }
+            }
+        }*/
         return (position.getX() < width && position.getY() < height && position.getX() >= 0 && position.getY() >= 0);
     }
 
@@ -76,24 +83,28 @@ public class Arena {
     }
     public void LineCreator() {
         int i = 3;
-        List<Line> lines = new ArrayList<>();
+        List<Road> roads = new ArrayList<>();
+        List<Sidewalk> sidewalks = new ArrayList<>();
         while (i >= 3 && i < 31){
             if((i+3) % 5 == 0){
                 Sidewalk ns = new Sidewalk(i++);
-                lines.add(ns);
+                sidewalks.add(ns);
             }
             else {
                 Road nr = new Road(i++);
-                lines.add(nr);
+                nr.generateCars((i%5>2));
+                roads.add(nr);
             }
         }
-        setLines(lines);
+        setSidewalks(sidewalks);
+        RandomizeSidewalks();
+        setRoads(roads);
+
     }
     public void RandomizeSidewalks(){
-        for(Line l:lines){
-            if (l.getCode()=='S'){
-                l.randomizeElements();
-            }
+        for(Sidewalk s:sidewalks){
+            s.randomizeTrees();
         }
     }
+
 }
