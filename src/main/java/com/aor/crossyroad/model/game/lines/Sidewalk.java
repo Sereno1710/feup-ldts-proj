@@ -14,7 +14,7 @@ public class Sidewalk extends Line {
         super(y, 'S');
     }
 
-    public void randomizeElements() {
+    public void randomizeTrees() {
         Random r = new Random();
         int ran=r.nextInt(0,90);
         trees = new ArrayList<>();

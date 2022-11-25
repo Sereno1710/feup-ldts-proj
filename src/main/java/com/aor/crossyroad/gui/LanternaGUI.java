@@ -2,6 +2,7 @@ package com.aor.crossyroad.gui;
 
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Tree;
+import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.googlecode.lanterna.TerminalSize;
@@ -52,18 +53,6 @@ public class LanternaGUI {
         return terminalFactory.createTerminal();
     }
 
-    /* private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
-        return AWTTerminalFontConfiguration.newInstance(loadedFont);
-    } */
-
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
@@ -101,7 +90,9 @@ public class LanternaGUI {
         }
     }
     public void drawRoad(Road road, int y) {
-        // goes through the list of cars and draws them
+        for(Car c:road.getCars()){
+            drawCar(c.getPosition());
+        }
     }
 
     public void drawChicken(Position position) {
