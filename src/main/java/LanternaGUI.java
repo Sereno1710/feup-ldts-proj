@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -88,7 +89,11 @@ public class LanternaGUI {
             drawTree(tree.getPosition());
         }
     }
-
+    public void drawSafe(int y){
+        for (int i=0;i< 100 ;i++) {
+           drawCharacter(i,y,'_',"white");
+        }
+    }
     void drawRoad(Road road, int y) {
         // goes through the list of cars and draws them
     }
@@ -102,7 +107,6 @@ public class LanternaGUI {
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
-
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));

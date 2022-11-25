@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sidewalk extends Line{
@@ -8,9 +9,12 @@ public class Sidewalk extends Line{
     }
 
     public void randomizeTrees() {
+        trees=new ArrayList<>();
+        trees.add(new Tree(15,15));
     }
 
     public List<Tree> getTrees() {
+        randomizeTrees();
         return trees;
     }
 }

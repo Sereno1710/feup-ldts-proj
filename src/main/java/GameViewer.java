@@ -7,13 +7,12 @@ public class GameViewer extends Viewer<Arena>{
     @Override
     public void drawElements(LanternaGUI lanternaGUI) {
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
-        drawLines(lanternaGUI, getModel().getLines());
-    }
 
-    private void drawLines(LanternaGUI lanternaGUI, List<Line> lines) {
+    }
+    public void drawLines(LanternaGUI lanternaGUI){
         SidewalkViewer sidewalkViewer = new SidewalkViewer();
         RoadViewer roadViewer = new RoadViewer();
-        for (Line line : lines) {
+        for (Line line : getModel().getLines()) {
             if (line.getCode() == 'R') {
                 roadViewer.draw((Road) line, lanternaGUI);
             }
