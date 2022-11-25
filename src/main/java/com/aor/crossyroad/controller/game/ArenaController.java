@@ -30,6 +30,7 @@ public class ArenaController extends GameController {
         else {
             chickenController.step(game, action, time);
             carRightController.step(game, action, time);
+            carLeftController.step(game,action,time);
         }
     }
 }

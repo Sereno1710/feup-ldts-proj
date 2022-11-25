@@ -24,7 +24,7 @@ public class ChickenTests {
         chicken = new Chicken(15,16);
         arena.setChicken(chicken);
         controller = new ChickenController(arena);
-        arena.setLines(Arrays.asList());
+        arena.setSidewalks(Arrays.asList());
     }
     @Test
     public void ChickenMoveUp(){
@@ -33,7 +33,7 @@ public class ChickenTests {
     }
     @Test
     public void ChickenCantMoveUp(){
-        arena.setLines(Arrays.asList(new Sidewalk(15)));
+        arena.setSidewalks(Arrays.asList(new Sidewalk(15)));
         controller.moveChickenUp();
         assertEquals(new Position(15,16),chicken.getPosition());
     }

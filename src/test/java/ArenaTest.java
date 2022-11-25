@@ -17,10 +17,10 @@ public class ArenaTest {
 
         for (LanternaGUI.ACTION action : actions) {
             controller.step(null, action, 100);
-            assert (controller.getModel().getChicken().getPosition().getX() >= 0);
-            assert (controller.getModel().getChicken().getPosition().getY() >= 0);
-            assert (controller.getModel().getChicken().getPosition().getX() <= 9);
-            assert (controller.getModel().getChicken().getPosition().getY() <= 9);
+            assert (controller.getModel().getChicken().getPosition().getX() > 0);
+            assert (controller.getModel().getChicken().getPosition().getY() > 0);
+            assert (controller.getModel().getChicken().getPosition().getX() < 9);
+            assert (controller.getModel().getChicken().getPosition().getY() < 9);
         }
     }
 
