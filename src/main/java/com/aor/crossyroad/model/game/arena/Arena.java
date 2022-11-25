@@ -2,6 +2,7 @@ package com.aor.crossyroad.model.game.arena;
 
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
+import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.lines.Line;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
@@ -55,6 +56,16 @@ public class Arena {
         this.lines = lines;
     }
     public boolean isEmpty(Position position) {
+        for (Line line:lines){
+            if (line.getCode() == 'S'){
+                Sidewalk ns = new Sidewalk(line.getY());
+                for (Tree e: ns.getTrees()){
+                    if (e.getPosition().equals(position)) {
+                        return false;
+                    }
+                }
+            }
+        }
         return (position.getX() < width && position.getY() < height && position.getX() >= 0 && position.getY() >= 0);
     }
 
@@ -77,28 +88,5 @@ public class Arena {
             }
         }
         setLines(lines);
-    }
-
-    public void processKey(KeyStroke key){
-        if (key.getKeyType() == KeyType.ArrowUp) {
-            moveChicken(chicken.MoveUp());
-        }
-        if (key.getKeyType() == KeyType.ArrowDown) {
-            moveChicken(chicken.MoveDown());
-        }
-        if (key.getKeyType() == KeyType.ArrowLeft) {
-            moveChicken(chicken.MoveLeft());
-        }
-        if (key.getKeyType() == KeyType.ArrowRight) {
-            moveChicken(chicken.MoveRight());
-        }
-    }
-    public void moveChicken(Position position){
-        if (canMove(position)) {
-            chicken.setPosition(position);
-        }
-    }
-    public boolean canMove(Position position){
-        return ((position.getX() >= 0 && position.getY() >= 0) && (position.getX() < width && position.getY() < height));
     }
 }

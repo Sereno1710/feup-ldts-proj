@@ -90,14 +90,15 @@ public class LanternaGUI {
     }
 
     public void drawSidewalk(Sidewalk sidewalk, int y) {
+
         for (Tree tree : sidewalk.getTrees()) {
             drawTree(tree.getPosition());
         }
     }
     public void drawSafe(){
         for (int i = 0; i < 100; i++) {
-           drawCharacter(i, 2,'_',"#FFFFFF");
-           drawCharacter(i, 31, '_', "#FFFFFF");
+           drawCharacter(i, 2,'-',"#FFFFFF");
+           drawCharacter(i, 31, '-', "#FFFFFF");
         }
     }
     public void drawRoad(Road road, int y) {
