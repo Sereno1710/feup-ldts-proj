@@ -1,5 +1,5 @@
 public abstract class Line {
-    protected static char code;
+    protected  char code;
     private int y;
     public Line(int y, char code) {
         this.y = y;
@@ -11,7 +11,7 @@ public abstract class Line {
     public void setY(int y) {
         this.y = y;
     }
-    public static char getCode() {
+    public  char getCode() {
         return code;
     }
 }

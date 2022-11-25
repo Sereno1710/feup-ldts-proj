@@ -10,4 +10,8 @@ public class MenuViewer extends Viewer<Menu>{
         for (int i = 0; i < getModel().getNumberOptions(); i++)
             lanternaGUI.drawText(new Position(5, 7 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#EE4B2B");
     }
+    @Override
+    protected void drawLines(LanternaGUI lanternaGUI){
+        return;
+    }
 }

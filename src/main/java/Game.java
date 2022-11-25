@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
-    private Screen screen;
-    private Arena arena;
     private State state;
     private final LanternaGUI lanternaGUI;
     public Game() throws FontFormatException, IOException, URISyntaxException {
