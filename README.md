@@ -62,8 +62,9 @@ A way to improve would be to either simplify said methods or divide them in mult
 
 ### TESTING
 
-- Screenshot of coverage report.
-- Link to mutation testing report.
+**Screenshot of coverage report:**
+![Screenshot from 2022-11-26 03-49-00](https://user-images.githubusercontent.com/114070737/204071346-7cc47a56-eb7a-496c-841d-7cd28f0ddfbc.png)
+
 
 ### SELF-EVALUATION
 
@@ -72,4 +73,3 @@ A way to improve would be to either simplify said methods or divide them in mult
 - Vasco Oliveira: 32.5%
 
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
