@@ -108,8 +108,8 @@ public class Arena {
             }
             else {
                 Road nr = new Road(i++);
-                nr.generateCars((i%5>2));
-                if(i%5>2)roadsLeft.add(nr);
+                nr.generateCars((i%5>=2));
+                if(i%5>=2)roadsLeft.add(nr);
                 else roadsRight.add(nr);
             }
         }
@@ -123,5 +123,4 @@ public class Arena {
             s.randomizeTrees();
         }
     }
-
 }
