@@ -12,6 +12,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,23 +33,9 @@ public class Arena {
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
     }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     public Chicken getChicken() {
         return chicken;
     }
-
-    public void setChicken(Chicken chicken) {
-        this.chicken = chicken;
-    }
-
     public List<Road> getRoadsLeft() {
         return roadsLeft;
     }
@@ -56,45 +43,32 @@ public class Arena {
         return roadsRight;
     }
     public List<Sidewalk> getSidewalks(){return sidewalks;}
-
     public void setRoadsLeft(List<Road> roads) {
             this.roadsLeft = roads;
     }
-
     public void setRoadsRight(List<Road> roads) {
         this.roadsRight = roads;
     }
-
     public void setSidewalks(List<Sidewalk> sidewalks){this.sidewalks=sidewalks;}
     public boolean isEmpty(Position position) {
         for (Sidewalk s:sidewalks){
             for (Tree e: s.getTrees()){
-                if (e.getPosition().equals(position)) {
-                    return false;
-                }
+                if (e.getPosition().equals(position)) return false;
             }
         }
         for (Road rl:roadsLeft){
             for (Car cl: rl.getCars()){
-                if (cl.getPosition().equals(position)) {
-                    return false;
-                }
+                if (cl.getPosition().equals(position)) return false;
             }
         }
         for (Road rr:roadsRight){
             for (Car cr: rr.getCars()){
-                if (cr.getPosition().equals(position)) {
-                    return false;
-                }
+                if (cr.getPosition().equals(position)) return false;
             }
         }
         return (position.getX() < width-1 && position.getY() < height-1 && position.getX() > 0 && position.getY() > 0);
     }
 
-    public void draw(TextGraphics graphics){
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#332244"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-    }
     public void LineCreator() {
         int i = 3;
         List<Road> roadsLeft = new ArrayList<Road>();
@@ -122,4 +96,5 @@ public class Arena {
             s.randomizeTrees();
         }
     }
+    public void setChicken(Chicken chicken) {this.chicken=chicken;}
 }

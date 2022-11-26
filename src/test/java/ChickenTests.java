@@ -7,9 +7,7 @@ import com.aor.crossyroad.model.game.lines.Sidewalk;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class ChickenTests {
     private ChickenController controller;
     private Chicken chicken;
@@ -36,5 +34,10 @@ public class ChickenTests {
         }
         controller.moveChickenUp();
         assertEquals(new Position(15,16),chicken.getPosition());
+    }
+    @Test
+    public void settingChicken(){
+        chicken.getPosition().setY(19);
+        assertEquals(new Position(15,19),chicken.getPosition());
     }
 }
