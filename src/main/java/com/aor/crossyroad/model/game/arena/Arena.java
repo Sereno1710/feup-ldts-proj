@@ -94,7 +94,6 @@ public class Arena {
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#332244"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        chicken.draw(graphics);
     }
     public void LineCreator() {
         int i = 3;
