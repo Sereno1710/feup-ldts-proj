@@ -19,6 +19,11 @@ public class Road extends Line {
     public List<Car> getCars() {
         return cars;
     }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public void generateCars(boolean gen) {
         for (int i = 0; i < 3; i++) {
                 Car c;
