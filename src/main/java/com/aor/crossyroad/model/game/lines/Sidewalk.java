@@ -16,7 +16,7 @@ public class Sidewalk extends Line {
 
     public void randomizeTrees() {
         Random r = new Random();
-        int ran=r.nextInt(0,90);
+        int ran=r.nextInt(90);
         trees = new ArrayList<>();
         for(int i=1;i<100;i++){
             if(i<ran || i>=ran+10){

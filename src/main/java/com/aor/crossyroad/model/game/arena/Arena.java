@@ -68,6 +68,7 @@ public class Arena {
         }
         return (position.getX() < width-1 && position.getY() < height-1 && position.getX() > 0 && position.getY() > 0);
     }
+
     public void LineCreator() {
         int i = 3;
         List<Road> roadsLeft = new ArrayList<Road>();

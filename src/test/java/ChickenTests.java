@@ -18,7 +18,6 @@ public class ChickenTests {
         chicken = new Chicken(15,16);
         arena.setChicken(chicken);
         controller = new ChickenController(arena);
-        arena.setSidewalks(Arrays.asList());
     }
     @Test
     public void ChickenMoveUp(){
@@ -27,8 +26,9 @@ public class ChickenTests {
     }
     @Test
     public void ChickenCantMoveUp(){
+        arena.setSidewalks(Arrays.asList());
         arena.setSidewalks(Arrays.asList(new Sidewalk(15)));
-        for (Sidewalk i: arena.getSidewalks()){
+        for (Sidewalk i:arena.getSidewalks()){
             i.randomizeTrees();
             i.getTrees().add(new Tree(15,15));
         }
