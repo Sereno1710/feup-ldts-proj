@@ -5,16 +5,15 @@ Crossy Road is an endless arcade hopper game that derives its name and concept f
 This project was developed by Bruno Fernandes (up202108871@fe.up.pt), José Santos (up202108729@fe.up.pt) and Vasco Oliveira (up202108881@fe.up.pt) for LDTS 2022/23.
 
 ### IMPLEMENTED FEATURES
+- **Moving the character** - The player can control the character's movements using the arrow keys.
+- **Random Generation of Trees and Cars** - The elements in the map are all randomly generated so every time the game is played the player can have a different experience.
+- **Car Movement** - The cars are always moving, switching sides if they move out of the map.
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
-**Examples**:
-
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+![Screenshot from 2022-11-26 02-08-07](https://user-images.githubusercontent.com/114070737/204068287-38fe9588-fc82-4b67-a9ae-8f988f75b52b.png)
 
 ### PLANNED FEATURES
 
+- **Colision with Cars** - When the player colides with a car the game should end and open a menu, letting the player play again or exit the game.
 - **Randomized trees in sidewalks** - Every time the game character gets to a safezone, difficulty increases and the trees in all the sidewalks will be in randomized positions.
 - **Coins** - Every time the game character catches a coin, his balance is increased.
 - **Shop** - The game character can have multiple colors, which he can buy in the shop.
@@ -98,13 +97,8 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ### SELF-EVALUATION
 
-- Bruno Fernandes:
-- José Santos: 
-- Vasco Oliveira:
+- Bruno Fernandes: 32.5%
+- José Santos: 35%
+- Vasco Oliveira: 32.5%
 
 > In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
