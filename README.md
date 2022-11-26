@@ -4,6 +4,9 @@ Crossy Road is an endless arcade hopper game that derives its name and concept f
 
 This project was developed by Bruno Fernandes (up202108871@fe.up.pt), José Santos (up202108729@fe.up.pt) and Vasco Oliveira (up202108881@fe.up.pt) for LDTS 2022/23.
 
+## UML Class Diagram
+![image](https://user-images.githubusercontent.com/93687600/204073034-2c6c0320-77dd-4dd0-a73f-d5a34a7f793b.png)
+
 ### IMPLEMENTED FEATURES
 - **Moving the character** - The player can control the character's movements using the arrow keys.
 - **Random Generation of Trees and Cars** - The elements in the map are all randomly generated so every time the game is played the player can have a different experience.
@@ -71,5 +74,4 @@ A way to improve would be to either simplify said methods or divide them in mult
 - Bruno Fernandes: 32.5%
 - José Santos: 35%
 - Vasco Oliveira: 32.5%
-
 
