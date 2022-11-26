@@ -32,11 +32,9 @@ public class LanternaGUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        //AWTTerminalFontConfiguration fontConfig = loadSquareFont();
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
     }
-
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -45,31 +43,24 @@ public class LanternaGUI {
         screen.doResizeIfNecessary();
         return screen;
     }
-
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         return terminalFactory.createTerminal();
     }
-
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
-
         if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
-
         if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
         if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
         return ACTION.NONE;
     }
-
     public void drawTree(Position position) {
         drawCharacter(position.getX(), position.getY(), 'T', "#32CD32");
     }
@@ -94,32 +85,22 @@ public class LanternaGUI {
             drawCar(c.getPosition());
         }
     }
-
     public void drawChicken(Position position) {
         drawCharacter(position.getX(), position.getY(), 'X', "#FFFF00");
     }
-
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
-
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
     }
-
     public void clear() {
         screen.clear();
     }
-
-    public void refresh() throws IOException {
-        screen.refresh();
-    }
-
-    public void close() throws IOException {
-        screen.close();
-    }
+    public void refresh() throws IOException {screen.refresh();}
+    public void close() throws IOException {screen.close();}
 }
