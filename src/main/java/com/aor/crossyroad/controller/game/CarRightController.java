@@ -6,6 +6,8 @@ import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
+import com.aor.crossyroad.model.menu.Menu;
+import com.aor.crossyroad.states.MenuState;
 
 import java.io.IOException;
 
@@ -28,9 +30,9 @@ public class CarRightController extends GameController {
     }
 
     private boolean moveCar(Car car, Position position) {
-        if(position.getX()>=99){return moveCar(car,new Position(0,position.getY()));}
+        if(position.getX()>=99){
+            car.setPosition(new Position(2,position.getY()));}
         if (getModel().isEmpty(position)) {
-            car.setPosition(position);
             if (!getModel().getChicken().getPosition().equals(position))
                 return true;
         }

@@ -29,9 +29,8 @@ public class CarLeftController extends GameController {
     }
 
     private boolean moveCar(Car car, Position position) {
-        if(position.getX()<=1){return moveCar(car,new Position(100,position.getY()));}
+        if(position.getX()<=1){car.setPosition(new Position(98,position.getY()));}
         if (getModel().isEmpty(position)) {
-            car.setPosition(position);
             if (!getModel().getChicken().getPosition().equals(position))
                 return true;
         }
