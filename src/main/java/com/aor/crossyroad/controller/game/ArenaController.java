@@ -1,6 +1,7 @@
 package com.aor.crossyroad.controller.game;
 
 import com.aor.crossyroad.Game;
+import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.menu.Menu;
@@ -26,7 +27,7 @@ public class ArenaController extends GameController {
 
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (action == LanternaGUI.ACTION.QUIT ) {
+        if (action == LanternaGUI.ACTION.QUIT || getModel().isCar(getModel().getChicken().getPosition())) {
             game.setState(new MenuState(new Menu()));
         }
         else {
@@ -34,5 +35,7 @@ public class ArenaController extends GameController {
             carRightController.step(game, action, time);
             carLeftController.step(game,action,time);
         }
+    }
+    public void EndGame(){
     }
 }

@@ -1,3 +1,5 @@
+package com.aor.crossyroad.controller;
+
 import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.game.CarLeftController;
 import com.aor.crossyroad.controller.game.CarRightController;
@@ -62,34 +64,7 @@ public class CarControllerTest {
             controller2.step(game, LanternaGUI.ACTION.NONE, 1000);
             assertNotEquals(new Position(4, 4), car.getPosition());
         }
-        @Test
-        void moveCarLeftClosed() throws IOException {
-            Car car = new CarLeft(5,3);
-            for (Road i: arena.getRoadsLeft()){
-                i.getCars().add(car);
-                i.setCars(i.getCars());break;}
-            arena.setRoadsLeft(arena.getRoadsLeft());
-            chicken.setPosition(new Position(4,3));
-            arena.setChicken(chicken);
-            for (int i = 0; i < 10; i++)
-                controller.step(game, LanternaGUI.ACTION.NONE, 1000);
 
-            assertEquals(new Position(5, 3), car.getPosition());
-        }
-    @Test
-    void moveCarRightClosed() throws IOException {
-        Car car = new CarRight(5,4);
-        for (Road i: arena.getRoadsRight()){
-            i.getCars().add(car);
-            i.setCars(i.getCars());break;}
-        arena.setRoadsRight(arena.getRoadsRight());
-        chicken.setPosition(new Position(6,4));
-        arena.setChicken(chicken);
-        for (int i = 0; i < 10; i++)
-            controller2.step(game, LanternaGUI.ACTION.NONE, 1000);
-
-        assertEquals(new Position(5, 4), car.getPosition());
-    }
 
         @Test
         void CarLeftGap() throws IOException {

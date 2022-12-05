@@ -1,32 +1,20 @@
 package com.aor.crossyroad.model.game.arena;
-
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
-import com.aor.crossyroad.model.game.lines.Line;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 public class Arena {
     private final int width;
     private final int height;
     //private char last_safe='D';
-
     private Chicken chicken;
-
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -63,12 +51,24 @@ public class Arena {
         }
         for (Road rr:roadsRight){
             for (Car cr: rr.getCars()){
-                if (cr.getPosition().equals(position)) return false;
-            }
+                if (cr.getPosition().equals(position))
+                    return false;}
         }
         return (position.getX() < width-1 && position.getY() < height-1 && position.getX() > 0 && position.getY() > 0);
     }
-
+    public boolean isCar(Position position) {
+        for (Road rl:roadsLeft){
+            for (Car cl: rl.getCars()){
+                if (cl.getPosition().equals(position)) return true;
+            }
+        }
+        for (Road rr:roadsRight){
+            for (Car cr: rr.getCars()){
+                if (cr.getPosition().equals(position))
+                    return true;}
+        }
+        return false;
+    }
     public void LineCreator() {
         int i = 3;
         List<Road> roadsLeft = new ArrayList<Road>();

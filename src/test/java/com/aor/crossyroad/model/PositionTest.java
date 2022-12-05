@@ -1,3 +1,5 @@
+package com.aor.crossyroad.model;
+
 import com.aor.crossyroad.model.Position;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;

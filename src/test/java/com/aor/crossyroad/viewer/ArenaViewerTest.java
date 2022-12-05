@@ -1,3 +1,5 @@
+package com.aor.crossyroad.viewer;
+
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;

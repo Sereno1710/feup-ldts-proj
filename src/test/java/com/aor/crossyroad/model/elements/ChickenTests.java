@@ -1,3 +1,5 @@
+package com.aor.crossyroad.model.elements;
+
 import com.aor.crossyroad.controller.game.ChickenController;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
