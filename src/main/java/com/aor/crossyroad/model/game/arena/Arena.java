@@ -44,16 +44,6 @@ public class Arena {
                 if (e.getPosition().equals(position)) return false;
             }
         }
-        for (Road rl:roadsLeft){
-            for (Car cl: rl.getCars()){
-                if (cl.getPosition().equals(position)) return false;
-            }
-        }
-        for (Road rr:roadsRight){
-            for (Car cr: rr.getCars()){
-                if (cr.getPosition().equals(position))
-                    return false;}
-        }
         return (position.getX() < width-1 && position.getY() < height-1 && position.getX() > 0 && position.getY() > 0);
     }
     public boolean isCar(Position position) {
