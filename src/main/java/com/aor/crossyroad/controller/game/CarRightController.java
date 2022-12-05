@@ -5,8 +5,6 @@ import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
-
-
 import java.io.IOException;
 
 public class CarRightController extends GameController {
@@ -14,26 +12,19 @@ public class CarRightController extends GameController {
     public CarRightController(Arena arena) {
         super(arena);
     }
-
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         if (time - lastMovement > 300) {
             for (Road i : getModel().getRoadsRight())
                 for (Car c: i.getCars())
-                    if (moveCar(c, c.getPosition().getRight())){
-                        c.setPosition(c.getPosition().getRight());
-                    }
+                    verifyPosCar(c,c.getPosition().getRight());
             this.lastMovement = time;
         }
     }
-
-    private boolean moveCar(Car car, Position position) {
+    private void verifyPosCar(Car car, Position position) {
         if(position.getX()>=99){
-            car.setPosition(new Position(2,position.getY()));}
-        if (getModel().isEmpty(position)) {
-            if (!getModel().getChicken().getPosition().equals(position))
-                return true;
+            car.setPosition(new Position(2,position.getY()));
         }
-        return false;
+        else {car.setPosition(new Position(car.getPosition().getX()+1, position.getY()));}
     }
 }

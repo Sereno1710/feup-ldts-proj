@@ -1,3 +1,4 @@
+package com.aor.crossyroad.controller;
 import com.aor.crossyroad.controller.game.ChickenController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;

@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
-group 'org.CrossyRoad'
+group 'org.aor.crossyroad'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -19,8 +20,13 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform(){
+        includeEngines('junit-jupiter', 'jqwik')
+    }
 }
 application {
     mainClass.set("com.aor.crossyroad.Game")
+}
+pitest{
+    junit5PluginVersion = '0.12'
 }

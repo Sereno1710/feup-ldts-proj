@@ -1,3 +1,5 @@
+package com.aor.crossyroad.gui;
+
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.googlecode.lanterna.TextColor;
