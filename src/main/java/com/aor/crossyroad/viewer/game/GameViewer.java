@@ -1,6 +1,7 @@
 package com.aor.crossyroad.viewer.game;
 
 import com.aor.crossyroad.gui.LanternaGUI;
+import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.Element;
@@ -16,6 +17,7 @@ public class GameViewer extends Viewer<Arena> {
     @Override
     public void drawElements(LanternaGUI lanternaGUI) {
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
+        lanternaGUI.drawText(new Position(1, 1), "\t$$$=" + getModel().getCoinAmount(), "#FFD700");
         for(Road r: getModel().getRoadsLeft()){
             if(!r.getCoins().isEmpty()){
                 for(Coin c: r.getCoins()){
