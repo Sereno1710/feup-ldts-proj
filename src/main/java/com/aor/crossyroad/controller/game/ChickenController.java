@@ -36,9 +36,15 @@ public class ChickenController extends GameController {
 
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (action == LanternaGUI.ACTION.UP) moveChickenUp();
+        if (action == LanternaGUI.ACTION.UP) {
+            moveChickenUp();
+            getModel().setLastSafe(getModel().getChicken());
+        }
         if (action == LanternaGUI.ACTION.RIGHT) moveChickenRight();
-        if (action == LanternaGUI.ACTION.DOWN) moveChickenDown();
+        if (action == LanternaGUI.ACTION.DOWN) {
+            moveChickenDown();
+            getModel().setLastSafe(getModel().getChicken());
+        }
         if (action == LanternaGUI.ACTION.LEFT) moveChickenLeft();
     }
 }
