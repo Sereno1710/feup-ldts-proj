@@ -14,6 +14,7 @@ import java.util.Random;
 public class Arena {
     private final int width;
     private final int height;
+    private char lastSafe;
     private Chicken chicken;
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
@@ -23,6 +24,7 @@ public class Arena {
         this.height = height;
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
+        lastSafe = 'B';
     }
     public Chicken getChicken() {
         return chicken;
@@ -108,5 +110,30 @@ public class Arena {
             roadsRight.get(randNum).addCoin();
         }
     }
-    public void setChicken(Chicken chicken) {this.chicken=chicken;}
+    public void setChicken(Chicken chicken) {
+        this.chicken = chicken;
+    }
+
+    private boolean checkSafeIsTop(Position position) {
+        return (position.getY() <= 2 && lastSafe != 'T');
+    }
+
+    private boolean checkSafeIsBottom(Position position) {
+        return (position.getY() >= 31 && lastSafe != 'B');
+    }
+
+    public void setLastSafe(Chicken chicken) {
+        if (checkSafeIsTop(chicken.getPosition())) {
+            lastSafe = 'T';
+            for (int i = 0; i < sidewalks.size(); i++) {
+                sidewalks.get(i).randomizeTrees();
+            }
+        }
+        else if (checkSafeIsBottom(chicken.getPosition())) {
+            lastSafe = 'B';
+            for (int i = 0; i < sidewalks.size(); i++) {
+                sidewalks.get(i).randomizeTrees();
+            }
+        }
+    }
 }
