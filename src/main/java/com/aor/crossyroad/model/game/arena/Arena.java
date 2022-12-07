@@ -6,7 +6,6 @@ import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
-
 import javax.print.attribute.standard.RequestingUserName;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +18,20 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
+    private int coinAmount;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
         lastSafe = 'B';
+        coinAmount=0;
     }
+
+    public int getCoinAmount() {
+        return coinAmount;
+    }
+
     public Chicken getChicken() {
         return chicken;
     }
@@ -56,11 +62,25 @@ public class Arena {
             for (Car cl: rl.getCars()){
                 if (cl.getPosition().equals(position)) return true;
             }
+            for (Coin c: rl.getCoins()){
+                if (c.getPosition().equals(position)) {
+                    rl.removeCoin(c.getPosition());
+                    coinAmount++;
+                    break;
+                }
+            }
         }
         for (Road rr:roadsRight){
             for (Car cr: rr.getCars()){
                 if (cr.getPosition().equals(position))
                     return true;}
+            for (Coin c: rr.getCoins()){
+                if (c.getPosition().equals(position)) {
+                    rr.removeCoin(c.getPosition());
+                    coinAmount++;
+                    break;
+                }
+            }
         }
         return false;
     }
