@@ -10,7 +10,7 @@ import java.util.List;
 public class Arena {
     private final int width;
     private final int height;
-    private char lastSafe = 'B';
+    private char lastSafe;
     private Chicken chicken;
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
@@ -20,6 +20,7 @@ public class Arena {
         this.height = height;
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
+        lastSafe = 'B';
     }
     public Chicken getChicken() {
         return chicken;
@@ -90,12 +91,12 @@ public class Arena {
         this.chicken = chicken;
     }
 
-    private boolean checkSafeIsBottom(Position position) {
-        return (position.getY() <= 2 && lastSafe != 'B');
+    private boolean checkSafeIsTop(Position position) {
+        return (position.getY() <= 2 && lastSafe != 'T');
     }
 
-    private boolean checkSafeIsTop(Position position) {
-        return (position.getY() >= 31 && lastSafe != 'T');
+    private boolean checkSafeIsBottom(Position position) {
+        return (position.getY() >= 31 && lastSafe != 'B');
     }
 
     public void setLastSafe(Chicken chicken) {
