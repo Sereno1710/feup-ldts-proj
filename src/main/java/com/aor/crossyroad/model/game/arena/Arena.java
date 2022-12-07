@@ -10,7 +10,7 @@ import java.util.List;
 public class Arena {
     private final int width;
     private final int height;
-    //private char last_safe='D';
+    private char lastSafe = 'B';
     private Chicken chicken;
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
@@ -86,5 +86,30 @@ public class Arena {
             s.randomizeTrees();
         }
     }
-    public void setChicken(Chicken chicken) {this.chicken=chicken;}
+    public void setChicken(Chicken chicken) {
+        this.chicken = chicken;
+    }
+
+    private boolean checkSafeIsBottom(Position position) {
+        return (position.getY() <= 2 && lastSafe != 'B');
+    }
+
+    private boolean checkSafeIsTop(Position position) {
+        return (position.getY() >= 31 && lastSafe != 'T');
+    }
+
+    public void setLastSafe(Chicken chicken) {
+        if (checkSafeIsTop(chicken.getPosition())) {
+            lastSafe = 'T';
+            for (int i = 0; i < sidewalks.size(); i++) {
+                sidewalks.get(i).randomizeTrees();
+            }
+        }
+        else if (checkSafeIsBottom(chicken.getPosition())) {
+            lastSafe = 'B';
+            for (int i = 0; i < sidewalks.size(); i++) {
+                sidewalks.get(i).randomizeTrees();
+            }
+        }
+    }
 }
