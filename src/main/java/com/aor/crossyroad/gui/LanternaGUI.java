@@ -98,6 +98,9 @@ public class LanternaGUI {
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
     }
+    public void drawCoin(Position position){
+        drawCharacter(position.getX(), position.getY(), '$',"#FFD700");
+    }
     public void clear() {
         screen.clear();
     }

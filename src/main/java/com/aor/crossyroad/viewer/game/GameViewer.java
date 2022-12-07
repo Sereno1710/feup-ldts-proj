@@ -2,6 +2,7 @@ package com.aor.crossyroad.viewer.game;
 
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
+import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.Element;
 import com.aor.crossyroad.model.game.lines.Line;
 import com.aor.crossyroad.model.game.lines.Road;
@@ -15,7 +16,20 @@ public class GameViewer extends Viewer<Arena> {
     @Override
     public void drawElements(LanternaGUI lanternaGUI) {
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
-
+        for(Road r: getModel().getRoadsLeft()){
+            if(!r.getCoins().isEmpty()){
+                for(Coin c: r.getCoins()){
+                    drawElement(lanternaGUI,c,new CoinViewer());
+                }
+            }
+        }
+        for(Road r: getModel().getRoadsRight()){
+            if(!r.getCoins().isEmpty()){
+                for(Coin c: r.getCoins()){
+                    drawElement(lanternaGUI,c,new CoinViewer());
+                }
+            }
+        }
     }
     public void drawLines(LanternaGUI lanternaGUI){
         SidewalkViewer sidewalkViewer = new SidewalkViewer();

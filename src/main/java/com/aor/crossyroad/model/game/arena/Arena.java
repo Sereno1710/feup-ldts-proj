@@ -1,16 +1,19 @@
 package com.aor.crossyroad.model.game.arena;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
+import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
+
+import javax.print.attribute.standard.RequestingUserName;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 public class Arena {
     private final int width;
     private final int height;
-    //private char last_safe='D';
     private Chicken chicken;
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
@@ -80,10 +83,29 @@ public class Arena {
         RandomizeSidewalks();
         setRoadsLeft(roadsLeft);
         setRoadsRight(roadsRight);
+        RandomizeCoins();
     }
     public void RandomizeSidewalks(){
         for(Sidewalk s:sidewalks){
             s.randomizeTrees();
+        }
+    }
+    public void RandomizeCoins(){
+        for(Road r:roadsLeft){
+            r.clearCoins();
+        }
+        for(Road r:roadsRight){
+            r.clearCoins();
+        }
+        for(int i=0;i<2;i++){
+            Random r=new Random();
+            int randNum=r.nextInt(roadsLeft.size());
+            roadsLeft.get(randNum).addCoin();
+        }
+        for(int i=0;i<2;i++){
+            Random r=new Random();
+            int randNum=r.nextInt(roadsRight.size());
+            roadsRight.get(randNum).addCoin();
         }
     }
     public void setChicken(Chicken chicken) {this.chicken=chicken;}
