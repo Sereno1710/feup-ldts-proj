@@ -18,7 +18,8 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private int coinAmount;
+    private Integer coinAmount;
+    private Integer score;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -26,12 +27,13 @@ public class Arena {
         chicken = new Chicken(width / 2, height - 7);
         lastSafe = 'B';
         coinAmount=0;
+        score=0;
     }
 
-    public int getCoinAmount() {
+    public Integer getCoinAmount() {
         return coinAmount;
     }
-
+    public Integer getScore(){return score;}
     public Chicken getChicken() {
         return chicken;
     }
@@ -145,12 +147,14 @@ public class Arena {
     public void setLastSafe(Chicken chicken) {
         if (checkSafeIsTop(chicken.getPosition())) {
             lastSafe = 'T';
+            score++;
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }
         }
         else if (checkSafeIsBottom(chicken.getPosition())) {
             lastSafe = 'B';
+            score++;
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }

@@ -7,6 +7,9 @@ public class Menu {
     public Menu() {
         this.options = Arrays.asList("Start", "Exit");
     }
+    public Menu(String coins,String score) {
+        this.options=Arrays.asList("Play Again","Exit");
+    }
     public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}
     public String getOption(int i) {

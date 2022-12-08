@@ -27,8 +27,11 @@ public class ArenaController extends GameController {
 
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (action == LanternaGUI.ACTION.QUIT || getModel().isCar(getModel().getChicken().getPosition())) {
+        if (action == LanternaGUI.ACTION.QUIT) {
             game.setState(new MenuState(new Menu()));
+        }
+        else if(getModel().isCar(getModel().getChicken().getPosition())){
+            game.setState(new MenuState(new Menu(getModel().getCoinAmount().toString(),getModel().getScore().toString())));
         }
         else {
             chickenController.step(game, action, time);

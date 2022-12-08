@@ -18,6 +18,7 @@ public class GameViewer extends Viewer<Arena> {
     public void drawElements(LanternaGUI lanternaGUI) {
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
         lanternaGUI.drawText(new Position(1, 1), "\t$$$=" + getModel().getCoinAmount(), "#FFD700");
+        lanternaGUI.drawText(new Position(80, 1), "\tScore=" + getModel().getScore(), "#FFD700");
         for(Road r: getModel().getRoadsLeft()){
             if(!r.getCoins().isEmpty()){
                 for(Coin c: r.getCoins()){
@@ -33,6 +34,7 @@ public class GameViewer extends Viewer<Arena> {
             }
         }
     }
+    @Override
     public void drawLines(LanternaGUI lanternaGUI){
         SidewalkViewer sidewalkViewer = new SidewalkViewer();
         RoadViewer roadViewer = new RoadViewer();
