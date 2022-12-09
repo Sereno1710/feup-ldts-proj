@@ -2,6 +2,7 @@ package com.aor.crossyroad.controller.game;
 
 import com.aor.crossyroad.Game;
 import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.menu.Menu;
@@ -16,6 +17,7 @@ public class ArenaController extends GameController {
     private final ChickenController chickenController;
     private final CarRightController carRightController;
     private final CarLeftController carLeftController;
+    private final CoinController coinController;
 
     public ArenaController(Arena arena) {
         super(arena);
@@ -23,6 +25,7 @@ public class ArenaController extends GameController {
         this.chickenController = new ChickenController(arena);
         this.carRightController = new CarRightController(arena);
         this.carLeftController = new CarLeftController(arena);
+        this.coinController= new CoinController(arena);
     }
 
     @Override
@@ -37,6 +40,7 @@ public class ArenaController extends GameController {
             chickenController.step(game, action, time);
             carRightController.step(game, action, time);
             carLeftController.step(game,action,time);
+            coinController.step(game,action,time);
         }
     }
     public void EndGame(){
