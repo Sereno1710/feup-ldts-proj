@@ -6,6 +6,8 @@ import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
+import com.aor.crossyroad.model.game.shop.Shop;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,6 +21,7 @@ public class Arena {
     private List<Road> roadsRight;
     private Integer coinAmount;
     private Integer score;
+    private Shop shop;
     private long time=1200;
     public Arena(int width, int height) {
         this.width = width;
@@ -28,6 +31,7 @@ public class Arena {
         lastSafe = 'B';
         coinAmount=0;
         score=0;
+        shop=new Shop(1,39);
     }
 
     public Integer getCoinAmount() {
@@ -168,5 +172,11 @@ public class Arena {
                 sidewalks.get(i).randomizeTrees();
             }
         }
+    }
+    public List<String> getOptions(){
+        return shop.getOptions();
+    }
+    public Shop getShop(){
+        return shop;
     }
 }
