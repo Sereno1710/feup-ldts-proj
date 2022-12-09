@@ -1,7 +1,9 @@
 package com.aor.crossyroad.model.game.shop;
 
+import com.aor.crossyroad.Game;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Element;
+import com.aor.crossyroad.states.GameState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,13 +11,14 @@ import java.util.List;
 
 public class Shop{
     private Position position;
+    private final GameState gameState;
     private List<String> options;
     private int currentOption=0;
-    public Shop(){
+    public Shop(GameState gameState){
         this.options= Arrays.asList("Power-Ups","Skins","Exit");
-    }
-    public Shop(int x,int y){
-        position=new Position(2,38);
+        position = new Position(2,33);
+        this.gameState = gameState;
+
     }
     public Position getPosition() {
         return position;
@@ -47,5 +50,8 @@ public class Shop{
     }
     public int getNumberOptions() {
         return this.options.size();
+    }
+    public GameState getGameState() {
+        return this.gameState;
     }
 }

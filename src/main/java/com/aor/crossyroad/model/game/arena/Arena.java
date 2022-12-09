@@ -7,6 +7,7 @@ import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.aor.crossyroad.model.game.shop.Shop;
+import com.aor.crossyroad.states.GameState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Arena {
         lastSafe = 'B';
         coinAmount=0;
         score=0;
-        shop=new Shop(1,39);
+        shop=new Shop(new GameState(this));
     }
 
     public Integer getCoinAmount() {

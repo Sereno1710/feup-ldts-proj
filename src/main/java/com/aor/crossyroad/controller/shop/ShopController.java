@@ -4,6 +4,7 @@ import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
+import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.states.GameState;
@@ -24,7 +25,11 @@ public class ShopController extends Controller<Shop> {
                 getModel().nextOption();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) game.setState(new GameState(new Arena(100,40)));
+                if (getModel().isSelectedExit()) {
+                    GameState gameState = getModel().getGameState();
+                    gameState.getModel().setChicken(new Chicken(3, 33));
+                    game.setState(gameState);
+                }
         }
     }
 }
