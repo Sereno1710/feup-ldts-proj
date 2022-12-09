@@ -18,7 +18,6 @@ public class ArenaController extends GameController {
     private final CarRightController carRightController;
     private final CarLeftController carLeftController;
     private final CoinController coinController;
-
     public ArenaController(Arena arena) {
         super(arena);
 
@@ -30,17 +29,19 @@ public class ArenaController extends GameController {
 
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+        getModel().tickTime();
+        System.out.println(getModel().getTime());
         if (action == LanternaGUI.ACTION.QUIT) {
             game.setState(new MenuState(new Menu()));
         }
-        else if(getModel().isCar(getModel().getChicken().getPosition())){
+        else if(getModel().isCar(getModel().getChicken().getPosition())|| getModel().getTime()==1){
             game.setState(new MenuState(new Menu(getModel().getCoinAmount().toString(),getModel().getScore().toString())));
         }
         else {
-            chickenController.step(game, action, time);
-            carRightController.step(game, action, time);
-            carLeftController.step(game,action,time);
-            coinController.step(game,action,time);
+                chickenController.step(game, action, time);
+                carRightController.step(game, action, time);
+                carLeftController.step(game,action,time);
+                coinController.step(game,action,time);
         }
     }
     public void EndGame(){

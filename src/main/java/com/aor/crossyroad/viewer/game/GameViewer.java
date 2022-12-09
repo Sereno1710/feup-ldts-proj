@@ -19,6 +19,7 @@ public class GameViewer extends Viewer<Arena> {
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
         lanternaGUI.drawText(new Position(1, 1), "\t$$$=" + getModel().getCoinAmount(), "#FFD700");
         lanternaGUI.drawText(new Position(80, 1), "\tScore=" + getModel().getScore(), "#FFD700");
+        lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/40,"#FFD700");
         for(Road r: getModel().getRoadsLeft()){
             if(!r.getCoins().isEmpty()){
                 for(Coin c: r.getCoins()){
