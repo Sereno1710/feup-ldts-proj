@@ -101,6 +101,7 @@ public class LanternaGUI {
     public void drawCoin(Position position){
         drawCharacter(position.getX(), position.getY(), '$',"#FFD700");
     }
+    public void drawShop(Position position) {drawCharacter(position.getX(), position.getY(), 'S',"#FFFFFF");}
     public void clear() {
         screen.clear();
     }
