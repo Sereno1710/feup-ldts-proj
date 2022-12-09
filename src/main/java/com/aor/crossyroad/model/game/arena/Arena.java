@@ -6,7 +6,6 @@ import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
-import javax.print.attribute.standard.RequestingUserName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +19,7 @@ public class Arena {
     private List<Road> roadsRight;
     private Integer coinAmount;
     private Integer score;
+    private long time=1200;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -109,6 +109,13 @@ public class Arena {
         setRoadsRight(roadsRight);
         RandomizeCoins();
     }
+    public void tickTime(){
+        this.time--;
+    }
+
+    public long getTime() {
+        return time;
+    }
     public void RandomizeSidewalks(){
         for(Sidewalk s:sidewalks){
             s.randomizeTrees();
@@ -148,6 +155,7 @@ public class Arena {
         if (checkSafeIsTop(chicken.getPosition())) {
             lastSafe = 'T';
             score++;
+            time=1200;
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }
@@ -155,6 +163,7 @@ public class Arena {
         else if (checkSafeIsBottom(chicken.getPosition())) {
             lastSafe = 'B';
             score++;
+            time=1200;
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }
