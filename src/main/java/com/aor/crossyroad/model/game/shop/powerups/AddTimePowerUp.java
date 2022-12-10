@@ -8,6 +8,6 @@ public class AddTimePowerUp implements PowerUp {
     }
     @Override
     public void activate() {
-        // add addedTime to time left
+
     }
 }
