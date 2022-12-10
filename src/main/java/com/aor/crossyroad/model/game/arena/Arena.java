@@ -7,6 +7,7 @@ import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.aor.crossyroad.model.game.shop.Shop;
+import com.aor.crossyroad.model.game.shop.powerups.PowerUp;
 import com.aor.crossyroad.states.GameState;
 
 import java.util.ArrayList;
@@ -23,16 +24,22 @@ public class Arena {
     private Integer coinAmount;
     private Integer score;
     private Shop shop;
-    private long time=1200;
+    private long time = 1200;
+    private List<PowerUp> powerUps;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
         lastSafe = 'B';
-        coinAmount=0;
-        score=0;
-        shop=new Shop(new GameState(this));
+        coinAmount = 0;
+        score = 0;
+        shop = new Shop(new GameState(this));
+        powerUps = new ArrayList<>();
+    }
+
+    public void addPowerUp(PowerUp powerUp) {
+        powerUps.add(powerUp);
     }
 
     public Integer getCoinAmount() {
