@@ -16,6 +16,7 @@ public class GameViewer extends Viewer<Arena> {
     }
     @Override
     public void drawElements(LanternaGUI lanternaGUI) {
+        lanternaGUI.drawShop(getModel().getShop().getPosition());
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
         lanternaGUI.drawText(new Position(1, 1), "\t$$$=" + getModel().getCoinAmount(), "#FFD700");
         lanternaGUI.drawText(new Position(80, 1), "\tScore=" + getModel().getScore(), "#FFD700");
@@ -56,8 +57,8 @@ public class GameViewer extends Viewer<Arena> {
     }
     private void drawTime(LanternaGUI lanternaGUI){
         long t=getModel().getTime();
-        if(t>800) lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/40,"#32CD32");
-        else if (t>400) lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/40,"#FFD700");
-        else lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/40,"#FF0000");
+        if(t>600) lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/30,"#32CD32");
+        else if (t>300) lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/30,"#FFD700");
+        else lanternaGUI.drawText(new Position(1,2),"\tTime="+getModel().getTime()/30,"#FF0000");
     }
 }

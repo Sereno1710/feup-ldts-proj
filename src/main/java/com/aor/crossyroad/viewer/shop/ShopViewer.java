@@ -24,6 +24,7 @@ public class ShopViewer extends Viewer<Shop> {
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI){
+
     }
 
 }
