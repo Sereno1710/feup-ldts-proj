@@ -10,8 +10,8 @@ public class Menu {
     public Menu(String coins,String score) {
         this.options=Arrays.asList("Play Again","Exit","Coins: " + coins,"Score: "+ score);
     }
-    public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
-    public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}
+    public void nextOption() {currentOption++;if (currentOption > 1) currentOption = 0;}
+    public void previousOption() {currentOption--;if (currentOption < 0) currentOption = 1;}
     public String getOption(int i) {
         return options.get(i);
     }
