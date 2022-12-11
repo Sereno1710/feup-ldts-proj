@@ -22,8 +22,8 @@ public class CarRightController extends GameController {
         }
     }
     private void verifyPosCar(Car car, Position position) {
-        if(position.getX()>=99){
-            car.setPosition(new Position(2,position.getY()));
+        if(position.getX()>100){
+            car.setPosition(new Position(0,position.getY()));
         }
         else {car.setPosition(new Position(car.getPosition().getX()+1, position.getY()));}
     }

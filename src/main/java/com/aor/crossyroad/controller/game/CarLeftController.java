@@ -28,8 +28,8 @@ public class CarLeftController extends GameController {
         }
     }
     private void verifyPosCar(Car car, Position position) {
-        if (position.getX() <= 1) {
-            car.setPosition(new Position(98, position.getY()));
+        if (position.getX() <0) {
+            car.setPosition(new Position(100, position.getY()));
         }
         else {car.setPosition(new Position(car.getPosition().getX()-1,position.getY() ));}
     }
