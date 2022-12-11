@@ -2,7 +2,6 @@ package com.aor.crossyroad.states;
 
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.controller.shop.ShopController;
-import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.viewer.Viewer;
 import com.aor.crossyroad.viewer.shop.ShopViewer;

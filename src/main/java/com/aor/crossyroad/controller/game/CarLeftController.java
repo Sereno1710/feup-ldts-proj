@@ -20,7 +20,7 @@ public class CarLeftController extends GameController {
     //falta um getCars na arena ou no Roads
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (time - lastMovement > 300/(1+getModel().getScore()/10.0)) {
+        if (time - lastMovement > 300/(1+getModel().getScore()/8.0)) {
             for (Road i : getModel().getRoadsLeft())
                 for (Car c : i.getCars())
                         verifyPosCar(c,c.getPosition().getLeft());

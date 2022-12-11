@@ -1,5 +1,49 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
-public interface PowerUp {
-    public void activate();
+import com.aor.crossyroad.states.GameState;
+import java.util.Arrays;
+import java.util.List;
+
+public class PowerUp {
+    private List<String> options;
+    private GameState gameState;
+    private AddTimePowerUp addTimePowerUp;
+    private int currentOption=0;
+    public PowerUp(GameState gameState){
+        this.options= Arrays.asList("Add Time","x2 Coins","Teleport","Exit");
+        this.gameState=gameState;
+        addTimePowerUp =new AddTimePowerUp(150);
+    }
+    public List<String> getOptions() {
+        return options;
+    }
+    public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
+    public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}
+    public String getOption(int i) {
+        return options.get(i);
+    }
+    public boolean isSelected(int i) {
+        return currentOption == i;
+    }
+    public boolean isSelectedExit() {
+        return isSelected(3);
+    }
+    public boolean isSelectedAddTime() {
+        return isSelected(0);
+    }
+    public boolean isSelectedx2Coins() {
+        return isSelected(1);
+    }
+    public boolean isSelectedTeleport() {
+        return isSelected(2);
+    }
+    public GameState getGameState() {
+        return this.gameState;
+    }
+    public void buyAddedTime(GameState gameState){
+        if(getGameState().getModel().getCoinAmount() >= 20){
+            getGameState().getModel().setCoinAmount((getGameState().getModel().getCoinAmount()-20));
+            getGameState().getModel().setDefaultTime(addTimePowerUp.getAddedTime()+getGameState().getModel().getDefaultTime());
+        }
+    }
 }

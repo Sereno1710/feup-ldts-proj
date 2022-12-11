@@ -21,10 +21,11 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private Integer coinAmount;
-    private Integer score;
+    private Integer coinAmount=0;
+    private Integer score=0;
     private Shop shop;
-    private long time = 1200;
+    private long DefaultTime = 900;
+    private long time;
     private List<PowerUp> powerUps;
     public Arena(int width, int height) {
         this.width = width;
@@ -32,16 +33,14 @@ public class Arena {
         LineCreator();
         chicken = new Chicken(width / 2, height - 7);
         lastSafe = 'B';
-        coinAmount = 0;
-        score = 0;
         shop = new Shop(new GameState(this));
         powerUps = new ArrayList<>();
+        time =900;
     }
 
     public void addPowerUp(PowerUp powerUp) {
         powerUps.add(powerUp);
     }
-
     public Integer getCoinAmount() {
         return coinAmount;
     }
@@ -124,7 +123,9 @@ public class Arena {
     public void tickTime(){
         this.time--;
     }
-
+    public void resetTime(){
+        time=getDefaultTime();
+    }
     public long getTime() {
         return time;
     }
@@ -167,7 +168,7 @@ public class Arena {
         if (checkSafeIsTop(chicken.getPosition())) {
             lastSafe = 'T';
             score++;
-            time=1200;
+            resetTime();
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }
@@ -175,16 +176,25 @@ public class Arena {
         else if (checkSafeIsBottom(chicken.getPosition())) {
             lastSafe = 'B';
             score++;
-            time=1200;
+            resetTime();
             for (int i = 0; i < sidewalks.size(); i++) {
                 sidewalks.get(i).randomizeTrees();
             }
         }
     }
-    public List<String> getOptions(){
-        return shop.getOptions();
-    }
     public Shop getShop(){
         return shop;
+    }
+
+    public void setCoinAmount(Integer i) {
+        coinAmount=i;
+    }
+
+    public long getDefaultTime() {
+        return DefaultTime;
+    }
+
+    public void setDefaultTime(long defaultTime) {
+        DefaultTime = defaultTime;
     }
 }

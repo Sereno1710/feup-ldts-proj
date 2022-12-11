@@ -17,7 +17,7 @@ public class Game {
         this.state = new MenuState(new Menu());
     }
     public void run() throws IOException{
-        int FPS = 40;
+        int FPS = 30;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

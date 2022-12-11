@@ -48,9 +48,6 @@ public class Shop{
     public boolean isSelectedSkins() {
         return isSelected(1);
     }
-    public int getNumberOptions() {
-        return this.options.size();
-    }
     public GameState getGameState() {
         return this.gameState;
     }

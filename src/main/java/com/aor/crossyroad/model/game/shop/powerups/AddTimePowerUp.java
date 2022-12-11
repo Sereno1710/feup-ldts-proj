@@ -1,13 +1,11 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
-public class AddTimePowerUp implements PowerUp {
-
+public class AddTimePowerUp {
     private final long addedTime;
     public AddTimePowerUp(long addedTime) {
         this.addedTime = addedTime;
     }
-    @Override
-    public void activate() {
-
+    public long getAddedTime(){
+        return addedTime;
     }
 }

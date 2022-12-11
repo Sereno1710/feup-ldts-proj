@@ -14,7 +14,7 @@ public class CarRightController extends GameController {
     }
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (time - lastMovement > 300/ (1+getModel().getScore()/10.0)) {
+        if (time - lastMovement > 300/ (1+getModel().getScore()/7.0)) {
             for (Road i : getModel().getRoadsRight())
                 for (Car c: i.getCars())
                     verifyPosCar(c,c.getPosition().getRight());

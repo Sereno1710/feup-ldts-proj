@@ -8,37 +8,28 @@ import com.aor.crossyroad.model.game.arena.Arena;
 import java.io.IOException;
 
 public class ChickenController extends GameController {
-    private int LastMovement = 0;
-
     public ChickenController(Arena arena) {
         super(arena);
     }
-
     private void moveChicken(Position position) {
         if (getModel().isEmpty(position)) {
             getModel().getChicken().setPosition(position);
         }
     }
-
     public void moveChickenLeft() {
         moveChicken(getModel().getChicken().getPosition().getLeft());
     }
-
     public void moveChickenUp() {
         moveChicken(getModel().getChicken().getPosition().getUp());
     }
-
     public void moveChickenRight() {
         moveChicken(getModel().getChicken().getPosition().getRight());
     }
-
     public void moveChickenDown() {
         moveChicken(getModel().getChicken().getPosition().getDown());
     }
-
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
-        if (time - LastMovement > 300) {
             if (action == LanternaGUI.ACTION.UP) {
                 moveChickenUp();
                 getModel().setLastSafe(getModel().getChicken());
@@ -49,6 +40,5 @@ public class ChickenController extends GameController {
                 getModel().setLastSafe(getModel().getChicken());
             }
             if (action == LanternaGUI.ACTION.LEFT) moveChickenLeft();
-        }
     }
 }

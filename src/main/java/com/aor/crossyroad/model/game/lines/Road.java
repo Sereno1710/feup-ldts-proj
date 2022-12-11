@@ -31,7 +31,7 @@ public class Road extends Line {
 
 
     public void generateCars(boolean gen) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
                 Car c;
                 if (gen) {
                     //left heading
