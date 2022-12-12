@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class Arena {
+    private long totalTime=0;
+    private int bonusMultiplier=1;
     private final int width;
     private final int height;
     private char lastSafe;
@@ -21,21 +23,21 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private Integer coinAmount=0;
+    private Integer coinAmount=30;
     private Integer score=0;
     private Shop shop;
-    private long DefaultTime = 900;
+    private long DefaultTime = 1950;
     private long time;
     private List<PowerUp> powerUps;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
         LineCreator();
-        chicken = new Chicken(width / 2, height - 7);
+        chicken = new Chicken(width / 2, height -6);
         lastSafe = 'B';
         shop = new Shop(new GameState(this));
         powerUps = new ArrayList<>();
-        time =900;
+        time =1050;
     }
 
     public void addPowerUp(PowerUp powerUp) {
@@ -78,7 +80,7 @@ public class Arena {
             for (Coin c: rl.getCoins()){
                 if (c.getPosition().equals(position)) {
                     rl.removeCoin(c.getPosition());
-                    coinAmount++;
+                    coinAmount=coinAmount+1*bonusMultiplier;
                     break;
                 }
             }
@@ -90,7 +92,7 @@ public class Arena {
             for (Coin c: rr.getCoins()){
                 if (c.getPosition().equals(position)) {
                     rr.removeCoin(c.getPosition());
-                    coinAmount++;
+                    coinAmount=coinAmount+1*bonusMultiplier;
                     break;
                 }
             }
@@ -98,11 +100,11 @@ public class Arena {
         return false;
     }
     public void LineCreator() {
-        int i = 3;
+        int i = 4; //starts after safezone, ends before one
         List<Road> roadsLeft = new ArrayList<Road>();
         List<Road> roadsRight=new ArrayList<Road>();
         List<Sidewalk> sidewalks = new ArrayList<>();
-        while (i >= 3 && i < 31){
+        while (i >=  4 && i <= 31){
             if((i+3) % 5 == 0){
                 Sidewalk ns = new Sidewalk(i++);
                 sidewalks.add(ns);
@@ -122,6 +124,8 @@ public class Arena {
     }
     public void tickTime(){
         this.time--;
+        this.totalTime--;
+        checkTotalBonusTime();
     }
     public void resetTime(){
         time=getDefaultTime();
@@ -145,10 +149,8 @@ public class Arena {
             Random r=new Random();
             int randNum=r.nextInt(roadsLeft.size());
             roadsLeft.get(randNum).addCoin();
-        }
-        for(int i=0;i<2;i++){
-            Random r=new Random();
-            int randNum=r.nextInt(roadsRight.size());
+            r=new Random();
+            randNum=r.nextInt(roadsRight.size());
             roadsRight.get(randNum).addCoin();
         }
     }
@@ -157,29 +159,28 @@ public class Arena {
     }
 
     private boolean checkSafeIsTop(Position position) {
-        return (position.getY() <= 2 && lastSafe != 'T');
+        return (position.getY() <= 3 && lastSafe != 'T');
     }
 
     private boolean checkSafeIsBottom(Position position) {
-        return (position.getY() >= 31 && lastSafe != 'B');
+        return (position.getY() >= 32 && lastSafe != 'B');
     }
 
     public void setLastSafe(Chicken chicken) {
         if (checkSafeIsTop(chicken.getPosition())) {
             lastSafe = 'T';
-            score++;
-            resetTime();
-            for (int i = 0; i < sidewalks.size(); i++) {
-                sidewalks.get(i).randomizeTrees();
-            }
+            afterReachingSafe();
         }
         else if (checkSafeIsBottom(chicken.getPosition())) {
             lastSafe = 'B';
-            score++;
-            resetTime();
-            for (int i = 0; i < sidewalks.size(); i++) {
-                sidewalks.get(i).randomizeTrees();
-            }
+            afterReachingSafe();
+        }
+    }
+    public void afterReachingSafe(){
+        score++;
+        resetTime();
+        for (int i = 0; i < sidewalks.size(); i++) {
+            sidewalks.get(i).randomizeTrees();
         }
     }
     public Shop getShop(){
@@ -196,5 +197,15 @@ public class Arena {
 
     public void setDefaultTime(long defaultTime) {
         DefaultTime = defaultTime;
+    }
+
+    public void setCoinMultiplier(int bonusMultiplier, long totalTime) {
+        this.bonusMultiplier=bonusMultiplier;
+        this.totalTime=totalTime;
+    }
+    public void checkTotalBonusTime(){
+        if (totalTime ==0){
+            setCoinMultiplier(1,0);
+        }
     }
 }

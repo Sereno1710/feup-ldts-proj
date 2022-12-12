@@ -16,20 +16,15 @@ public class Shop{
     private int currentOption=0;
     public Shop(GameState gameState){
         this.options= Arrays.asList("Power-Ups","Skins","Exit");
-        position = new Position(2,33);
+        position = new Position(2,35);
         this.gameState = gameState;
 
     }
     public Position getPosition() {
         return position;
     }
-
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public List<String> getOptions() {
-        return options;
     }
     public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}

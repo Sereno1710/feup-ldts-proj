@@ -31,6 +31,9 @@ public class PowerUpController extends Controller<PowerUp> {
                 else if(getModel().isSelectedAddTime()){
                     getModel().buyAddedTime(getModel().getGameState());
                 }
+                else if(getModel().isSelectedx2Coins()){
+                    getModel().buyCoinsPowerUp(getModel().getGameState());
+                }
         }
     }
 }

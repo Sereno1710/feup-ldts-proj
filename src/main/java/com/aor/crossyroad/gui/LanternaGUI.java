@@ -1,10 +1,9 @@
 package com.aor.crossyroad.gui;
 
 import com.aor.crossyroad.model.Position;
-import com.aor.crossyroad.model.game.elements.Tree;
-import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -15,8 +14,6 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +21,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class LanternaGUI {
-    private Screen screen;
-    public enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT};
+    private final Screen screen;
+    public enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
 
     public LanternaGUI(Screen screen) {
         this.screen = screen;
@@ -49,8 +46,7 @@ public class LanternaGUI {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        return terminal;
+        return terminalFactory.createTerminal();
     }
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
@@ -59,8 +55,7 @@ public class LanternaGUI {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
         Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        return fontConfig;
+        return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
@@ -78,37 +73,34 @@ public class LanternaGUI {
     public void drawTree(Position position) {
         drawCharacter(position.getX(), position.getY(), 'T', "#32CD32");
     }
-
     public void drawCar(Position position) {
         drawCharacter(position.getX(), position.getY(), 'D', "#EE4B2B");
     }
-
     public void drawSidewalk(Sidewalk sidewalk, int y) {
-        for (Tree tree : sidewalk.getTrees()) {
-            drawTree(tree.getPosition());
-        }
+        //drawRectangle
+    }
+    public void drawRoad(Road road,int y) {
+        //drawRectangle
     }
     public void drawSafe(){
-        for (int i = 0; i < 100; i++) {
-           drawCharacter(i, 2,'-',"#FFFFFF");
-           drawCharacter(i, 31, '-', "#FFFFFF");
-        }
-    }
-    public void drawRoad(Road road, int y) {
-        for(Car c:road.getCars()){
-            drawCar(c.getPosition());
+        for (int i = 1; i < 39; i++) {
+            drawCharacter(i, 3,'-',"#FFFFFF");
+            drawCharacter(i, 32, '-', "#FFFFFF");
         }
     }
     public void drawChicken(Position position) {
         drawCharacter(position.getX(), position.getY(), 'X', "#FFFF00");
     }
+
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        if (text == " ") tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        else tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
+        if (c == ' ') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
     }
@@ -116,6 +108,9 @@ public class LanternaGUI {
         drawCharacter(position.getX(), position.getY(), '$',"#FFD700");
     }
     public void drawShop(Position position) {drawCharacter(position.getX(), position.getY(), 'S',"#FFFF00");}
+    public void drawBorder(int x,int y){
+        drawCharacter(x,y,'ᗡ',"#028A0F");
+    }
     public void clear() {
         screen.clear();
     }
