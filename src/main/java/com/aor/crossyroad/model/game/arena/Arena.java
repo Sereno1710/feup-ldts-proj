@@ -23,10 +23,10 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private Integer coinAmount=30;
+    private Integer coinAmount=0;
     private Integer score=0;
     private Shop shop;
-    private long DefaultTime = 1950;
+    private long DefaultTime = 900;
     private long time;
     private List<PowerUp> powerUps;
     public Arena(int width, int height) {
@@ -158,11 +158,11 @@ public class Arena {
         this.chicken = chicken;
     }
 
-    private boolean checkSafeIsTop(Position position) {
+    public boolean checkSafeIsTop(Position position) {
         return (position.getY() <= 3 && lastSafe != 'T');
     }
 
-    private boolean checkSafeIsBottom(Position position) {
+    public boolean checkSafeIsBottom(Position position) {
         return (position.getY() >= 32 && lastSafe != 'B');
     }
 

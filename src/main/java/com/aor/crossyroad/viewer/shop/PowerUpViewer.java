@@ -11,9 +11,10 @@ public class PowerUpViewer extends Viewer<PowerUp> {
     }
     @Override
     protected void drawElements(LanternaGUI lanternaGUI) {
-        for (int i = 0; i < 4; i++) {
-            lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? getModel().canBuy(20) || i ==3? "#39FF14":"#FF0000" :"#FFFFFF" );
-        }
+        lanternaGUI.drawText(new Position(5, 15 ), getModel().getOption(0), getModel().isSelected(0) ? getModel().canBuy(20) ? "#39FF14":"#FF0000" :"#FFFFFF" );
+        lanternaGUI.drawText(new Position(5, 15 + 1), getModel().getOption(1), getModel().isSelected(1) ? getModel().canBuy(30)? "#39FF14":"#FF0000" :"#FFFFFF" );
+        lanternaGUI.drawText(new Position(5, 15 + 2), getModel().getOption(2), getModel().isSelected(2) ? getModel().canBuy(10)? "#39FF14":"#FF0000" :"#FFFFFF" );
+        lanternaGUI.drawText(new Position(5, 15 + 3), getModel().getOption(3), getModel().isSelected(3)? "#39FF14" :"#FFFFFF" );
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI) {

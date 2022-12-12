@@ -6,16 +6,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PowerUp {
-    private List<String> options;
-    private GameState gameState;
-    private AddTimePowerUp addTimePowerUp;
-    private CoinsPowerUp coinsPowerUp;
+    private final List<String> options;
+    private final GameState gameState;
+    private final AddTimePowerUp addTimePowerUp;
+    private final CoinsPowerUp coinsPowerUp;
+    private final ToNextSafezonePowerUp toNextSafezonePowerUp;
     private int currentOption=0;
     public PowerUp(GameState gameState){
         this.options= Arrays.asList("Add Time","x2 Coins","Teleport","Exit");
         this.gameState=gameState;
         addTimePowerUp =new AddTimePowerUp(150);
         coinsPowerUp = new CoinsPowerUp(2,900);
+        toNextSafezonePowerUp =new ToNextSafezonePowerUp();
     }
     public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}
@@ -50,6 +52,16 @@ public class PowerUp {
         if(canBuy(30)){
             gameState.getModel().setCoinAmount(gameState.getModel().getCoinAmount()-30);
             gameState.getModel().setCoinMultiplier(coinsPowerUp.getBonusMultiplier(),coinsPowerUp.getTotalTime());
+        }
+    }
+
+    public void buyToNextSafeZonePowerUp(GameState gameState){
+        if (canBuy(10)){
+            gameState.getModel().setCoinAmount(gameState.getModel().getCoinAmount()-10);
+            if (!gameState.getModel().checkSafeIsBottom(getGameState().getModel().getChicken().getPosition())){
+                gameState.getModel().getChicken().setPosition(new Position(20,2));
+            }
+            gameState.getModel().setLastSafe(gameState.getModel().getChicken());
         }
     }
     public boolean canBuy(int x){
