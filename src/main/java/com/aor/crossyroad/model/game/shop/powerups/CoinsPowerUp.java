@@ -1,6 +1,6 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
-public class CoinsPowerUp {
+public class CoinsPowerUp implements PowerUpImmediate {
     private final int bonusMultiplier;
     private final long totalTime;
     private final int cost=30;
@@ -15,5 +15,10 @@ public class CoinsPowerUp {
 
     public long getTotalTime() {
         return totalTime;
+    }
+
+    @Override
+    public void applyPowerUp() {
+
     }
 }

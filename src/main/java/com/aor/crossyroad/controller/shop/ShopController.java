@@ -29,11 +29,11 @@ public class ShopController extends Controller<Shop> {
                 if (getModel().isSelectedExit()) {
                     GameState gameState = getModel().getGameState();
                     gameState.getModel().resetTime();
-                    gameState.getModel().setChicken(new Chicken(3, 33));
+                    gameState.getModel().setChicken(new Chicken(20, 34));
                     game.setState(gameState);
                 }
                 if (getModel().isSelectedPowerUp()){
-                    game.setState(new PowerUpsState(new PowerUp(getModel().getGameState())));
+                    game.setState(new PowerUpsState(new PowerUp(new ShopState(getModel()))));
                 }
         }
     }
