@@ -35,11 +35,7 @@ public class PowerUpController extends Controller<PowerUp> {
                     getModel().buyCoinsPowerUp(getModel().getShopState().getModel().getGameState());
                 }
                 else if(getModel().isSelectedTeleport()){
-                    if (getModel().canBuy(10)){
                     getModel().buyToNextSafeZonePowerUp(getModel().getShopState().getModel().getGameState());
-                    step(game, LanternaGUI.ACTION.DOWN,time);
-                    step(game,LanternaGUI.ACTION.SELECT,time);
-                    }
                 }
         }
     }

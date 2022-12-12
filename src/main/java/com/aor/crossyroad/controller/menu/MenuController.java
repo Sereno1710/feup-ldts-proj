@@ -5,7 +5,6 @@ import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.states.GameState;
-
 import java.io.IOException;
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
@@ -21,8 +20,13 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextOption();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()) game.setState(new GameState(new Arena(40,40)));
+                if (getModel().isSelectedExit()) {game.setState(null);break;}
+                if (getModel().isSelectedStart()&& getModel().getOption(0).equals("Play Again")){
+                    GameState gameState= new GameState(new Arena(40,40));
+                    gameState.getModel().setCoinAmount(getModel().coins/2);
+                    game.setState(gameState);
+                }
+                else  {game.setState(new GameState(new Arena(40,40)));}
         }
     }
 }
