@@ -1,21 +1,24 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
 import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.states.GameState;
+import com.aor.crossyroad.states.ShopState;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class PowerUp {
     private final List<String> options;
-    private final GameState gameState;
+    private final ShopState shopState;
     private final AddTimePowerUp addTimePowerUp;
     private final CoinsPowerUp coinsPowerUp;
     private final ToNextSafezonePowerUp toNextSafezonePowerUp;
     private int currentOption=0;
-    public PowerUp(GameState gameState){
-        this.options= Arrays.asList("Add Time","x2 Coins","Teleport","Exit");
-        this.gameState=gameState;
-        addTimePowerUp =new AddTimePowerUp(150);
+    public PowerUp (ShopState shopState) {
+        this.options = Arrays.asList("Add Time","x2 Coins","Teleport","Exit");
+        this.shopState = shopState;
+        addTimePowerUp = new AddTimePowerUp(150);
         coinsPowerUp = new CoinsPowerUp(2,900);
         toNextSafezonePowerUp =new ToNextSafezonePowerUp();
     }
@@ -39,13 +42,13 @@ public class PowerUp {
     public boolean isSelectedTeleport() {
         return isSelected(2);
     }
-    public GameState getGameState() {
-        return this.gameState;
+    public ShopState getShopState() {
+        return this.shopState;
     }
-    public void buyAddedTime(GameState gameState){
+    public void buyAddedTime(ShopState shopState){
         if(canBuy(20)){
-            gameState.getModel().setCoinAmount((gameState.getModel().getCoinAmount()-20));
-            gameState.getModel().setDefaultTime(addTimePowerUp.getAddedTime()+gameState.getModel().getDefaultTime());
+            shopState.getModel().getGameState().getModel().setCoinAmount(shopState.getModel().getGameState().getModel().getCoinAmount() - 20);
+            shopState.getModel().getGameState().getModel().setDefaultTime(addTimePowerUp.getAddedTime()+shopState.getModel().getGameState().getModel().getDefaultTime());
         }
     }
     public void buyCoinsPowerUp(GameState gameState){
@@ -58,13 +61,13 @@ public class PowerUp {
     public void buyToNextSafeZonePowerUp(GameState gameState){
         if (canBuy(10)){
             gameState.getModel().setCoinAmount(gameState.getModel().getCoinAmount()-10);
-            if (!gameState.getModel().checkSafeIsBottom(getGameState().getModel().getChicken().getPosition())){
+            if (!gameState.getModel().checkSafeIsBottom(shopState.getModel().getGameState().getModel().getChicken().getPosition())){
                 gameState.getModel().getChicken().setPosition(new Position(20,2));
             }
             gameState.getModel().setLastSafe(gameState.getModel().getChicken());
         }
     }
     public boolean canBuy(int x){
-        return gameState.getModel().getCoinAmount() >= x;
+        return shopState.getModel().getGameState().getModel().getCoinAmount() >= x;
     }
 }

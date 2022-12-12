@@ -33,7 +33,7 @@ public class Arena {
         this.width = width;
         this.height = height;
         LineCreator();
-        chicken = new Chicken(width / 2, height -6);
+        chicken = new Chicken(width / 2, height - 6);
         lastSafe = 'B';
         shop = new Shop(new GameState(this));
         powerUps = new ArrayList<>();

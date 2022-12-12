@@ -26,17 +26,17 @@ public class PowerUpController extends Controller<PowerUp> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()){
-                    game.setState(getModel().getGameState());
+                    game.setState(getModel().getShopState());
                 }
                 else if(getModel().isSelectedAddTime()){
-                    getModel().buyAddedTime(getModel().getGameState());
+                    getModel().buyAddedTime(getModel().getShopState());
                 }
                 else if(getModel().isSelectedx2Coins()){
-                    getModel().buyCoinsPowerUp(getModel().getGameState());
+                    getModel().buyCoinsPowerUp(getModel().getShopState().getModel().getGameState());
                 }
                 else if(getModel().isSelectedTeleport()){
                     if (getModel().canBuy(10)){
-                    getModel().buyToNextSafeZonePowerUp(getModel().getGameState());
+                    getModel().buyToNextSafeZonePowerUp(getModel().getShopState().getModel().getGameState());
                     step(game, LanternaGUI.ACTION.DOWN,time);
                     step(game,LanternaGUI.ACTION.SELECT,time);
                     }

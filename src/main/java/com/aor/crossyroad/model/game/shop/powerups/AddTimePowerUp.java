@@ -1,8 +1,8 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
-public class AddTimePowerUp {
+public class AddTimePowerUp implements PowerUpImmediate {
     private final long addedTime;
-    private final int cost=20;
+    private final int cost = 1;
     public AddTimePowerUp(long addedTime) {
         this.addedTime = addedTime;
     }
@@ -12,5 +12,10 @@ public class AddTimePowerUp {
 
     public int getCost() {
         return cost;
+    }
+
+    @Override
+    public void applyPowerUp() {
+
     }
 }
