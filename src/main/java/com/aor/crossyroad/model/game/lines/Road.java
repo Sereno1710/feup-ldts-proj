@@ -5,7 +5,6 @@ import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.elements.cars.CarLeft;
 import com.aor.crossyroad.model.game.elements.cars.CarRight;
-import com.aor.crossyroad.model.game.lines.Line;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class Road extends Line {
     private List<Coin> coins;
 
     public Road(int y) {
-        super(y, 'R');
+        super(y);
         cars=new ArrayList<Car>();
         coins=new ArrayList<Coin>();
     }
@@ -31,14 +30,14 @@ public class Road extends Line {
 
 
     public void generateCars(boolean gen) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
                 Car c;
                 if (gen) {
                     //left heading
-                    c = new CarLeft(new Random().nextInt(100), getY());
+                    c = new CarLeft(new Random().nextInt(40), getY());
                 } else {
                     //True - right heading
-                    c = new CarRight(new Random().nextInt(100), getY());
+                    c = new CarRight(new Random().nextInt(40), getY());
                 }
                 cars.add(c);
 
@@ -57,7 +56,7 @@ public class Road extends Line {
     }
     public void addCoin(){
         Random r=new Random();
-        int randNum=r.nextInt(100);
+        int randNum=1+r.nextInt(38);
         Coin c =new Coin(randNum,getY());
         coins.add(c);
     }

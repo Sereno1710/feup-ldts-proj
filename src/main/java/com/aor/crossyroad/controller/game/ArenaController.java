@@ -1,7 +1,6 @@
 package com.aor.crossyroad.controller.game;
 
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.controller.shop.ShopController;
 import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.gui.LanternaGUI;

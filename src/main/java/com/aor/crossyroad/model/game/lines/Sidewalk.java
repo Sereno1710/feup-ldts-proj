@@ -11,15 +11,15 @@ public class Sidewalk extends Line {
     private List<Tree> trees;
 
     public Sidewalk(int y) {
-        super(y, 'S');
+        super(y);
     }
 
     public void randomizeTrees() {
         Random r = new Random();
-        int ran=r.nextInt(90);
+        int ran=r.nextInt(30);
         trees = new ArrayList<>();
-        for(int i=1;i<100;i++){
-            if(i<ran || i>=ran+10){
+        for(int i=1;i<39;i++){
+            if(i<ran || i>=ran+3){
                 trees.add(new Tree(i,getY()));
             }
         }

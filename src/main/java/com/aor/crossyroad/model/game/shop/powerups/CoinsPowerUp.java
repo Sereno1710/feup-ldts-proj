@@ -8,4 +8,12 @@ public class CoinsPowerUp {
         this.bonusMultiplier = bonusMultiplier;
         this.totalTime = totalTime;
     }
+
+    public int getBonusMultiplier() {
+        return bonusMultiplier;
+    }
+
+    public long getTotalTime() {
+        return totalTime;
+    }
 }
