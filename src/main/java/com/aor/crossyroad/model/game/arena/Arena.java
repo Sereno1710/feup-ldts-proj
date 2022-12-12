@@ -37,7 +37,7 @@ public class Arena {
         lastSafe = 'B';
         shop = new Shop(new GameState(this));
         powerUps = new ArrayList<>();
-        time =1050;
+        time =900;
     }
 
     public void addPowerUp(PowerUp powerUp) {

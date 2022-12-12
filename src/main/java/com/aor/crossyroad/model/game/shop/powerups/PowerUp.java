@@ -64,6 +64,9 @@ public class PowerUp {
             if (!gameState.getModel().checkSafeIsBottom(shopState.getModel().getGameState().getModel().getChicken().getPosition())){
                 gameState.getModel().getChicken().setPosition(new Position(20,2));
             }
+            else{
+                gameState.getModel().getChicken().setPosition(new Position(20,35));
+            }
             gameState.getModel().setLastSafe(gameState.getModel().getChicken());
         }
     }

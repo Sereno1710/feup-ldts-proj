@@ -4,11 +4,13 @@ import java.util.List;
 public class Menu {
     private final List<String> options;
     private int currentOption = 0;
+    public Integer coins;
     public Menu() {
         this.options = Arrays.asList("Start", "Exit");
     }
     public Menu(String coins,String score) {
         this.options=Arrays.asList("Play Again","Exit","Coins: " + coins,"Score: "+ score);
+        this.coins= Integer.parseInt(coins);
     }
     public void nextOption() {currentOption++;if (currentOption > 1) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = 1;}

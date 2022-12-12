@@ -100,7 +100,7 @@ public class LanternaGUI {
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (c == ' ') tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        if (c == ' '|| c=='-') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
     }
