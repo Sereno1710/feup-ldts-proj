@@ -33,6 +33,7 @@ public class InstructionsViewer extends Viewer<InstructionsMenu> {
         lanternaGUI.drawText(new Position(3,30),"ArrowDown-> Move Down;","#FFFFFF");
         lanternaGUI.drawText(new Position(3,31),"ArrowLeft-> Move to the Left;","#FFFFFF");
         lanternaGUI.drawText(new Position(3,32),"ArrowRight-> Move to the Right;","#FFFFFF");
+        lanternaGUI.drawText(new Position(3,33),"SpaceBar-> Use Teleport Power-Up;","#FFFFFF");
 
         lanternaGUI.drawText(new Position(9,37),"( Press ENTER to EXIT )","#FFFFFF");
     }
