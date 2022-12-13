@@ -36,7 +36,8 @@ public class ArenaController extends GameController {
             game.setState(new MenuState(new Menu()));
         }
         else if(getModel().isCar(getModel().getChicken().getPosition())|| getModel().getTime()==1){
-            game.setState(new GameOverState(new GameOver(getModel().getCoinAmount().toString(),getModel().getScore().toString())));
+            Integer coinAmount = getModel().getCoinAmount() / 2;
+            game.setState(new GameOverState(new GameOver(coinAmount.toString(),getModel().getScore().toString())));
         }
         else if(getModel().getShop().getPosition().equals(getModel().getChicken().getPosition())){
             game.setState(new ShopState(new Shop(gameState)));

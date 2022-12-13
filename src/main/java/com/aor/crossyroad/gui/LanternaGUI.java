@@ -18,10 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Objects;
 
 public class LanternaGUI {
     private final Screen screen;
-    public enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
+    public enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SPACE}
 
     public LanternaGUI(Screen screen) {
         this.screen = screen;
@@ -67,6 +68,8 @@ public class LanternaGUI {
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ')
+            return ACTION.SPACE;
         return ACTION.NONE;
     }
     public void drawTree(Position position) {

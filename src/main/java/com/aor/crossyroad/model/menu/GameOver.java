@@ -10,7 +10,7 @@ public class GameOver extends MenuPhases {
     public GameOver(String coins,String score) {
         super(Arrays.asList("Play Again","Exit"));
         this.coins= Integer.parseInt(coins);
-        this.results= Arrays.asList("Coins: " + coins,"Score: "+ score);
+        this.results= Arrays.asList("Coins lost: " + coins,"Score: "+ score);
     }
     public Integer getCoins() {
         return coins;

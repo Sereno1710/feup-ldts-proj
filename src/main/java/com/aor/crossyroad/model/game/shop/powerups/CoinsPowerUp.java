@@ -1,24 +1,24 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
-public class CoinsPowerUp implements PowerUpImmediate {
-    private final int bonusMultiplier;
-    private final long totalTime;
-    private final int cost=30;
-    public CoinsPowerUp(int bonusMultiplier, long totalTime) {
-        this.bonusMultiplier = bonusMultiplier;
-        this.totalTime = totalTime;
-    }
+import com.aor.crossyroad.model.game.arena.Arena;
 
-    public int getBonusMultiplier() {
+public class CoinsPowerUp implements PowerUpImmediate {
+    private static final long totalTime = 1350;
+    private static final int cost = 15;
+    private static final int bonusMultiplier = 2;
+    public static int getCost() {
+        return cost;
+    }
+    public static int getBonusMultiplier() {
         return bonusMultiplier;
     }
 
-    public long getTotalTime() {
+    public static long getTotalTime() {
         return totalTime;
     }
 
     @Override
-    public void applyPowerUp() {
-
+    public void applyPowerUp(Arena arena) {
+        arena.setCoinMultiplier(bonusMultiplier, totalTime);
     }
 }
