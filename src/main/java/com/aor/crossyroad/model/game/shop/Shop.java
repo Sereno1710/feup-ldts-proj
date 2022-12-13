@@ -16,7 +16,7 @@ public class Shop{
     private int currentOption=0;
     public Shop(GameState gameState){
         this.options= Arrays.asList("Power-Ups","Skins","Exit");
-        position = new Position(2,38);
+        position = new Position(20,37);
         this.gameState = gameState;
 
     }

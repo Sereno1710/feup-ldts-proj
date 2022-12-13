@@ -80,7 +80,7 @@ public class LanternaGUI {
     public void drawCarRight(Position position){drawCharacter(position.getX(),position.getY(),'J',"#EE4B2B");}
     public void drawSidewalk(Sidewalk sidewalk, int y) {
         for(int i =1;i <39;i++){
-            drawText(new Position(i,y+1)," ","#D3D3D3");
+            drawText(new Position(i,y+1)," ","#545454");
         }
     }
     public void drawRoad(Road road,int y) {
@@ -99,13 +99,19 @@ public class LanternaGUI {
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
         if (text == " " || text == "  ") tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        else if (text=="SHOP$"){
+            for (int i = 0; i < text.length(); i++) {
+                tg.setBackgroundColor(tg.getCharacter(position.getX() + i, position.getY()).getBackgroundColor());
+                tg.setForegroundColor(TextColor.Factory.fromString(color));
+            }
+        }
         else {tg.setForegroundColor(TextColor.Factory.fromString(color));}
         tg.putString(position.getX(), position.getY(), text);
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         if (c == ' '|| c== '&' || c== '/' || c== '%' || c=='*' || c=='@') tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
-        else if( c== 'S') tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        else if (c == 'S') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y +1, "" + c);
     }
@@ -116,13 +122,17 @@ public class LanternaGUI {
         drawCharacter(position.getX(), position.getY(), '$',"#E5E4E2");
     }
     public void drawShop(Position position) {
-        String s1 = "  ";
-        String s2 = "  ";
-        String s3 = " ";
-        drawText(new Position(position.getX()-1,position.getY()-1),s1,"#FFFFFF");
-        drawText(new Position(position.getX()-1, position.getY() ),s2,"#FFFFFF");
-        drawText(new Position(position.getX()-1, position.getY()+1), s3,"#FFFFFF");
+        String s = "SHOP$";
+        drawText(new Position(position.getX() - 2, position.getY() + 2), "  ","#545454");
+        drawText(new Position(position.getX(), position.getY() + 2), "  ","#545454");
+        drawText(new Position(position.getX() + 2, position.getY() + 2), " ","#545454");
+        drawText(new Position(position.getX() - 2, position.getY() + 2),"SHOP$","#0A1172");
         drawCharacter(position.getX(), position.getY(),'S',"#964B00" );
+        drawCharacter(position.getX() - 2, position.getY(),'S',"#545454" );
+        drawCharacter(position.getX() - 1, position.getY(),'S',"#545454" );
+        drawCharacter(position.getX() + 1, position.getY(),'S',"#545454" );
+        drawCharacter(position.getX() + 2, position.getY(),'S',"#545454" );
+
     }
     public void drawBorder(int x,int y){
         drawCharacter(x,y,'ᗡ',"#028A0F");
