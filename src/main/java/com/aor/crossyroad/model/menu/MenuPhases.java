@@ -10,10 +10,6 @@ public abstract class MenuPhases {
         this.options=options;
     }
 
-    public List<String> getOptions() {
-        return options;
-    }
-
     public void nextOption() {currentOption++;if (currentOption > getNumberOptions()) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = getNumberOptions()-1;}
     public String getOption(int i) {
