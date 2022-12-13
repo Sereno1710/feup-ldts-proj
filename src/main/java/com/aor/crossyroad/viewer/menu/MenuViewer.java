@@ -14,15 +14,11 @@ public class MenuViewer extends Viewer<Menu> {
     protected void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(5, 4), "\t\tCrossy Road : Menu", "#FFD700");
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < getModel().getNumberOptions(); i++)
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
-        if (getModel().getNumberOptions()==4){
-            lanternaGUI.drawText(new Position(3,25 ), getModel().getOption(2), "#39FF14");
-            lanternaGUI.drawText(new Position(25, 25), getModel().getOption(3) ,"#39FF14");
-        }
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI){
-        return;
+        //do nothing
     }
 }

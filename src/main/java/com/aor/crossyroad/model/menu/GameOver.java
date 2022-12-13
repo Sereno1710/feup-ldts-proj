@@ -1,17 +1,24 @@
 package com.aor.crossyroad.model.menu;
+
 import java.util.Arrays;
 import java.util.List;
-public class Menu extends MenuPhases{
-    private int currentOption = 0;
 
-    public Menu() {
-        super(Arrays.asList("Start","Exit"));
+public class GameOver extends MenuPhases {
+    private Integer coins;
+    private int currentOption=0;
+
+
+    public GameOver(String coins,String score) {
+        super(Arrays.asList("Play Again","Exit","Coins: " + coins,"Score: "+ score));
+        this.coins= Integer.parseInt(coins);
     }
-
+    public Integer getCoins() {
+        return coins;
+    }
     @Override
-    public void nextOption() {currentOption++;if (currentOption > getNumberOptions()) currentOption = 0;}
+    public void nextOption() {currentOption++;if (currentOption > 1) currentOption = 0;}
     @Override
-    public void previousOption() {currentOption--;if (currentOption < 0) currentOption = getNumberOptions()-1;}
+    public void previousOption() {currentOption--;if (currentOption < 0) currentOption = 1;}
     @Override
     public String getOption(int i) {
         return getOptions().get(i);

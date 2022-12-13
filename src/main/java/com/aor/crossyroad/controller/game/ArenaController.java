@@ -2,9 +2,11 @@ package com.aor.crossyroad.controller.game;
 
 import com.aor.crossyroad.Game;
 import com.aor.crossyroad.model.game.shop.Shop;
+import com.aor.crossyroad.model.menu.GameOver;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
+import com.aor.crossyroad.states.GameOverState;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.MenuState;
 import com.aor.crossyroad.states.ShopState;
@@ -34,7 +36,7 @@ public class ArenaController extends GameController {
             game.setState(new MenuState(new Menu()));
         }
         else if(getModel().isCar(getModel().getChicken().getPosition())|| getModel().getTime()==1){
-            game.setState(new MenuState(new Menu(getModel().getCoinAmount().toString(),getModel().getScore().toString())));
+            game.setState(new GameOverState(new GameOver(getModel().getCoinAmount().toString(),getModel().getScore().toString())));
         }
         else if(getModel().getShop().getPosition().equals(getModel().getChicken().getPosition())){
             game.setState(new ShopState(new Shop(gameState)));
@@ -45,7 +47,5 @@ public class ArenaController extends GameController {
             carLeftController.step(game,action,time);
             coinController.step(game,action,time);
         }
-    }
-    public void EndGame(){
     }
 }
