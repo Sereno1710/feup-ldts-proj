@@ -15,8 +15,8 @@ public abstract class Viewer<T> {
     }
     public void draw(LanternaGUI lanternaGUI) throws IOException{
         lanternaGUI.clear();
-        drawElements(lanternaGUI);
         drawLines(lanternaGUI);
+        drawElements(lanternaGUI);
         lanternaGUI.refresh();
     }
     protected abstract void drawElements(LanternaGUI lanternaGUI);

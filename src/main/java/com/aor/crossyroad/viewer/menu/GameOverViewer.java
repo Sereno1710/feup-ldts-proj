@@ -14,10 +14,10 @@ public class GameOverViewer extends Viewer<GameOver> {
     protected void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(15, 4), "You Lost", "#FF0000");
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++) {
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
-        lanternaGUI.drawText(new Position(2,20), getModel().getOption(2),"#39FF14");
-        lanternaGUI.drawText(new Position(22,20), getModel().getOption(3),"#39FF14");
+            lanternaGUI.drawText(new Position(2+15*i,20),getModel().getResults().get(i),"#39FF14");
+        }
     }
 
     @Override
