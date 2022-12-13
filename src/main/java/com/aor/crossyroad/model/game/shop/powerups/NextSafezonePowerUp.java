@@ -5,7 +5,7 @@ import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.Chicken;
 
 public class NextSafezonePowerUp implements PowerUpPatient {
-    private final Position nextSafezone;
+    private Position nextSafezone;
     private static final int cost = 20;
     public NextSafezonePowerUp(Position nextSafezone) {
         this.nextSafezone = nextSafezone;
@@ -13,6 +13,15 @@ public class NextSafezonePowerUp implements PowerUpPatient {
     public static int getCost() {
         return cost;
     }
+    @Override
+    public void setNextSafezone(Position nextSafezone) {
+        this.nextSafezone = nextSafezone;
+    }
+    @Override
+    public Position getNextSafezone() {
+        return nextSafezone;
+    }
+
     @Override
     public void activate(Arena arena) {
         arena.setChicken(new Chicken(nextSafezone.getX(), nextSafezone.getY()));

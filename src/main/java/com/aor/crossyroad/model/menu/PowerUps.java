@@ -62,10 +62,6 @@ public class PowerUps {
                 NextSafezonePowerUp nextSafezonePowerUp = new NextSafezonePowerUp(new Position(20, 2));
                 shopState.getModel().getGameState().getModel().addPowerUp(nextSafezonePowerUp);
             }
-            else {
-                NextSafezonePowerUp nextSafezonePowerUp = new NextSafezonePowerUp(new Position(20, 35));
-                shopState.getModel().getGameState().getModel().addPowerUp(nextSafezonePowerUp);
-            }
         }
     }
     public boolean canBuy(int cost) {

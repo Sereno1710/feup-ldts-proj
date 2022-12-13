@@ -24,7 +24,7 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private Integer coinAmount=30;
+    private Integer coinAmount=200000000;
     private Integer score=0;
     private Shop shop;
     private long DefaultTime = 900;
@@ -176,10 +176,14 @@ public class Arena {
     public void setLastSafe(Chicken chicken) {
         if (checkSafeIsTop(chicken.getPosition())) {
             lastSafe = 'T';
+            if (powerUps.size() > 0 && powerUps.get(0).getNextSafezone().equals(new Position(20, 2)))
+                powerUps.get(0).setNextSafezone(new Position(20, 35));
             afterReachingSafe();
         }
         else if (checkSafeIsBottom(chicken.getPosition())) {
             lastSafe = 'B';
+            if (powerUps.size() > 0 && powerUps.get(0).getNextSafezone().equals(new Position(20, 35)))
+                powerUps.get(0).setNextSafezone(new Position(20, 2));
             afterReachingSafe();
         }
     }
