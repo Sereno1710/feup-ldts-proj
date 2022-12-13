@@ -7,6 +7,6 @@ import com.aor.crossyroad.model.game.lines.Sidewalk;
 public class SidewalkViewer implements LineViewer<Sidewalk>{
     @Override
     public void draw(Sidewalk sidewalk, LanternaGUI lanternaGUI) {
-        //draw(sidewalk,lanternaGUI);
+        lanternaGUI.drawSidewalk(sidewalk,sidewalk.getY());
     }
 }
