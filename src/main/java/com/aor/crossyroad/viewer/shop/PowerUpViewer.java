@@ -15,6 +15,7 @@ public class PowerUpViewer extends Viewer<PowerUps> {
     }
     @Override
     protected void drawElements(LanternaGUI lanternaGUI) {
+        lanternaGUI.drawText(new Position(15,5),"POWER-UPS","#FFD700");
         lanternaGUI.drawText(new Position(5, 15 ), getModel().getOption(0), getModel().isSelected(0) ? getModel().canBuy(AddTimePowerUp.getCost()) ? "#39FF14":"#FF0000" :"#FFFFFF" );
         lanternaGUI.drawText(new Position(13, 15 ), "(" + AddTimePowerUp.getCost() + "$)","#FFD700");
         lanternaGUI.drawText(new Position(5, 15 + 1), getModel().getOption(1), getModel().isSelected(1) ? getModel().canBuy(CoinsPowerUp.getCost())? "#39FF14":"#FF0000" :"#FFFFFF" );
