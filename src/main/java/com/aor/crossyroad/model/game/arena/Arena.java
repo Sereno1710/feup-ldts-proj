@@ -30,6 +30,8 @@ public class Arena {
     private long DefaultTime = 900;
     private long time;
     private List<PowerUpPatient> powerUps;
+    private boolean isSpecialUp=false;
+
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -131,7 +133,6 @@ public class Arena {
     }
     public void tickTime(){
         this.time--;
-        this.totalTime--;
         checkTotalBonusTime();
     }
     public void resetTime(){
@@ -217,6 +218,18 @@ public class Arena {
     public void checkTotalBonusTime(){
         if (totalTime ==0){
             setCoinMultiplier(1,0);
+            setSpecialUp(false);
         }
+        else if (totalTime>0){
+            this.totalTime--;
+        }
+    }
+
+    public boolean isSpecialUp() {
+        return isSpecialUp;
+    }
+
+    public void setSpecialUp(boolean specialUp) {
+        isSpecialUp = specialUp;
     }
 }

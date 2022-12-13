@@ -13,9 +13,9 @@ public class MenuViewer extends Viewer<Menu> {
     @Override
     protected void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(5, 4), "\t\tCrossy Road : Menu", "#FFD700");
-
         for (int i = 0; i < getModel().getNumberOptions(); i++)
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
+        lanternaGUI.drawChicken(getModel().getChicken().getPosition(),getModel().getChicken().getDirection());
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI){

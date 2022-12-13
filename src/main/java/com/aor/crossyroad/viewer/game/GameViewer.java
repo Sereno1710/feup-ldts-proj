@@ -23,25 +23,36 @@ public class GameViewer extends Viewer<Arena> {
         drawTables(lanternaGUI);
         drawTime(lanternaGUI);
         drawBorder(lanternaGUI);
-        drawCoins(lanternaGUI);
+
     }
+
     @Override
     public void drawLines(LanternaGUI lanternaGUI){
         SidewalkViewer sidewalkViewer = new SidewalkViewer();
         RoadViewer roadViewer = new RoadViewer();
+        drawCoins(lanternaGUI);
         for(Sidewalk s:getModel().getSidewalks()){
             sidewalkViewer.draw(s,lanternaGUI);
             drawTrees(lanternaGUI,s);
         }
         for(Road rl: getModel().getRoadsLeft()){
             roadViewer.draw(rl,lanternaGUI);
-            drawCars(lanternaGUI,rl);
+            drawCarsLeft(lanternaGUI,rl);
         }
         for(Road rd: getModel().getRoadsRight()){
             roadViewer.draw(rd,lanternaGUI);
-            drawCars(lanternaGUI,rd);
+            drawCarsRight(lanternaGUI,rd);
         }
         lanternaGUI.drawSafe();
+    }
+    private void drawCarsLeft(LanternaGUI lanternaGUI, Road rl) {
+        for (Car c: rl.getCars())
+            drawElement(lanternaGUI,c,new CarLeftViewer());
+    }
+
+    private void drawCarsRight(LanternaGUI lanternaGUI, Road rd) {
+        for (Car c: rd.getCars())
+            drawElement(lanternaGUI,c,new CarRightViewer());
     }
 
     private <T extends Element> void drawElement(LanternaGUI lanternaGUI, T element, ElementViewer<T> viewer) {
@@ -71,14 +82,16 @@ public class GameViewer extends Viewer<Arena> {
         for(Road r: getModel().getRoadsLeft()){
             if(!r.getCoins().isEmpty()){
                 for(Coin c: r.getCoins()){
-                    drawElement(lanternaGUI,c,new CoinViewer());
+                    if (getModel().isSpecialUp()){lanternaGUI.drawSpecialCoin(c.getPosition());}
+                    else drawElement(lanternaGUI,c,new CoinViewer());
                 }
             }
         }
         for(Road r: getModel().getRoadsRight()){
             if(!r.getCoins().isEmpty()){
                 for(Coin c: r.getCoins()){
-                    drawElement(lanternaGUI,c,new CoinViewer());
+                    if (getModel().isSpecialUp()){lanternaGUI.drawSpecialCoin(c.getPosition());}
+                    else drawElement(lanternaGUI,c,new CoinViewer());
                 }
             }
         }
@@ -90,6 +103,6 @@ public class GameViewer extends Viewer<Arena> {
     }
     private void drawCars(LanternaGUI lanternaGUI,Road road){
         for (Car c: road.getCars())
-            drawElement(lanternaGUI,c,new CarViewer());
+            drawElement(lanternaGUI,c,new CarLeftViewer());
     }
 }

@@ -18,15 +18,19 @@ public class ChickenController extends GameController {
     }
     public void moveChickenLeft() {
         moveChicken(getModel().getChicken().getPosition().getLeft());
+        getModel().getChicken().setDirection('/');
     }
     public void moveChickenUp() {
         moveChicken(getModel().getChicken().getPosition().getUp());
+        getModel().getChicken().setDirection('&');
     }
     public void moveChickenRight() {
         moveChicken(getModel().getChicken().getPosition().getRight());
+        getModel().getChicken().setDirection('%');
     }
     public void moveChickenDown() {
         moveChicken(getModel().getChicken().getPosition().getDown());
+        getModel().getChicken().setDirection('*');
     }
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {

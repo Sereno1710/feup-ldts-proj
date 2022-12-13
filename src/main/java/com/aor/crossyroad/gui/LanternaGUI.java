@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Objects;
 
 public class LanternaGUI {
     private final Screen screen;
@@ -29,7 +28,7 @@ public class LanternaGUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        AWTTerminalFontConfiguration fontConfig = loadSquareFont();
+        AWTTerminalFontConfiguration fontConfig = loadCrossyRoadFont();
         Terminal terminal = createTerminal(width, height,fontConfig);
         this.screen = createScreen(terminal);
     }
@@ -48,8 +47,8 @@ public class LanternaGUI {
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         return terminalFactory.createTerminal();
     }
-    private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+    private AWTTerminalFontConfiguration loadCrossyRoadFont() throws URISyntaxException, FontFormatException, IOException {
+        URL resource = getClass().getClassLoader().getResource("fonts/CrossyRoadFont.otf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -73,15 +72,16 @@ public class LanternaGUI {
         return ACTION.NONE;
     }
     public void drawTree(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'T', "#32CD32");
+        drawCharacter(position.getX(), position.getY(), 'W', "#32CD32");
     }
-    public void drawCar(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'D', "#EE4B2B");
+    public void drawCarLeft(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'j', "#EE4B2B");
     }
+    public void drawCarRight(Position position){drawCharacter(position.getX(),position.getY(),'J',"#EE4B2B");}
     public void drawSidewalk(Sidewalk sidewalk, int y) {
-        /*for(int i =1;i <39;i++){
+        for(int i =1;i <39;i++){
             drawText(new Position(i,y+1)," ","#D3D3D3");
-        }*/
+        }
     }
     public void drawRoad(Road road,int y) {
         //drawRectangle
@@ -92,8 +92,8 @@ public class LanternaGUI {
             drawCharacter(i, 32, '-', "#FFFFFF");
         }
     }
-    public void drawChicken(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'X', "#FFFF00");
+    public void drawChicken(Position position,char direction) {
+        drawCharacter(position.getX(), position.getY(), direction, "#FFFF00");
     }
 
     public void drawText(Position position, String text, String color) {
@@ -104,21 +104,25 @@ public class LanternaGUI {
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (c == ' ') tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        if (c == ' '|| c== '&' || c== '/' || c== '%' || c=='*' || c=='W') tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
+        else if( c== 'S' || c== '-') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y +1, "" + c);
     }
     public void drawCoin(Position position){
         drawCharacter(position.getX(), position.getY(), '$',"#FFD700");
     }
+    public void drawSpecialCoin(Position position) {
+        drawCharacter(position.getX(), position.getY(), '$',"#E5E4E2");
+    }
     public void drawShop(Position position) {
         String s1 = "  ";
         String s2 = "  ";
-        char s3 = ' ';
+        String s3 = " ";
         drawText(new Position(position.getX()-1,position.getY()-1),s1,"#FFFFFF");
         drawText(new Position(position.getX()-1, position.getY() ),s2,"#FFFFFF");
-        drawCharacter(position.getX()-1, position.getY(), s3,"#FFFFFF");
-        drawCharacter(position.getX(), position.getY(),' ',"#964B00" );
+        drawText(new Position(position.getX()-1, position.getY()+1), s3,"#FFFFFF");
+        drawCharacter(position.getX(), position.getY(),'S',"#964B00" );
     }
     public void drawBorder(int x,int y){
         drawCharacter(x,y,'ᗡ',"#028A0F");
