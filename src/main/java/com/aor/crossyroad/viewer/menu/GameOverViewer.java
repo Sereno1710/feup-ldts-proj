@@ -16,7 +16,7 @@ public class GameOverViewer extends Viewer<GameOver> {
 
         for (int i = 0; i < 2; i++) {
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
-            lanternaGUI.drawText(new Position(2+15*i,20),getModel().getResults().get(i),"#39FF14");
+            lanternaGUI.drawText(new Position(2+25*i,20),getModel().getResults().get(i),"#39FF14");
         }
     }
 
