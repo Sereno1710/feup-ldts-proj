@@ -20,6 +20,6 @@ public class ChickenViewerTest {
         @Test
         void drawElement() {
             viewer.draw(chicken, gui);
-            Mockito.verify(gui, Mockito.times(1)).drawChicken(chicken.getPosition());
+            Mockito.verify(gui, Mockito.times(1)).drawChicken(chicken.getPosition(),'&');
         }
 }

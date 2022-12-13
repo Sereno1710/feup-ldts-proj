@@ -20,5 +20,6 @@ public class CoinsPowerUp implements PowerUpImmediate {
     @Override
     public void applyPowerUp(Arena arena) {
         arena.setCoinMultiplier(bonusMultiplier, totalTime);
+        arena.setSpecialUp(true);
     }
 }

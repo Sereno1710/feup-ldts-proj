@@ -18,22 +18,23 @@ class ArenaViewerTest {
     private LanternaGUI gui;
     private GameViewer viewer;
     private Arena arena;
-
+    private Chicken chicken;
     @BeforeEach
     void setUp() {
         arena = new Arena(10, 10);
         gui = Mockito.mock(LanternaGUI.class);
         viewer = new GameViewer(arena);
         arena.LineCreator();
-        arena.setChicken(new Chicken(5, 8));
+        chicken=new Chicken(5,8);
+        arena.setChicken(chicken);
         arena.RandomizeSidewalks();
     }
     @Test
     void drawChicken() throws IOException {
         viewer.draw(gui);
 
-        Mockito.verify(gui, Mockito.times(1)).drawChicken(new Position(5, 8));
-        Mockito.verify(gui, Mockito.times(1)).drawChicken(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(1)).drawChicken(new Position(5, 8),'&');
+        Mockito.verify(gui, Mockito.times(1)).drawChicken(Mockito.any(Position.class), Mockito.anyChar());
     }
 
     @Test
