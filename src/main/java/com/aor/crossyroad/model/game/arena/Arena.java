@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class Arena {
-    private long totalTime=0;
-    private int bonusMultiplier=1;
+    private long totalTime = 0;
+    private int bonusMultiplier = 1;
     private final int width;
     private final int height;
     private char lastSafe;
@@ -24,13 +24,13 @@ public class Arena {
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
-    private Integer coinAmount=200000000;
-    private Integer score=0;
+    private Integer coinAmount = 0;
+    private Integer score = 0;
     private Shop shop;
     private long DefaultTime = 900;
     private long time;
     private List<PowerUpPatient> powerUps;
-    private boolean isSpecialUp=false;
+    private boolean isSpecialUp = false;
 
     public Arena(int width, int height) {
         this.width = width;
