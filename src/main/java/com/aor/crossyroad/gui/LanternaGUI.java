@@ -48,7 +48,7 @@ public class LanternaGUI {
         return terminalFactory.createTerminal();
     }
     private AWTTerminalFontConfiguration loadCrossyRoadFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/CrossyRoadFont.otf");
+        URL resource = getClass().getClassLoader().getResource("fonts/CrossyRoadFont2.otf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -72,7 +72,7 @@ public class LanternaGUI {
         return ACTION.NONE;
     }
     public void drawTree(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'W', "#32CD32");
+        drawCharacter(position.getX(), position.getY(), '@', "#32CD32");
     }
     public void drawCarLeft(Position position) {
         drawCharacter(position.getX(), position.getY(), 'j', "#EE4B2B");
@@ -104,8 +104,8 @@ public class LanternaGUI {
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (c == ' '|| c== '&' || c== '/' || c== '%' || c=='*' || c=='W') tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
-        else if( c== 'S' || c== '-') tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        if (c == ' '|| c== '&' || c== '/' || c== '%' || c=='*' || c=='@') tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
+        else if( c== 'S') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y +1, "" + c);
     }
