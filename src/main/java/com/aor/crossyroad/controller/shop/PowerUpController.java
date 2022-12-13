@@ -3,15 +3,12 @@ package com.aor.crossyroad.controller.shop;
 import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
-import com.aor.crossyroad.model.game.elements.Chicken;
-import com.aor.crossyroad.model.game.shop.powerups.PowerUp;
-import com.aor.crossyroad.states.GameState;
-import com.aor.crossyroad.states.PowerUpsState;
+import com.aor.crossyroad.model.menu.PowerUps;
 
 import java.io.IOException;
 
-public class PowerUpController extends Controller<PowerUp> {
-    public PowerUpController(PowerUp model) {
+public class PowerUpController extends Controller<PowerUps> {
+    public PowerUpController(PowerUps model) {
         super(model);
     }
 
@@ -25,17 +22,17 @@ public class PowerUpController extends Controller<PowerUp> {
                 getModel().nextOption();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()){
+                if (getModel().isSelectedExit()) {
                     game.setState(getModel().getShopState());
                 }
-                else if(getModel().isSelectedAddTime()){
-                    getModel().buyAddedTime(getModel().getShopState());
+                else if(getModel().isSelectedAddTime()) {
+                    getModel().buyAddedTime();
                 }
                 else if(getModel().isSelectedx2Coins()){
-                    getModel().buyCoinsPowerUp(getModel().getShopState().getModel().getGameState());
+                    getModel().buyCoinsPowerUp();
                 }
                 else if(getModel().isSelectedTeleport()){
-                    getModel().buyToNextSafeZonePowerUp(getModel().getShopState().getModel().getGameState());
+                    getModel().buyNextSafezonePowerUp();
                 }
         }
     }

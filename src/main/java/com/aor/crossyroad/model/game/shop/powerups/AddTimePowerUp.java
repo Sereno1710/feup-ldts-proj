@@ -1,21 +1,20 @@
 package com.aor.crossyroad.model.game.shop.powerups;
 
+import com.aor.crossyroad.model.game.arena.Arena;
+
 public class AddTimePowerUp implements PowerUpImmediate {
-    private final long addedTime;
-    private final int cost = 1;
-    public AddTimePowerUp(long addedTime) {
-        this.addedTime = addedTime;
-    }
-    public long getAddedTime(){
+    private static final long addedTime = 150;
+    private static final int cost = 10;
+    public static long getAddedTime(){
         return addedTime;
     }
 
-    public int getCost() {
+    public static int getCost() {
         return cost;
     }
 
     @Override
-    public void applyPowerUp() {
-
+    public void applyPowerUp(Arena arena) {
+        arena.setDefaultTime(addedTime + arena.getDefaultTime());
     }
 }

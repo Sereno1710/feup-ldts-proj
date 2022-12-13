@@ -27,7 +27,7 @@ public class GameOverController extends Controller<GameOver> {
                 if (getModel().isSelectedExit()) {game.setState(null);}
                 if (getModel().isSelectedStart()){
                     GameState gameState= new GameState(new Arena(40,40));
-                    gameState.getModel().setCoinAmount(getModel().getCoins()/2);
+                    gameState.getModel().setCoinAmount(getModel().getCoins());
                     game.setState(gameState);
                 }
         }

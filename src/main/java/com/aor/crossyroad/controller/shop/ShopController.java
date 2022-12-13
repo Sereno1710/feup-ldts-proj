@@ -5,7 +5,7 @@ import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.shop.Shop;
-import com.aor.crossyroad.model.game.shop.powerups.PowerUp;
+import com.aor.crossyroad.model.menu.PowerUps;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.PowerUpsState;
 import com.aor.crossyroad.states.ShopState;
@@ -33,7 +33,7 @@ public class ShopController extends Controller<Shop> {
                     game.setState(gameState);
                 }
                 if (getModel().isSelectedPowerUp()){
-                    game.setState(new PowerUpsState(new PowerUp(new ShopState(getModel()))));
+                    game.setState(new PowerUpsState(new PowerUps(new ShopState(getModel()))));
                 }
         }
     }
