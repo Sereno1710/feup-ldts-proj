@@ -1,6 +1,7 @@
 package com.aor.crossyroad.gui;
 
 import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.googlecode.lanterna.TerminalSize;
@@ -92,8 +93,8 @@ public class LanternaGUI {
             drawCharacter(i, 32, '-', "#FFFFFF");
         }
     }
-    public void drawChicken(Position position,char direction, String color) {
-        drawCharacter(position.getX(), position.getY(), direction, color);
+    public void drawChicken(Position position, char direction) {
+        drawCharacter(position.getX(), position.getY(), direction, Chicken.getColor());
     }
 
     public void drawText(Position position, String text, String color) {

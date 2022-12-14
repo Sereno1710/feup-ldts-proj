@@ -6,6 +6,6 @@ import com.aor.crossyroad.model.game.elements.Chicken;
 public class ChickenViewer implements ElementViewer<Chicken>{
     @Override
     public void draw(Chicken chicken, LanternaGUI lanternaGUI) {
-        lanternaGUI.drawChicken(chicken.getPosition(),chicken.getDirection(), chicken.getColor());
+        lanternaGUI.drawChicken(chicken.getPosition(),chicken.getDirection());
     }
 }
