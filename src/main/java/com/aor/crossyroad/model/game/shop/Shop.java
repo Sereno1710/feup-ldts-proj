@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Shop{
+public class Shop {
     private Position position;
     private final GameState gameState;
     private List<String> options;

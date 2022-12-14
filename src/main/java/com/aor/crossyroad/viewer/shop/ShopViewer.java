@@ -18,11 +18,10 @@ public class ShopViewer extends Viewer<Shop> {
         lanternaGUI.refresh();
     }
     @Override
-    protected void drawElements(LanternaGUI lanternaGUI){
+    protected void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(17,5),"SHOP","#FFD700");
         for (int i = 0; i < 3; i++)
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
-        lanternaGUI.drawText(new Position(11,15+1),"(Coming Soon)",getModel().isSelected(1) ? "#FF0000" : "#FFFFFF");
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI){

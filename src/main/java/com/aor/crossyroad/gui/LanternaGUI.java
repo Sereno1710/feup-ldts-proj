@@ -92,8 +92,8 @@ public class LanternaGUI {
             drawCharacter(i, 32, '-', "#FFFFFF");
         }
     }
-    public void drawChicken(Position position,char direction) {
-        drawCharacter(position.getX(), position.getY(), direction, "#FFFF00");
+    public void drawChicken(Position position,char direction, String color) {
+        drawCharacter(position.getX(), position.getY(), direction, color);
     }
 
     public void drawText(Position position, String text, String color) {
