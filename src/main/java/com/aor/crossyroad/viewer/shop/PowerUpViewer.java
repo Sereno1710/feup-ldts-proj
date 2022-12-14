@@ -2,11 +2,10 @@ package com.aor.crossyroad.viewer.shop;
 
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
-import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.shop.powerups.AddTimePowerUp;
 import com.aor.crossyroad.model.game.shop.powerups.CoinsPowerUp;
 import com.aor.crossyroad.model.game.shop.powerups.NextSafezonePowerUp;
-import com.aor.crossyroad.model.menu.PowerUps;
+import com.aor.crossyroad.model.game.shop.PowerUps;
 import com.aor.crossyroad.viewer.Viewer;
 
 public class PowerUpViewer extends Viewer<PowerUps> {

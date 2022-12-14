@@ -1,4 +1,4 @@
-package com.aor.crossyroad.model.menu;
+package com.aor.crossyroad.model.game.shop;
 
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Coin;

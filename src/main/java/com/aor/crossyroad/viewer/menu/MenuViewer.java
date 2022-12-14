@@ -2,6 +2,7 @@ package com.aor.crossyroad.viewer.menu;
 
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.viewer.Viewer;
 
@@ -15,7 +16,7 @@ public class MenuViewer extends Viewer<Menu> {
         lanternaGUI.drawText(new Position(5, 4), "\t\tCrossy Road : Menu", "#FFD700");
         for (int i = 0; i < getModel().getNumberOptions(); i++)
             lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
-        lanternaGUI.drawChicken(getModel().getChicken().getPosition(),getModel().getChicken().getDirection());
+        lanternaGUI.drawChicken(getModel().getChicken().getPosition(),getModel().getChicken().getDirection(), Chicken.getColor());
     }
     @Override
     protected void drawLines(LanternaGUI lanternaGUI){

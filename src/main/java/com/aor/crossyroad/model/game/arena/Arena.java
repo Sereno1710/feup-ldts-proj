@@ -8,7 +8,6 @@ import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.game.shop.powerups.PowerUpPatient;
-import com.aor.crossyroad.model.menu.PowerUps;
 import com.aor.crossyroad.states.GameState;
 
 import java.util.ArrayList;

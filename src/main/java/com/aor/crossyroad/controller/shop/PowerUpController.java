@@ -3,7 +3,7 @@ package com.aor.crossyroad.controller.shop;
 import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
-import com.aor.crossyroad.model.menu.PowerUps;
+import com.aor.crossyroad.model.game.shop.PowerUps;
 
 import java.io.IOException;
 

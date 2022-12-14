@@ -4,19 +4,19 @@ import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.elements.Chicken;
-import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.game.shop.PowerUps;
 import com.aor.crossyroad.model.game.shop.Skins;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.PowerUpsState;
 import com.aor.crossyroad.states.ShopState;
 import com.aor.crossyroad.states.SkinsState;
+import com.aor.crossyroad.viewer.shop.SkinsViewer;
 
 import java.io.IOException;
 
-public class ShopController extends Controller<Shop> {
-    public ShopController(Shop shop) {
-        super(shop);
+public class SkinsController extends Controller<Skins> {
+    public SkinsController(Skins skins) {
+        super(skins);
     }
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
@@ -29,16 +29,13 @@ public class ShopController extends Controller<Shop> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) {
-                    GameState gameState = getModel().getGameState();
-                    gameState.getModel().resetTime();
-                    gameState.getModel().setChicken(new Chicken(gameState.getModel().getChicken().getPosition().getX(),gameState.getModel().getChicken().getPosition().getY() - 1));
-                    game.setState(gameState);
-                }
-                if (getModel().isSelectedPowerUp()){
-                    game.setState(new PowerUpsState(new PowerUps(new ShopState(getModel()))));
-                }
-                if (getModel().isSelectedSkins()) {
-                    game.setState(new SkinsState(new Skins(new ShopState(getModel()))));
+                    game.setState(getModel().getShopState());
+                } else if (getModel().isSelectedDefault()) {
+                    Chicken.setColor("#FFFF00");
+                } else if (getModel().isSelectedBlue()) {
+                    Chicken.setColor("#1E90FF");
+                } else if (getModel().isSelectedWhite()) {
+                    Chicken.setColor("#FFFFFF");
                 }
         }
     }

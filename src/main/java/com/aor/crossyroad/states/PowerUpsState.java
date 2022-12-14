@@ -2,7 +2,7 @@ package com.aor.crossyroad.states;
 
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.controller.shop.PowerUpController;
-import com.aor.crossyroad.model.menu.PowerUps;
+import com.aor.crossyroad.model.game.shop.PowerUps;
 import com.aor.crossyroad.viewer.Viewer;
 import com.aor.crossyroad.viewer.shop.PowerUpViewer;
 
