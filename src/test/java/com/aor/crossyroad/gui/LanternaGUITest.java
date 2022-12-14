@@ -18,8 +18,9 @@ public class LanternaGUITest {
 
             screen = Mockito.mock(Screen.class);
             textgraphics = Mockito.mock(TextGraphics.class);
+            Mockito.when(screen.newTextGraphics()).thenReturn(Mockito.mock(TextGraphics.class));
             gui = new LanternaGUI(screen);
-            //Mockito.when(textgraphics.getCharacter(Mockito.anyInt(), Mockito.anyInt())).thenReturn(Mockito.mock(TextCharacter.class));
+            Mockito.when(textgraphics.getCharacter(Mockito.anyInt(), Mockito.anyInt())).thenReturn(Mockito.mock(TextCharacter.class));
 
         }
         @Test
