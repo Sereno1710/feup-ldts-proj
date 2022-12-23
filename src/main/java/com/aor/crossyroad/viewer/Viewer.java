@@ -19,6 +19,14 @@ public abstract class Viewer<T> {
         drawElements(lanternaGUI);
         lanternaGUI.refresh();
     }
-    protected abstract void drawElements(LanternaGUI lanternaGUI);
-    protected abstract void drawLines(LanternaGUI lanternaGUI);
+    public abstract void drawElements(LanternaGUI lanternaGUI);
+    public abstract void drawLines(LanternaGUI lanternaGUI);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Viewer<?> viewer = (Viewer<?>) o;
+        return model.equals(viewer.getModel());
+    }
 }

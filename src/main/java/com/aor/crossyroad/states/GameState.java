@@ -18,4 +18,5 @@ public class GameState extends State<Arena> {
     protected Controller<Arena> getController(){
         return new ArenaController(getModel(), this);
     }
+
 }

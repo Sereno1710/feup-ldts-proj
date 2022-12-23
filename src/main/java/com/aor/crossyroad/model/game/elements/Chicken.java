@@ -1,10 +1,5 @@
 package com.aor.crossyroad.model.game.elements;
 
-import com.aor.crossyroad.model.Position;
-import com.aor.crossyroad.model.game.elements.Element;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.TextGraphics;
-
 public class Chicken extends Element {
     private static String color = "#FFFF00";
     private char direction; // &-> back, *-> front, / -> left , % -> right

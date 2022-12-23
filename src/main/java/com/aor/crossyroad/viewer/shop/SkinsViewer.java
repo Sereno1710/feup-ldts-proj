@@ -13,7 +13,7 @@ public class SkinsViewer extends Viewer<Skins> {
         super(skins);
     }
     @Override
-    protected void drawElements(LanternaGUI lanternaGUI) {
+    public void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(15,5),"SKINS","#FFD700");
         lanternaGUI.drawText(new Position(5, 15), getModel().getOption(0), getModel().isSelected(0) ? Objects.equals(Chicken.getColor(), "#FFFF00") ? "#FFFF00": "#39FF14" : "#FFFFFF");
         lanternaGUI.drawText(new Position(5, 15 + 1), getModel().getOption(1), getModel().isSelected(1) ? Objects.equals(Chicken.getColor(), "#1E90FF") ? "#FFFF00": "#39FF14" : "#FFFFFF");
@@ -22,7 +22,7 @@ public class SkinsViewer extends Viewer<Skins> {
     }
 
     @Override
-    protected void drawLines(LanternaGUI lanternaGUI) {
+    public void drawLines(LanternaGUI lanternaGUI) {
         // draw nothing
     }
 }

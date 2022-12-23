@@ -31,7 +31,9 @@ public class ShopController extends Controller<Shop> {
                 if (getModel().isSelectedExit()) {
                     GameState gameState = getModel().getGameState();
                     gameState.getModel().resetTime();
-                    gameState.getModel().setChicken(new Chicken(gameState.getModel().getChicken().getPosition().getX(),gameState.getModel().getChicken().getPosition().getY() - 1));
+                    int x = gameState.getModel().getChicken().getPosition().getX();
+                    int y= gameState.getModel().getChicken().getPosition().getY() - 1;
+                    gameState.getModel().setChicken(new Chicken(x,y));
                     game.setState(gameState);
                 }
                 if (getModel().isSelectedPowerUp()){

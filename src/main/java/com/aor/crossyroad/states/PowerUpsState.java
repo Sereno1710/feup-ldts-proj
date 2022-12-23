@@ -19,4 +19,5 @@ public class PowerUpsState extends State<PowerUps>{
     protected Controller<PowerUps> getController(){
         return new PowerUpController(getModel());
     }
+
 }

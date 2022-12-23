@@ -8,4 +8,5 @@ public class CarLeftViewer implements ElementViewer<Car> {
     public void draw(Car car, LanternaGUI lanternaGUI) {
         lanternaGUI.drawCarLeft(car.getPosition());
     }
+
 }

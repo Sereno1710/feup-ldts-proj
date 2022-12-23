@@ -2,8 +2,6 @@ package com.aor.crossyroad.gui;
 
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
-import com.aor.crossyroad.model.game.lines.Road;
-import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -14,6 +12,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +71,12 @@ public class LanternaGUI {
             return ACTION.SPACE;
         return ACTION.NONE;
     }
+    public void drawMenu(Position position,String string,String color){
+        drawText(position,string,color);
+    }
+    public void drawPowerUp(Position position,String text,String color){
+        drawText(position,text,color);
+    }
     public void drawTree(Position position) {
         drawCharacter(position.getX(), position.getY(), '@', "#32CD32");
     }
@@ -79,13 +84,10 @@ public class LanternaGUI {
         drawCharacter(position.getX(), position.getY(), 'j', "#EE4B2B");
     }
     public void drawCarRight(Position position){drawCharacter(position.getX(),position.getY(),'J',"#EE4B2B");}
-    public void drawSidewalk(Sidewalk sidewalk, int y) {
+    public void drawSidewalk( int y) {
         for(int i =1;i <39;i++){
             drawText(new Position(i,y+1)," ","#545454");
         }
-    }
-    public void drawRoad(Road road,int y) {
-        //drawRectangle
     }
     public void drawSafe(){
         for (int i = 1; i < 39; i++) {
@@ -122,8 +124,7 @@ public class LanternaGUI {
     public void drawSpecialCoin(Position position) {
         drawCharacter(position.getX(), position.getY(), '$',"#E5E4E2");
     }
-    public void drawShop(Position position) {
-        String s = "SHOP$";
+    public void drawShopInGame(Position position) {
         drawText(new Position(position.getX() - 2, position.getY() + 2), "  ","#545454");
         drawText(new Position(position.getX(), position.getY() + 2), "  ","#545454");
         drawText(new Position(position.getX() + 2, position.getY() + 2), " ","#545454");
@@ -134,6 +135,9 @@ public class LanternaGUI {
         drawCharacter(position.getX() + 1, position.getY(),'S',"#545454" );
         drawCharacter(position.getX() + 2, position.getY(),'S',"#545454" );
 
+    }
+    public void drawShop(Position position,String text,String color){
+        drawText(position,text,color);
     }
     public void drawBorder(int x,int y){
         drawCharacter(x,y,'ᗡ',"#028A0F");

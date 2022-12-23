@@ -17,4 +17,5 @@ public class AddTimePowerUp implements PowerUpImmediate {
     public void applyPowerUp(Arena arena) {
         arena.setDefaultTime(addedTime + arena.getDefaultTime());
     }
+
 }

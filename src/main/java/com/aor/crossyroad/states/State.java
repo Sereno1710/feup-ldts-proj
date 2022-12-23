@@ -1,8 +1,8 @@
 package com.aor.crossyroad.states;
 
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.controller.Controller;
+import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.viewer.Viewer;
 
 import java.io.IOException;
@@ -26,5 +26,13 @@ public abstract class State<T> {
         LanternaGUI.ACTION action = gui.getNextAction();
         controller.step(game, action, time);
         viewer.draw(gui);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        State<?> state = (State<?>) o;
+        return model.equals(state.model) && controller.equals(state.controller) && viewer.equals(state.viewer);
     }
 }

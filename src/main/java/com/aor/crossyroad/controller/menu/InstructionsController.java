@@ -17,4 +17,5 @@ public class InstructionsController extends Controller <InstructionsMenu>{
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         if ( action == LanternaGUI.ACTION.SELECT) game.setState(new MenuState(new Menu()));
     }
+
 }

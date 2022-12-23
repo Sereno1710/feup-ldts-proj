@@ -3,7 +3,6 @@ package com.aor.crossyroad.viewer.menu;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.menu.InstructionsMenu;
-import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.viewer.Viewer;
 
 public class InstructionsViewer extends Viewer<InstructionsMenu> {
@@ -12,7 +11,7 @@ public class InstructionsViewer extends Viewer<InstructionsMenu> {
     }
 
     @Override
-    protected void drawElements(LanternaGUI lanternaGUI) {
+    public void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(15,3),"Instructions","#00FF4D");
         lanternaGUI.drawText(new Position(1,6),"Goal:","#FFD700");
         lanternaGUI.drawText(new Position(7,6),"Cross the road as many times as", "#FFFFFF");
@@ -38,7 +37,7 @@ public class InstructionsViewer extends Viewer<InstructionsMenu> {
     }
 
     @Override
-    protected void drawLines(LanternaGUI lanternaGUI) {
+    public void drawLines(LanternaGUI lanternaGUI) {
     //do nothing
     }
 }

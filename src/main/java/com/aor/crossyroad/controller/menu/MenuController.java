@@ -1,9 +1,8 @@
 package com.aor.crossyroad.controller.menu;
+
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.controller.game.ChickenController;
-import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.controller.Controller;
-import com.aor.crossyroad.model.Position;
+import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.menu.InstructionsMenu;
 import com.aor.crossyroad.model.menu.Menu;
@@ -18,6 +17,11 @@ public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
         super(menu);
     }
+
+    public long getLastMovement() {
+        return lastMovement;
+    }
+
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         switch (action) {

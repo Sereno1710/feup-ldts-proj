@@ -2,6 +2,7 @@ package com.aor.crossyroad.model.menu;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public abstract class MenuPhases {
     private List<String> options;
@@ -26,5 +27,22 @@ public abstract class MenuPhases {
 
     public int getNumberOptions() {
         return this.options.size();
+    }
+
+    public int getCurrentOption() {
+        return currentOption;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuPhases that = (MenuPhases) o;
+        return currentOption == that.currentOption && options.equals(that.options);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(options, currentOption);
     }
 }

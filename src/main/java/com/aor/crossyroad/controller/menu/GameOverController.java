@@ -32,4 +32,5 @@ public class GameOverController extends Controller<GameOver> {
                 }
         }
     }
+
 }

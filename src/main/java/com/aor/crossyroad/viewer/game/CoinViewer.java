@@ -8,4 +8,5 @@ public class CoinViewer implements ElementViewer<Coin>{
     public void draw(Coin coin, LanternaGUI lanternaGui) {
         lanternaGui.drawCoin(coin.getPosition());
     }
+
 }

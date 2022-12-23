@@ -26,4 +26,5 @@ public class NextSafezonePowerUp implements PowerUpPatient {
     public void activate(Arena arena) {
         arena.setChicken(new Chicken(nextSafezone.getX(), nextSafezone.getY()));
     }
+
 }
