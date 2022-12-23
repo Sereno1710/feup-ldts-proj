@@ -1,4 +1,4 @@
-# LDTS_T06_G04 - OVERKILL
+# LDTS_T06_G04 - Crossy Road
 
 ## Game Description
 
@@ -18,7 +18,7 @@ The following screenshots ilustrate the general look of our game, as well as the
   <img src="docs/gifs/preview.gif"/>
 </p>
 <p align="center">
-  <b><i>Gif 1. Sneak peak into CROSSY ROAD game</i></b>
+  <b><i>Gif 1. Sneak peak into Crossy Road game</i></b>
 </p>
 <br>
 <br />
