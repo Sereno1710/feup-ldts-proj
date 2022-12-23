@@ -2,7 +2,7 @@
 
 Crossy Road is an endless arcade hopper game that derives its name and concept from the age-old “why did the chicken cross the road?” joke. The goal is to move the game character (Chicken) as much time as possible through a hazardous path of busy roads and tree-crowded sidewalks. At the bottom and top of the screen there are two safezones where the difficulty increases every time the character manages to get from one to the other.
 
-This project was developed by Bruno Fernandes (up202108871@fe.up.pt), José Santos (up202108729@fe.up.pt) and Vasco Oliveira (up202108881@fe.up.pt) for LDTS 2022-23.
+This project was developed by Bruno Fernandes (up202108871@edu.fe.up.pt), José Santos (up202108729@edu.fe.up.pt) and Vasco Oliveira (up202108881@edu.fe.up.pt) for LDTS 2022-23.
 
 ## UML Class Diagram
 ![image](https://user-images.githubusercontent.com/93687600/204073034-2c6c0320-77dd-4dd0-a73f-d5a34a7f793b.png)
