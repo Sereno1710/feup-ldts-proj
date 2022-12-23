@@ -4,9 +4,6 @@ Crossy Road is an endless arcade hopper game that derives its name and concept f
 
 This project was developed by Bruno Fernandes (up202108871@edu.fe.up.pt), José Santos (up202108729@edu.fe.up.pt) and Vasco Oliveira (up202108881@edu.fe.up.pt) for LDTS 2022-23.
 
-## UML Class Diagram
-![image](https://user-images.githubusercontent.com/93687600/204073034-2c6c0320-77dd-4dd0-a73f-d5a34a7f793b.png)
-
 ### IMPLEMENTED FEATURES
 
 - **Connected Menus** - The user has the power of browsing through the different menus including the ones that can only be accessed in-game. (Ex: Main Menu, Instructions, Shop, PowerUps and Skins);
@@ -24,44 +21,20 @@ All the planned features were successfully implemented.
 
 ### DESIGN
 
-#### GENERATING CARS THAT MOVE IN DIFFERENT DIRECTIONS
 
-**Problem in Context**
 
-There were no reliable ideas for a way to generate the cars in the roads in a random but organized way, as their position should be random but the roads should have defined directions. If we would have generated all the cars individually the code wouldn't be clean.
-
-**The Pattern**
-We have applied the **Composite** pattern. This pattern allows you to represent part-whole hierarchies of objects and lets the clients ignore the difference between compositions of objects and individual objects. This pattern alloed to solve our problem by having two types of cars but having the same method generating them all.
-
-**Implementation**
-
-These classes can be found in the following files:
-- [Car](https://github.com/FEUP-LDTS-2022/project-l06gr04/blob/main/src/main/java/com/aor/crossyroad/model/game/elements/cars/Car.java)
-- [CarLeft](https://github.com/FEUP-LDTS-2022/project-l06gr04/blob/main/src/main/java/com/aor/crossyroad/model/game/elements/cars/CarLeft.java)
-- [CarRight](https://github.com/FEUP-LDTS-2022/project-l06gr04/blob/main/src/main/java/com/aor/crossyroad/model/game/elements/cars/CarRight.java)
-
-**Consequences**
-The use of the Composite Pattern has the following benefits:
-
-- Simpler clients
-- Easier to implement new commands
-
-#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
-
-**CHICKEN DRAW DOESN'T DRAW OVER SAFEZONE LINES**
-The `drawChicken()` function in the `LanternaGUI` class draws under the lines that bound the safezones, making the character "disappear" while in that line.
-
-A way to improve the code would be to add a condition in the method `moveChicken()`, that makes the character "jump" over the bounds. 
-
-**LAZY CLASSES**
+## KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+#### **Lazy Classes**
 The `TreeViewer` and `CarViewer` classes don't do much.
 
 A way to improve would be to move their methods to another class, using refactoring tools.
 
-**LARGE CLASS**
-The `LanternaGUI` class contains a lot of methods and lines of code.
+#### **Large Classes**
+The `Arena` class contains many fields and the `LanternaGUI` class contains many methods. In both cases, we find it well founded as the first one requires these fields, because it is the main class of the program and it needs to store a substantial amount of data. The second class needs all these methods and it wouldn't make sense to split them into two separate classes (extract method).
 
-A way to improve would be to either simplify said methods or divide them in multiple classes, using refactoring tools.
+#### **Data Class**
+All model classes are Data Classes, as they contain only fields, and no behavior (dumb classes). This is caused by the **MVC** (Model-View-Controller) architectural pattern which holds the responsibility to the controller to implement the logic functionalities of each model.
+This is not a bad code smell because it only exists due to the chosen design pattern.
 
 ## TESTING
 
