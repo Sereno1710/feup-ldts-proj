@@ -1,4 +1,5 @@
 package com.aor.crossyroad.model.game.arena;
+
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.elements.Chicken;
 import com.aor.crossyroad.model.game.elements.Coin;
@@ -19,16 +20,16 @@ public class Arena {
     private final int width;
     private final int height;
     private char lastSafe;
-    private Chicken chicken;
+    public Chicken chicken;
     private List<Sidewalk> sidewalks;
     private List<Road> roadsLeft;
     private List<Road> roadsRight;
     private Integer coinAmount = 0;
     private Integer score = 0;
-    private Shop shop;
+    private final Shop shop;
     private long DefaultTime = 900;
     private long time;
-    private List<PowerUpPatient> powerUps;
+    private final List<PowerUpPatient> powerUps;
     private boolean isSpecialUp = false;
 
     public Arena(int width, int height) {
@@ -41,15 +42,8 @@ public class Arena {
         powerUps = new ArrayList<>();
         time = 900;
     }
-    public void usePowerUp() {
-        if (powerUps.size() > 0) {
-            powerUps.get(0).activate(this);
-            powerUps.remove(0);
-        }
-        setLastSafe(chicken);
-    }
-    public void addPowerUp(PowerUpPatient powerUp) {
-        this.powerUps.add(powerUp);
+    public char getLastSafe() {
+        return lastSafe;
     }
     public Integer getCoinAmount() {
         return coinAmount;
@@ -74,7 +68,8 @@ public class Arena {
     public void setSidewalks(List<Sidewalk> sidewalks){this.sidewalks=sidewalks;}
     public boolean isEmpty(Position position) {
         for (Sidewalk s:sidewalks){
-            for (Tree e: s.getTrees()){
+            List<Tree> trees = s.getTrees();
+            for (Tree e: trees){
                 if (e.getPosition().equals(position)) return false;
             }
         }
@@ -82,25 +77,29 @@ public class Arena {
     }
     public boolean isCar(Position position) {
         for (Road rl:roadsLeft){
-            for (Car cl: rl.getCars()){
+            List<Car> cars = rl.getCars();
+            for (Car cl: cars){
                 if (cl.getPosition().equals(position)) return true;
             }
             for (Coin c: rl.getCoins()){
-                if (c.getPosition().equals(position)) {
+                boolean equals = c.getPosition().equals(position);
+                if (equals) {
                     rl.removeCoin(c.getPosition());
-                    coinAmount=coinAmount+1*bonusMultiplier;
+                    coinAmount=coinAmount+bonusMultiplier;
                     break;
                 }
             }
         }
         for (Road rr:roadsRight){
             for (Car cr: rr.getCars()){
-                if (cr.getPosition().equals(position))
+                boolean equals = cr.getPosition().equals(position);
+                if (equals)
                     return true;}
-            for (Coin c: rr.getCoins()){
+            List<Coin> coins = rr.getCoins();
+            for (Coin c: coins){
                 if (c.getPosition().equals(position)) {
                     rr.removeCoin(c.getPosition());
-                    coinAmount=coinAmount+1*bonusMultiplier;
+                    coinAmount=coinAmount+bonusMultiplier;
                     break;
                 }
             }
@@ -108,9 +107,9 @@ public class Arena {
         return false;
     }
     public void LineCreator() {
-        int i = 4; //starts after safezone, ends before one
-        List<Road> roadsLeft = new ArrayList<Road>();
-        List<Road> roadsRight=new ArrayList<Road>();
+        int i = 4;
+        List<Road> roadsLeft = new ArrayList<>();
+        List<Road> roadsRight=new ArrayList<>();
         List<Sidewalk> sidewalks = new ArrayList<>();
         while (i >=  4 && i <= 31){
             if((i+3) % 5 == 0){
@@ -190,8 +189,8 @@ public class Arena {
     public void afterReachingSafe(){
         score++;
         resetTime();
-        for (int i = 0; i < sidewalks.size(); i++) {
-            sidewalks.get(i).randomizeTrees();
+        for (Sidewalk sidewalk : sidewalks) {
+            sidewalk.randomizeTrees();
         }
     }
     public Shop getShop(){
@@ -230,5 +229,24 @@ public class Arena {
 
     public void setSpecialUp(boolean specialUp) {
         isSpecialUp = specialUp;
+    }
+
+    public void usePowerUp(Chicken chicken) {
+        if (powerUps.size() > 0) {
+            powerUps.get(0).activate(this);
+            powerUps.remove(0);
+        }
+        setLastSafe(chicken);
+    }
+    public void addPowerUp(PowerUpPatient powerUp) {
+       powerUps.add(powerUp);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Arena arena = (Arena) o;
+        return width == arena.width && height == arena.height  && score==arena.getScore() && lastSafe==arena.lastSafe;
     }
 }

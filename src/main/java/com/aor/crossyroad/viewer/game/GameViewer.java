@@ -7,7 +7,6 @@ import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.elements.Element;
 import com.aor.crossyroad.model.game.elements.Tree;
 import com.aor.crossyroad.model.game.elements.cars.Car;
-import com.aor.crossyroad.model.game.lines.Line;
 import com.aor.crossyroad.model.game.lines.Road;
 import com.aor.crossyroad.model.game.lines.Sidewalk;
 import com.aor.crossyroad.viewer.Viewer;
@@ -18,7 +17,7 @@ public class GameViewer extends Viewer<Arena> {
     }
     @Override
     public void drawElements(LanternaGUI lanternaGUI) {
-        lanternaGUI.drawShop(getModel().getShop().getPosition());
+        lanternaGUI.drawShopInGame(getModel().getShop().getPosition());
         drawElement(lanternaGUI, getModel().getChicken(), new ChickenViewer());
         drawTables(lanternaGUI);
         drawTime(lanternaGUI);
@@ -101,8 +100,5 @@ public class GameViewer extends Viewer<Arena> {
             drawElement(lanternaGUI,tree,new TreeViewer());
         }
     }
-    private void drawCars(LanternaGUI lanternaGUI,Road road){
-        for (Car c: road.getCars())
-            drawElement(lanternaGUI,c,new CarLeftViewer());
-    }
+
 }

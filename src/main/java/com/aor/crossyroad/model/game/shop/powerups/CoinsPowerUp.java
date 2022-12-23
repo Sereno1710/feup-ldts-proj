@@ -22,4 +22,5 @@ public class CoinsPowerUp implements PowerUpImmediate {
         arena.setCoinMultiplier(bonusMultiplier, totalTime);
         arena.setSpecialUp(true);
     }
+
 }

@@ -8,4 +8,5 @@ public class ChickenViewer implements ElementViewer<Chicken>{
     public void draw(Chicken chicken, LanternaGUI lanternaGUI) {
         lanternaGUI.drawChicken(chicken.getPosition(),chicken.getDirection());
     }
+
 }

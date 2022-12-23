@@ -20,4 +20,5 @@ public class SkinsState extends State<Skins> {
     protected Controller<Skins> getController() {
         return new SkinsController(getModel());
     }
+
 }

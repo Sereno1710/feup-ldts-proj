@@ -8,4 +8,5 @@ public class TreeViewer implements ElementViewer<Tree>{
     public void draw(Tree tree, LanternaGUI lanternaGUI) {
         lanternaGUI.drawTree(tree.getPosition());
     }
+
 }

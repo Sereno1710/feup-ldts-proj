@@ -64,4 +64,7 @@ public class Road extends Line {
         return coins;
     }
 
+    public void setCoins(List<Coin> coins) {
+        this.coins = coins;
+    }
 }

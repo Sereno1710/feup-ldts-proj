@@ -1,7 +1,6 @@
 package com.aor.crossyroad.model.game.lines;
 
 import com.aor.crossyroad.model.game.elements.Tree;
-import com.aor.crossyroad.model.game.lines.Line;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +27,5 @@ public class Sidewalk extends Line {
     public List<Tree> getTrees() {
         return trees;
     }
+
 }

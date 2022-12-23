@@ -4,6 +4,7 @@ import com.aor.crossyroad.states.ShopState;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Skins {
     private final List<String> options;
@@ -35,5 +36,20 @@ public class Skins {
     }
     public ShopState getShopState() {
         return this.shopState;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Skins skins = (Skins) o;
+        return currentOption==skins.currentOption && options.equals(skins.options) && shopState.equals(skins.getShopState());
+
+        //return currentOption==skins.currentOption && options.equals(skins.options) || shopState.equals(skins.getShopState());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(options, shopState, currentOption);
     }
 }

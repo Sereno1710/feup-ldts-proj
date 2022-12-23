@@ -1,7 +1,6 @@
 package com.aor.crossyroad.model.game.shop;
 
 import com.aor.crossyroad.model.Position;
-import com.aor.crossyroad.model.game.elements.Coin;
 import com.aor.crossyroad.model.game.shop.powerups.AddTimePowerUp;
 import com.aor.crossyroad.model.game.shop.powerups.CoinsPowerUp;
 import com.aor.crossyroad.model.game.shop.powerups.NextSafezonePowerUp;
@@ -9,6 +8,7 @@ import com.aor.crossyroad.states.ShopState;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class PowerUps {
     private final List<String> options;
@@ -66,5 +66,18 @@ public class PowerUps {
     }
     public boolean canBuy(int cost) {
         return shopState.getModel().getGameState().getModel().getCoinAmount() >= cost;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PowerUps powerUps = (PowerUps) o;
+        return currentOption == powerUps.currentOption && options.equals(options) && shopState.equals(powerUps.shopState);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(options, shopState, currentOption);
     }
 }

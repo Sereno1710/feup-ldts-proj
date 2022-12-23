@@ -44,6 +44,6 @@ public class ChickenController extends GameController {
             getModel().setLastSafe(getModel().getChicken());
         }
         if (action == LanternaGUI.ACTION.LEFT) moveChickenLeft();
-        if (action == LanternaGUI.ACTION.SPACE) getModel().usePowerUp();
+        if (action == LanternaGUI.ACTION.SPACE) getModel().usePowerUp(getModel().chicken);
     }
 }

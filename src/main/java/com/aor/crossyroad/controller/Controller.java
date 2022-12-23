@@ -17,4 +17,12 @@ public abstract class Controller<T> {
     }
 
     public abstract void step(Game game, LanternaGUI.ACTION action, long time) throws IOException;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Controller<?> that = (Controller<?>) o;
+        return model.equals(that.model);
+    }
 }

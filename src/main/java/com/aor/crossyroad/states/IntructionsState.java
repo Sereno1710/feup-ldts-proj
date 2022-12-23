@@ -6,8 +6,6 @@ import com.aor.crossyroad.model.menu.InstructionsMenu;
 import com.aor.crossyroad.viewer.Viewer;
 import com.aor.crossyroad.viewer.menu.InstructionsViewer;
 
-import javax.swing.undo.StateEdit;
-
 public class IntructionsState extends State<InstructionsMenu> {
     public IntructionsState(InstructionsMenu model) {
         super(model);
@@ -22,4 +20,5 @@ public class IntructionsState extends State<InstructionsMenu> {
     protected Controller<InstructionsMenu> getController() {
         return new InstructionsController(getModel());
     }
+
 }

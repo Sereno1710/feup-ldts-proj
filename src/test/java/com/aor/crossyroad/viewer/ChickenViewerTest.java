@@ -6,6 +6,7 @@ import com.aor.crossyroad.viewer.game.ChickenViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ChickenViewerTest {
         private Chicken chicken;
@@ -16,6 +17,12 @@ public class ChickenViewerTest {
             chicken = new Chicken(10, 10);
             viewer = new ChickenViewer();
             gui = Mockito.mock(LanternaGUI.class);
+        }
+        @Test
+        void notNull(){
+                assertNotNull(viewer);
+                assertNotNull(gui);
+                assertNotNull(chicken);
         }
         @Test
         void drawElement() {

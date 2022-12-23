@@ -11,7 +11,7 @@ public class GameOverViewer extends Viewer<GameOver> {
     }
 
     @Override
-    protected void drawElements(LanternaGUI lanternaGUI) {
+    public void drawElements(LanternaGUI lanternaGUI) {
         lanternaGUI.drawText(new Position(15, 4), "You Lost", "#FF0000");
 
         for (int i = 0; i < 2; i++) {
@@ -21,7 +21,7 @@ public class GameOverViewer extends Viewer<GameOver> {
     }
 
     @Override
-    protected void drawLines(LanternaGUI lanternaGUI) {
+    public void drawLines(LanternaGUI lanternaGUI) {
 
     }
 }

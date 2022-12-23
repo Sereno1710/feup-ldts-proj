@@ -16,7 +16,7 @@ public class CoinController extends GameController {
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         if (time - coinTime > 9000) {
             getModel().RandomizeCoins();
-            coinTime=time;
+            coinTime = time;
         }
     }
 }

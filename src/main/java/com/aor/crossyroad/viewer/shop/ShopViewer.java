@@ -2,9 +2,9 @@ package com.aor.crossyroad.viewer.shop;
 
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
-
 import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.viewer.Viewer;
+
 import java.io.IOException;
 
 public class ShopViewer extends Viewer<Shop> {
@@ -18,14 +18,13 @@ public class ShopViewer extends Viewer<Shop> {
         lanternaGUI.refresh();
     }
     @Override
-    protected void drawElements(LanternaGUI lanternaGUI) {
-        lanternaGUI.drawText(new Position(17,5),"SHOP","#FFD700");
+    public void drawElements(LanternaGUI lanternaGUI) {
+        lanternaGUI.drawShop(new Position(17,5),"SHOP","#FFD700");
         for (int i = 0; i < 3; i++)
-            lanternaGUI.drawText(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
+            lanternaGUI.drawShop(new Position(5, 15 + i), getModel().getOption(i), getModel().isSelected(i) ? "#39FF14" : "#FFFFFF");
     }
     @Override
-    protected void drawLines(LanternaGUI lanternaGUI){
+    public void drawLines(LanternaGUI lanternaGUI){
     //do nothing
     }
-
 }

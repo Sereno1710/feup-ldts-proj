@@ -1,13 +1,11 @@
 package com.aor.crossyroad.model.game.shop;
 
-import com.aor.crossyroad.Game;
 import com.aor.crossyroad.model.Position;
-import com.aor.crossyroad.model.game.elements.Element;
 import com.aor.crossyroad.states.GameState;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Shop {
     private Position position;
@@ -45,5 +43,19 @@ public class Shop {
     }
     public GameState getGameState() {
         return this.gameState;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Shop shop = (Shop) o;
+        return position.equals(shop.position) && gameState.equals( shop.gameState) && options.equals(shop.options);
+        //return currentOption == shop.currentOption && position.equals(shop.position) && gameState.equals( shop.gameState) && options.equals(shop.options);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, gameState, options, currentOption);
     }
 }

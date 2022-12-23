@@ -21,4 +21,5 @@ public class GameOverState extends State<GameOver>{
     protected Controller<GameOver> getController() {
         return new GameOverController(getModel());
     }
+
 }
