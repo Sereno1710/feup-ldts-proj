@@ -28,18 +28,15 @@ public class GameViewer extends Viewer<Arena> {
     @Override
     public void drawLines(LanternaGUI lanternaGUI){
         SidewalkViewer sidewalkViewer = new SidewalkViewer();
-        RoadViewer roadViewer = new RoadViewer();
         drawCoins(lanternaGUI);
         for(Sidewalk s:getModel().getSidewalks()){
             sidewalkViewer.draw(s,lanternaGUI);
             drawTrees(lanternaGUI,s);
         }
         for(Road rl: getModel().getRoadsLeft()){
-            roadViewer.draw(rl,lanternaGUI);
             drawCarsLeft(lanternaGUI,rl);
         }
         for(Road rd: getModel().getRoadsRight()){
-            roadViewer.draw(rd,lanternaGUI);
             drawCarsRight(lanternaGUI,rd);
         }
         lanternaGUI.drawSafe();

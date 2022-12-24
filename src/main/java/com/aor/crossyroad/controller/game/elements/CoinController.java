@@ -5,8 +5,6 @@ import com.aor.crossyroad.controller.game.GameController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
 
-import java.io.IOException;
-
 public class CoinController extends GameController {
     private long coinTime = 0;
 

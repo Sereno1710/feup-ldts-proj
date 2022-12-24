@@ -1,4 +1,4 @@
-## LDTS_T06_G04 - Crossy Road
+# LDTS_T06_G04 - Crossy Road
 
 Crossy Road is an endless arcade hopper game that derives its name and concept from the age-old “why did the chicken cross the road?” joke. The goal is to move the game character (Chicken) as much time as possible through a hazardous path of busy roads and tree-crowded sidewalks. At the bottom and top of the screen there are two safezones where the difficulty increases every time the character manages to get from one to the other.
 
@@ -16,7 +16,7 @@ This project was developed by Bruno Fernandes (up202108871@edu.fe.up.pt), José 
 - **Random Generation of Trees and Cars** - The elements in the map are all randomly generated so every time the game is played the player can have a different experience.
 - **Tree and Coin Randomizing** - Every time the player manages to get the character from one safezone to the other the trees randomly change position. Coins randomly change position every 10 seconds.
 - **Car Movement** - The cars are always moving, switching sides if they move out of the map.
-- **Increased difficulty** - The cars' speed increases proportionately to the score.
+- **Increasing difficulty** - The cars' speed increases proportionally to the score.
 
 ### Planned Features
 
