@@ -11,7 +11,7 @@ public class SkinsController extends Controller<Skins> {
         super(skins);
     }
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) {
+    public  void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
             case UP:
                 getModel().previousOption();

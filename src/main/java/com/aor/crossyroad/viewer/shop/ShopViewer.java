@@ -14,7 +14,6 @@ public class ShopViewer extends Viewer<Shop> {
     public void draw(LanternaGUI lanternaGUI) throws IOException {
         lanternaGUI.clear();
         drawElements(lanternaGUI);
-        drawLines(lanternaGUI);
         lanternaGUI.refresh();
     }
     @Override

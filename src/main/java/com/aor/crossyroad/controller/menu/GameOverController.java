@@ -15,9 +15,9 @@ public class GameOverController extends Controller<GameOver> {
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
-            case UP -> getModel().previousOption();
-            case DOWN -> getModel().nextOption();
-            case SELECT -> {
+            case UP : getModel().previousOption(); break;
+            case DOWN : getModel().nextOption(); break;
+            case SELECT : {
                 if (getModel().isSelectedExit()) {
                     game.setState(null);
                 }

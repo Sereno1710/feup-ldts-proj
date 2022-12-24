@@ -15,7 +15,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PowerUpControllerTest {
     private PowerUpController powerUpsController;
@@ -62,5 +63,24 @@ public class PowerUpControllerTest {
         assertNotEquals(1000,gameState.getModel().getCoinAmount());
         assertEquals(1,gameState.getModel().getPowerUps().size());
     }
-
+    @Test
+    void UsingTeleport(){
+        gameState.getModel().setCoinAmount(1000);
+        powerUpsController.step(game, LanternaGUI.ACTION.DOWN,0);
+        powerUpsController.step(game, LanternaGUI.ACTION.DOWN,0);
+        powerUpsController.step(game, LanternaGUI.ACTION.SELECT,0);
+        powerUpsController.step(game, LanternaGUI.ACTION.SELECT,0);
+        powerUpsController.step(game, LanternaGUI.ACTION.DOWN,0);
+        powerUpsController.step(game, LanternaGUI.ACTION.SELECT,0);
+        gameState.getModel().usePowerUp(gameState.getModel().getChicken());
+        assertNotEquals(2,gameState.getModel().getPowerUps().size());
+        gameState.getModel().setLastSafe(gameState.getModel().getChicken());
+        assertNotEquals(0,gameState.getModel().getScore());
+        assertNotEquals('B',gameState.getModel().getLastSafe());
+        gameState.getModel().usePowerUp(gameState.getModel().getChicken());
+        gameState.getModel().setLastSafe(gameState.getModel().getChicken());
+        assertEquals(2,gameState.getModel().getScore());
+        assertEquals('B',gameState.getModel().getLastSafe());
+        assertEquals(0,gameState.getModel().getPowerUps().size());
+    }
 }

@@ -49,7 +49,6 @@ public class Shop {
         if (o == null || getClass() != o.getClass()) return false;
         Shop shop = (Shop) o;
         return position.equals(shop.position) && gameState.equals( shop.gameState) && options.equals(shop.options);
-        //return currentOption == shop.currentOption && position.equals(shop.position) && gameState.equals( shop.gameState) && options.equals(shop.options);
     }
 
     @Override

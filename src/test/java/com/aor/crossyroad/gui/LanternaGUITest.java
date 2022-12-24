@@ -9,12 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
 public class LanternaGUITest {
     private LanternaGUI gui;
+    private LanternaGUI gui2;
         private TextGraphics textgraphics;
         @BeforeEach
         void setUp() {
-
+            gui2= Mockito.mock(LanternaGUI.class);
             Screen screen = Mockito.mock(Screen.class);
             textgraphics = Mockito.mock(TextGraphics.class);
             Mockito.when(screen.newTextGraphics()).thenReturn(textgraphics);
@@ -81,6 +84,26 @@ public class LanternaGUITest {
             Mockito.verify(textgraphics, Mockito.times(5)).setForegroundColor(new TextColor.RGB(255,255,255));
             Mockito.verify(textgraphics,Mockito.times(1)).putString(1,2,"SHOP$");
         }
+        @Test
+        void  drawSidewalk(){
+            gui.drawSidewalk(5);
+            Mockito.verify(textgraphics,Mockito.times(38)).putString(Mockito.anyInt(),Mockito.anyInt(),Mockito.anyString());
+        }
+        @Test
+        void refresh() throws IOException {
+            gui2.refresh();
+            Mockito.verify(gui2,Mockito.times(1)).refresh();
+        }
+        @Test
+        void clear() throws IOException {
+            gui2.clear();
+            Mockito.verify(gui2,Mockito.times(1)).clear();
+        }
+        @Test
+        void close() throws IOException {
 
+            gui2.close();
+            Mockito.verify(gui2,Mockito.times(1)).close();
+        }
 }
 

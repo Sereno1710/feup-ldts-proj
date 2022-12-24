@@ -4,8 +4,8 @@ import com.aor.crossyroad.Game;
 import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.elements.Chicken;
-import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.game.shop.PowerUps;
+import com.aor.crossyroad.model.game.shop.Shop;
 import com.aor.crossyroad.model.game.shop.Skins;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.PowerUpsState;
@@ -19,9 +19,9 @@ public class ShopController extends Controller<Shop> {
     @Override
     public void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
-            case UP -> getModel().previousOption();
-            case DOWN -> getModel().nextOption();
-            case SELECT -> {
+            case UP : getModel().previousOption();break;
+            case DOWN : getModel().nextOption(); break;
+            case SELECT : {
                 if (getModel().isSelectedExit()) {
                     GameState gameState = getModel().getGameState();
                     gameState.getModel().resetTime();
