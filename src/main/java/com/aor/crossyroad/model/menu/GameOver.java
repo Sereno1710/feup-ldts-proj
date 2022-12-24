@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameOver extends MenuPhases {
-    private Integer coins;
-    private List<String> results;
-    private int currentOption=0;
+    private final Integer coins;
+    private final List<String> results;
+
     public GameOver(String coins,String score) {
         super(Arrays.asList("Play Again","Exit"));
         this.coins= Integer.parseInt(coins);

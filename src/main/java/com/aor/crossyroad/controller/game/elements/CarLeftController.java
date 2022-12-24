@@ -1,6 +1,7 @@
-package com.aor.crossyroad.controller.game;
+package com.aor.crossyroad.controller.game.elements;
 
 import com.aor.crossyroad.Game;
+import com.aor.crossyroad.controller.game.GameController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
@@ -18,7 +19,7 @@ public class CarLeftController extends GameController {
 
     //falta um getCars na arena ou no Roads
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         if (time - lastMovement > 300/(1+getModel().getScore()/9.0)) {
             for (Road i : getModel().getRoadsLeft())
                 for (Car c : i.getCars())

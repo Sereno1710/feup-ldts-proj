@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings("ALL")
 public class MenuStateToOtherStatesTest {
     private MenuController menuController;
     private Game game;
@@ -23,27 +24,30 @@ public class MenuStateToOtherStatesTest {
         game= new Game();
         menuController= new MenuController(new Menu());
     }
+    @SuppressWarnings("rawtypes")
     @Test
-    void ChangingToGameState() throws IOException, URISyntaxException, FontFormatException {
+    void ChangingToGameState() throws IOException {
         menuController.step(game, LanternaGUI.ACTION.SELECT,0);
-        State expected= new GameState(new Arena(40,40));
+        State<Arena> expected= new GameState(new Arena(40,40));
         State actual= game.getState();
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());
     }
+    @SuppressWarnings("rawtypes")
     @Test
-    void ChangingToInstructionsState() throws IOException, URISyntaxException, FontFormatException {
+    void ChangingToInstructionsState() throws IOException {
         menuController.step(game, LanternaGUI.ACTION.DOWN,0);
         menuController.step(game, LanternaGUI.ACTION.SELECT,0);
-        State expected= new IntructionsState(new InstructionsMenu());
+        State<InstructionsMenu> expected= new InstructionsState(new InstructionsMenu());
         State actual= game.getState();
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());
     }
+    @SuppressWarnings("rawtypes")
     @Test
-    void ChangingToNullState() throws IOException, URISyntaxException, FontFormatException {
+    void ChangingToNullState() throws IOException {
         menuController.step(game, LanternaGUI.ACTION.DOWN,0);
         menuController.step(game, LanternaGUI.ACTION.DOWN,0);
         menuController.step(game, LanternaGUI.ACTION.SELECT,0);

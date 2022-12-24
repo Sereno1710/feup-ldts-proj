@@ -14,7 +14,7 @@ public class InstructionsController extends Controller <InstructionsMenu>{
         super(model);
     }
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         if ( action == LanternaGUI.ACTION.SELECT) game.setState(new MenuState(new Menu()));
     }
 

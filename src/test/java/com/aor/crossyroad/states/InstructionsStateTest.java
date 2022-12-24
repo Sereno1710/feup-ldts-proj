@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class InstructionsStateTest {
-    private IntructionsState instructionsState;
+    private InstructionsState instructionsState;
 
     @BeforeEach
     void FillALl(){
-        instructionsState=new IntructionsState(new InstructionsMenu());
+        instructionsState=new InstructionsState(new InstructionsMenu());
     }
     @Test
     void NotNull(){

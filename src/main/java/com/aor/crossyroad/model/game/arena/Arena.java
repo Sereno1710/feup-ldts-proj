@@ -141,18 +141,18 @@ public class Arena {
         return time;
     }
     public void RandomizeSidewalks(){
-        for(Sidewalk s:sidewalks){
+        for(Sidewalk s : sidewalks){
             s.randomizeTrees();
         }
     }
     public void RandomizeCoins(){
-        for(Road r:roadsLeft){
+        for(Road r : roadsLeft){
             r.clearCoins();
         }
-        for(Road r:roadsRight){
+        for(Road r : roadsRight){
             r.clearCoins();
         }
-        for(int i=0;i<2;i++){
+        for(int i = 0; i < 2; i++){
             Random r = new Random();
             int randNum = r.nextInt(roadsLeft.size());
             roadsLeft.get(randNum).addCoin();
@@ -251,8 +251,8 @@ public class Arena {
         return width == arena.width && height == arena.height  && Objects.equals(score, arena.getScore()) && lastSafe==arena.lastSafe;
     }
 
-    public void setScore(int i) {
-        this.score=score;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public List<PowerUpPatient> getPowerUps() {

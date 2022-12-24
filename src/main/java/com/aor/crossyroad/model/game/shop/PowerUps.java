@@ -73,7 +73,7 @@ public class PowerUps {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PowerUps powerUps = (PowerUps) o;
-        return currentOption == powerUps.currentOption && options.equals(options) && shopState.equals(powerUps.shopState);
+        return currentOption == powerUps.currentOption && options.equals(powerUps.options) && shopState.equals(powerUps.shopState);
     }
 
     @Override

@@ -15,19 +15,20 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+@SuppressWarnings("ALL")
 public class GameOverToOtherStatesTest {
     private GameOverController gameOverController;
     private Game game;
-    private GameOverState gameOverState;
-    private Arena arena;
+
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game=new Game();
-        arena= new Arena(40,40);
-        gameOverState=new GameOverState(new GameOver("4","4"));
+        Arena arena = new Arena(40, 40);
+        GameOverState gameOverState = new GameOverState(new GameOver("4", "4"));
         game.setState(gameOverState);
         gameOverController= new GameOverController(new GameOver("4","4"));
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToNull() throws IOException {
         gameOverController.step(game, LanternaGUI.ACTION.DOWN,0);
@@ -35,18 +36,20 @@ public class GameOverToOtherStatesTest {
         State actual= game.getState();
         assertEquals(null,actual);
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToGame() throws IOException {
         gameOverController.step(game, LanternaGUI.ACTION.SELECT,0);
         State actual=game.getState();
-        State expected= new GameState(new Arena(40,40));
+        State<Arena> expected= new GameState(new Arena(40,40));
         assertEquals(expected,actual);
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void FixingMutation() throws IOException {
         gameOverController.step(game, LanternaGUI.ACTION.NONE,0);
         State actual= game.getState();
-        State expected= new GameState(new Arena(40,40));
+        State<Arena> expected= new GameState(new Arena(40,40));
         assertNotEquals(expected,actual);
     }
 }

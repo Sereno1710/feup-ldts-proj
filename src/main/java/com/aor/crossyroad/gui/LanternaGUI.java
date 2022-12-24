@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class LanternaGUI {
     private final Screen screen;
@@ -101,8 +103,8 @@ public class LanternaGUI {
 
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (text == " " || text == "  ") tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        else if (text=="SHOP$"){
+        if (Objects.equals(text, " ") || Objects.equals(text, "  ")) tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        else if (Objects.equals(text, "SHOP$")){
             for (int i = 0; i <= text.length()-1; i++) {
                 tg.setBackgroundColor(tg.getCharacter(position.getX() + i, position.getY()).getBackgroundColor());
                 tg.setForegroundColor(TextColor.Factory.fromString(color));
@@ -113,10 +115,11 @@ public class LanternaGUI {
     }
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (c == ' '|| c== '&' || c== '/' || c== '%' || c=='*' || c=='@') tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
-        else if (c == 'S') tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        String chars = " &/%*@";
+        if (chars.contains("" + c)) tg.setBackgroundColor(tg.getCharacter(x,y+1).getBackgroundColor());
+        if (c == 'S') tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y +1, "" + c);
+        tg.putString(x, y + 1, "" + c);
     }
     public void drawCoin(Position position){
         drawCharacter(position.getX(), position.getY(), '$',"#FFD700");

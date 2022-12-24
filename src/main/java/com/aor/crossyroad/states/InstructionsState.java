@@ -6,8 +6,8 @@ import com.aor.crossyroad.model.menu.InstructionsMenu;
 import com.aor.crossyroad.viewer.Viewer;
 import com.aor.crossyroad.viewer.menu.InstructionsViewer;
 
-public class IntructionsState extends State<InstructionsMenu> {
-    public IntructionsState(InstructionsMenu model) {
+public class InstructionsState extends State<InstructionsMenu> {
+    public InstructionsState(InstructionsMenu model) {
         super(model);
     }
 

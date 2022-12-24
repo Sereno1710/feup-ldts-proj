@@ -14,20 +14,22 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings("ALL")
 public class InstructionsStateToMenuStateTest {
     private InstructionsController instructionsController;
     private Game game;
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game=new Game();
-        game.setState(new IntructionsState(new InstructionsMenu()));
+        game.setState(new InstructionsState(new InstructionsMenu()));
         instructionsController= new InstructionsController(new InstructionsMenu());
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToMenu() throws IOException {
         instructionsController.step(game, LanternaGUI.ACTION.NONE,100);
         State actual=game.getState();
-        State expected=new IntructionsState(new InstructionsMenu());
+        State expected=new InstructionsState(new InstructionsMenu());
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());

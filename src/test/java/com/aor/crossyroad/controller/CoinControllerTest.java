@@ -1,8 +1,8 @@
 package com.aor.crossyroad.controller;
 
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.controller.game.ChickenController;
-import com.aor.crossyroad.controller.game.CoinController;
+import com.aor.crossyroad.controller.game.elements.ChickenController;
+import com.aor.crossyroad.controller.game.elements.CoinController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
@@ -23,11 +23,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class CoinControllerTest {
-    private List<Coin> coins;
     private Arena arena;
     private Chicken chicken;
-    private Road road;
-    private List<Road> roads;
     private ChickenController controller;
     private CoinController coinController;
     private Game game;
@@ -35,13 +32,13 @@ public class CoinControllerTest {
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game= new Game();
         arena= new Arena(40,40);
-        coins=new ArrayList<>();
-        roads= new ArrayList<>();
+        List<Coin> coins = new ArrayList<>();
+        List<Road> roads = new ArrayList<>();
         chicken= new Chicken(15,37);
         arena.setChicken(chicken);
         Coin c= new Coin(15,36);
         coins.add(c);
-        road=new Road(36);
+        Road road = new Road(36);
         road.setCoins(coins);
         roads.add(road);
         controller = new ChickenController(arena);

@@ -16,6 +16,7 @@ This project was developed by Bruno Fernandes (up202108871@edu.fe.up.pt), José 
 - **Random Generation of Trees and Cars** - The elements in the map are all randomly generated so every time the game is played the player can have a different experience.
 - **Tree and Coin Randomizing** - Every time the player manages to get the character from one safezone to the other the trees randomly change position. Coins randomly change position every 10 seconds.
 - **Car Movement** - The cars are always moving, switching sides if they move out of the map.
+- **Increased difficulty** - The cars' speed increases proportionately to the score.
 
 ### Planned Features
 
@@ -77,9 +78,55 @@ The **_Strategy Pattern_** has the following consequences:
 - If you only have a couple of algorithms and they rarely change, there’s no real reason to overcomplicate the program with new classes and interfaces that come along with the pattern.
 - Clients must be aware of the differences between strategies to be able to select the right one.
 
+## Frequenty Used Refactorings
+### **_Extract Method_**
+Used when there is a code fragment that can be grouped together. The code is moved to a separate new method and the old code is replaced with a call to said method. 
+
+The main reason for this refactoring is the more lines found in a method, the harder it becomes to figure out what the method does.
+
+#### **Example:**
+
+<p align="center" justify="center">
+  <img src="images/screenshots/extractMethodBefore.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 3. Before applying the Extract Method</i></b>
+</p>
+
+<p align="center" justify="center">
+  <img src="images/screenshots/extractMethodAfter.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 4. After applying the Extract Method</i></b>
+</p>
+
+
+### **_Extract Variable_**
+Used when there is an expression that is hard to understand. The result of the expression or its parts are placed in separate variables that are self-explanatory.
+
+The main reason for extracting variables is to make a complex expression more understandable, by splitting it into its intermediate parts.
+
+#### **Example:**
+
+<p align="center" justify="center">
+  <img src="images/screenshots/extractVariableBefore.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Before applying the Extract Variable</i></b>
+</p>
+
+<p align="center" justify="center">
+  <img src="images/screenshots/extractVariableAfter.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 6. After applying the Extract Variable</i></b>
+</p>
+
 ## Known Code Smells And Refactoring Suggestions
+#### **Lazy Class**
+The [**Coin**](../src/main/java/com/aor/crossyroad/model/game/elements/Coin.java), [**Tree**](../src/main/java/com/aor/crossyroad/model/game/elements/Tree.java), [**CarLeft**](../src/main/java/com/aor/crossyroad/model/game/elements/cars/CarLeft.java) and [**CarRight**](../src/main/java/com/aor/crossyroad/model/game/elements/cars/CarRight.java) classes are examples of lazy classes because the only differences between them are the values passed to the constructor and they don't have any important methods. Nevertheless, we found it justifiable to create them, because we need to be able to discriminate the element, so that we use the correct controller and viewer.
 #### **Large Class**
-The `Arena` class contains many fields and the `LanternaGUI` class contains many methods. In both cases, we find it well founded as the first one requires these fields, because it is the main class of the program and it needs to store a substantial amount of data. The second class needs all these methods and it wouldn't make sense to split them into two separate classes (extract method).
+The [**Arena**](../src/main/java/com/aor/crossyroad/model/game/arena/Arena.java) class contains many fields and the [**LanternaGUI**](../src/main/java/com/aor/crossyroad/gui/LanternaGUI.java) class contains many methods. In both cases, we find it well founded as the first one requires these fields, because it is the main class of the program and it needs to store a substantial amount of data. The second class needs all these methods and it wouldn't make sense to split them into two separate classes (extract method).
 
 #### **Data Class**
 All model classes are Data Classes, as they contain only fields, and no behavior (dumb classes). This is caused by the **MVC** (Model-View-Controller) architectural pattern which holds the responsibility to the controller to implement the logic functionalities of each model.
@@ -96,14 +143,14 @@ Also, in order to access a certain model's parameter it is mandatory to start by
 
 ### Screenshot of coverage report
 <p align="center" justify="center">
-  <img src="images/screenshots/codeCoverage"/>
+  <img src="images/screenshots/codeCoverage.png"/>
 </p>
 <p align="center">
   <b><i>Fig 3. Code coverage screenshot</i></b>
 </p>
 
 ### Link to mutation testing report
-[Mutation tests](../build/reports/pitest/.../index.html)
+[Mutation tests](../build/reports/pitest/)
 
 ### Self-evaluation
 

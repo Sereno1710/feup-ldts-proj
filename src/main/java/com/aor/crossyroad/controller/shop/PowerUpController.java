@@ -13,7 +13,7 @@ public class PowerUpController extends Controller<PowerUps> {
     }
 
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
             case UP:
                 getModel().previousOption();

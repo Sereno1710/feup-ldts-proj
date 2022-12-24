@@ -15,23 +15,25 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings("ALL")
 public class PowerUpStateToShopTest {
     private PowerUpController powerUpController;
     private Game game;
-    private ShopState shopState;
+
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game=new Game();
-        shopState=new ShopState(new Shop(new GameState(new Arena(40,40))));
+        ShopState shopState = new ShopState(new Shop(new GameState(new Arena(40, 40))));
         game.setState(shopState);
         powerUpController= new PowerUpController(new PowerUps(new ShopState(new Shop(new GameState(new Arena(40,40))))));
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToShop() throws IOException {
         powerUpController.step(game, LanternaGUI.ACTION.DOWN,0);
         powerUpController.step(game, LanternaGUI.ACTION.DOWN,0);
         powerUpController.step(game, LanternaGUI.ACTION.SELECT,0);
-        State expected= new ShopState(new Shop(new GameState(new Arena(40,40))));
+        State<Shop> expected= new ShopState(new Shop(new GameState(new Arena(40,40))));
         State actual= game.getState();
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());

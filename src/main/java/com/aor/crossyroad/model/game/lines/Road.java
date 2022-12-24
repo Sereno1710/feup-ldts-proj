@@ -16,8 +16,8 @@ public class Road extends Line {
 
     public Road(int y) {
         super(y);
-        cars=new ArrayList<Car>();
-        coins=new ArrayList<Coin>();
+        cars= new ArrayList<>();
+        coins= new ArrayList<>();
     }
 
     public List<Car> getCars() {
@@ -44,7 +44,7 @@ public class Road extends Line {
         }
     }
     public void clearCoins(){
-        coins=new ArrayList<Coin>();
+        coins= new ArrayList<>();
     }
     public void removeCoin(Position position){
         for (Coin c:coins){

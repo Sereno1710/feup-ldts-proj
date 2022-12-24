@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class MenuPhases {
-    private List<String> options;
+    private final List<String> options;
     private int currentOption=0;
     public MenuPhases(List<String> options){
         this.options=options;

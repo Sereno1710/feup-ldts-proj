@@ -1,8 +1,8 @@
 package com.aor.crossyroad.controller;
 
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.controller.game.CarLeftController;
-import com.aor.crossyroad.controller.game.CarRightController;
+import com.aor.crossyroad.controller.game.elements.CarLeftController;
+import com.aor.crossyroad.controller.game.elements.CarRightController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
@@ -24,14 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class CarControllerTest {
         private CarLeftController controller;
         private CarRightController controller2;
-        private Chicken chicken;
-        private Arena arena;
+    private Arena arena;
         private Game game;
 
         @BeforeEach
         void setUp() {
             arena = new Arena(10, 10);
-            chicken = new Chicken(2, 2);
+            Chicken chicken = new Chicken(2, 2);
             arena.setChicken(chicken);
 
             arena.setRoadsLeft(Arrays.asList());
