@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.Screen;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 public class LanternaGUITest {
         private Screen screen;
         private LanternaGUI gui;
@@ -63,6 +64,23 @@ public class LanternaGUITest {
             gui.drawText(new Position(1, 1), "Crossy Road Best Game", "#FFFF00");
             Mockito.verify(textgraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255,255,0));
             Mockito.verify(textgraphics, Mockito.times(1)).putString(1, 1, "Crossy Road Best Game");
+        }
+        @Test
+        void drawBorder(){
+            gui.drawBorder(1,1);
+            Mockito.verify(textgraphics,Mockito.times(1)).setForegroundColor(new TextColor.RGB(2,138,15));
+            Mockito.verify(textgraphics, Mockito.times(1)).putString(1,2,"ᗡ");
+        }
+        @Test
+        void drawSafe(){
+            gui.drawSafe();
+            Mockito.verify(textgraphics,Mockito.times(76)).putString(Mockito.anyInt(),Mockito.anyInt(),Mockito.anyString());
+        }
+        @Test
+        void drawShop(){
+            gui.drawShop(new Position(1,2),"SHOP$","#FFFFFF");
+            Mockito.verify(textgraphics, Mockito.times(5)).setForegroundColor(new TextColor.RGB(255,255,255));
+            Mockito.verify(textgraphics,Mockito.times(1)).putString(1,2,"SHOP$");
         }
 
 }

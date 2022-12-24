@@ -20,15 +20,23 @@ public class InstructionsStateToMenuStateTest {
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game=new Game();
+        game.setState(new IntructionsState(new InstructionsMenu()));
         instructionsController= new InstructionsController(new InstructionsMenu());
     }
     @Test
     void ChangeToMenu() throws IOException {
-        instructionsController.step(game, LanternaGUI.ACTION.SELECT,0);
+        instructionsController.step(game, LanternaGUI.ACTION.NONE,100);
         State actual=game.getState();
-        State expected=new MenuState(new Menu());
+        State expected=new IntructionsState(new InstructionsMenu());
+        assertEquals(actual.getController(),expected.getController());
+        assertEquals(actual.getViewer(),expected.getViewer());
+        assertEquals(actual.getModel(),expected.getModel());
+        instructionsController.step(game, LanternaGUI.ACTION.SELECT,0);
+        actual=game.getState();
+        expected=new MenuState(new Menu());
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());
     }
+
 }

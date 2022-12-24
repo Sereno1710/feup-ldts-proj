@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class GameOverToOtherStatesTest {
     private GameOverController gameOverController;
@@ -40,5 +41,12 @@ public class GameOverToOtherStatesTest {
         State actual=game.getState();
         State expected= new GameState(new Arena(40,40));
         assertEquals(expected,actual);
+    }
+    @Test
+    void FixingMutation() throws IOException {
+        gameOverController.step(game, LanternaGUI.ACTION.NONE,0);
+        State actual= game.getState();
+        State expected= new GameState(new Arena(40,40));
+        assertNotEquals(expected,actual);
     }
 }

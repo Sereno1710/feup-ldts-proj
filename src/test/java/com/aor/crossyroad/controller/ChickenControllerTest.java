@@ -35,67 +35,71 @@ public class ChickenControllerTest {
         controller = new ChickenController(arena);
     }
     @Test
-    public void ChickenMoveUp(){
-        controller.moveChickenUp();
+    public void ChickenMoveUp() throws IOException {
+        controller.step(game, LanternaGUI.ACTION.UP,0);
+        controller.getModel().getChicken().setDirection('&');
         assertEquals(new Position(15,14),chicken.getPosition());
     }
     @Test
-    public void ChickenCantMoveUp(){
+    public void ChickenCantMoveUp() throws IOException {
         arena.setSidewalks(Arrays.asList());
         arena.setSidewalks(Arrays.asList(new Sidewalk(15)));
         for (Sidewalk i:arena.getSidewalks()){
             i.randomizeTrees();
             i.getTrees().add(new Tree(15,14));
         }
-        controller.moveChickenUp();
+        controller.step(game, LanternaGUI.ACTION.UP,0);
         assertEquals(new Position(15,15),chicken.getPosition());
     }
         @Test
-        public void ChickenMoveDown(){
-            controller.moveChickenDown();
+        public void ChickenMoveDown() throws IOException {
+            controller.step(game, LanternaGUI.ACTION.DOWN,0);
+            controller.getModel().getChicken().setDirection('*');
             assertEquals(new Position(15,16),chicken.getPosition());
         }
         @Test
-        public void ChickenCantMoveDown(){
+        public void ChickenCantMoveDown() throws IOException {
             arena.setSidewalks(Arrays.asList());
             arena.setSidewalks(Arrays.asList(new Sidewalk(16)));
             for (Sidewalk i:arena.getSidewalks()){
                 i.randomizeTrees();
                 i.getTrees().add(new Tree(15,16));
             }
-            controller.moveChickenDown();
+            controller.step(game, LanternaGUI.ACTION.DOWN,0);
             assertEquals(new Position(15,15),chicken.getPosition());
         }
         @Test
-        public void ChickenMoveLeft(){
-            controller.moveChickenLeft();
+        public void ChickenMoveLeft() throws IOException {
+            controller.step(game, LanternaGUI.ACTION.LEFT,0);
+            controller.getModel().getChicken().setDirection('/');
             assertEquals(new Position(14,15),chicken.getPosition());
         }
         @Test
-        public void ChickenCantMoveLeft(){
+        public void ChickenCantMoveLeft() throws IOException {
             arena.setSidewalks(Arrays.asList());
             arena.setSidewalks(Arrays.asList(new Sidewalk(15)));
             for (Sidewalk i:arena.getSidewalks()){
                 i.randomizeTrees();
                 i.getTrees().add(new Tree(14,15));
             }
-            controller.moveChickenLeft();
+            controller.step(game, LanternaGUI.ACTION.LEFT,0);
             assertEquals(new Position(15,15),chicken.getPosition());
         }
         @Test
-        public void ChickenMoveRight(){
-            controller.moveChickenRight();
+        public void ChickenMoveRight() throws IOException {
+            controller.step(game, LanternaGUI.ACTION.RIGHT,0);
+            controller.getModel().getChicken().setDirection('%');
             assertEquals(new Position(16,15),chicken.getPosition());
         }
         @Test
-        public void ChickenCantMoveRight(){
+        public void ChickenCantMoveRight() throws IOException {
             arena.setSidewalks(Arrays.asList());
             arena.setSidewalks(Arrays.asList(new Sidewalk(15)));
             for (Sidewalk i:arena.getSidewalks()){
                 i.randomizeTrees();
                 i.getTrees().add(new Tree(16,15));
             }
-            controller.moveChickenRight();
+            controller.step(game, LanternaGUI.ACTION.RIGHT,0);
             assertEquals(new Position(15,15),chicken.getPosition());
         }
         @Test

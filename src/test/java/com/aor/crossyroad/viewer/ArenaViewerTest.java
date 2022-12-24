@@ -11,8 +11,6 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 class ArenaViewerTest {
     private LanternaGUI gui;
     private GameViewer viewer;
@@ -30,10 +28,6 @@ class ArenaViewerTest {
     }
     @Test
     void drawChicken() throws IOException {
-        assertNotNull(arena);
-        assertNotNull(gui);
-        assertNotNull(chicken);
-        assertNotNull(viewer);
         viewer.draw(gui);
 
         Mockito.verify(gui, Mockito.times(1)).drawChicken(new Position(5, 8),'&');
@@ -42,10 +36,6 @@ class ArenaViewerTest {
 
     @Test
     void refreshAndClear() throws IOException {
-        assertNotNull(arena);
-        assertNotNull(gui);
-        assertNotNull(chicken);
-        assertNotNull(viewer);
         viewer.draw(gui);
 
         Mockito.verify(gui, Mockito.times(1)).clear();
