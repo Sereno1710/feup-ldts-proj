@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class LanternaGUI {
@@ -51,6 +50,7 @@ public class LanternaGUI {
     }
     private AWTTerminalFontConfiguration loadCrossyRoadFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/CrossyRoadFont2.otf");
+        assert resource != null;
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

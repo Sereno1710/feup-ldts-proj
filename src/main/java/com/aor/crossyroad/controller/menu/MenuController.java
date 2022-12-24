@@ -8,8 +8,6 @@ import com.aor.crossyroad.model.menu.InstructionsMenu;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.InstructionsState;
-
-import java.io.IOException;
 import java.util.Random;
 
 public class MenuController extends Controller<Menu> {

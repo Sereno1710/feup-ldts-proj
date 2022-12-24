@@ -7,8 +7,6 @@ import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.menu.GameOver;
 import com.aor.crossyroad.states.GameState;
 
-import java.io.IOException;
-
 public class GameOverController extends Controller<GameOver> {
     public GameOverController(GameOver model) {
         super(model);

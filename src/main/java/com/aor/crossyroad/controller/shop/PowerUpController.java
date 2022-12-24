@@ -5,8 +5,6 @@ import com.aor.crossyroad.controller.Controller;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.shop.PowerUps;
 
-import java.io.IOException;
-
 public class PowerUpController extends Controller<PowerUps> {
     public PowerUpController(PowerUps model) {
         super(model);

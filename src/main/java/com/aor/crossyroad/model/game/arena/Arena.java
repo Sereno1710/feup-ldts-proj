@@ -232,12 +232,12 @@ public class Arena {
         isSpecialUp = specialUp;
     }
 
-    public void usePowerUp(Chicken chicken) {
+    public void usePowerUp() {
         if (powerUps.size() > 0) {
             powerUps.get(0).activate(this);
             powerUps.remove(0);
         }
-        setLastSafe(chicken);
+        setLastSafe(this.chicken);
     }
     public void addPowerUp(PowerUpPatient powerUp) {
        powerUps.add(powerUp);

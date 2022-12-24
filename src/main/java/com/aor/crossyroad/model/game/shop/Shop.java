@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Shop {
-    private Position position;
+    private final Position position;
     private final GameState gameState;
     private final List<String> options;
     private int currentOption=0;
