@@ -8,8 +8,6 @@ import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.cars.Car;
 import com.aor.crossyroad.model.game.lines.Road;
 
-import java.io.IOException;
-
 public class CarRightController extends GameController {
     private long lastMovement=0;
     public CarRightController(Arena arena) {

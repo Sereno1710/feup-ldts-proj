@@ -12,8 +12,6 @@ import com.aor.crossyroad.states.PowerUpsState;
 import com.aor.crossyroad.states.ShopState;
 import com.aor.crossyroad.states.SkinsState;
 
-import java.io.IOException;
-
 public class ShopController extends Controller<Shop> {
     public ShopController(Shop shop) {
         super(shop);

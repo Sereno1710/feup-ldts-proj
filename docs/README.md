@@ -16,7 +16,7 @@ This project was developed by Bruno Fernandes (up202108871@edu.fe.up.pt), José 
 - **Random Generation of Trees and Cars** - The elements in the map are all randomly generated so every time the game is played the player can have a different experience.
 - **Tree and Coin Randomizing** - Every time the player manages to get the character from one safezone to the other the trees randomly change position. Coins randomly change position every 10 seconds.
 - **Car Movement** - The cars are always moving, switching sides if they move out of the map.
-- **Increased difficulty** - The cars' speed increases proportionately to the score.
+- **Increasing difficulty** - The cars' speed increases proportionally to the score.
 
 ### Planned Features
 

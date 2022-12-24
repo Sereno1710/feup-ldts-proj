@@ -7,8 +7,6 @@ import com.aor.crossyroad.model.menu.InstructionsMenu;
 import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.states.MenuState;
 
-import java.io.IOException;
-
 public class InstructionsController extends Controller <InstructionsMenu>{
     public InstructionsController(InstructionsMenu model) {
         super(model);

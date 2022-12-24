@@ -6,8 +6,6 @@ import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
 
-import java.io.IOException;
-
 public class ChickenController extends GameController {
     public ChickenController(Arena arena) {
         super(arena);
@@ -45,6 +43,6 @@ public class ChickenController extends GameController {
             getModel().setLastSafe(getModel().getChicken());
         }
         if (action == LanternaGUI.ACTION.LEFT) moveChickenLeft();
-        if (action == LanternaGUI.ACTION.SPACE) getModel().usePowerUp(getModel().chicken);
+        if (action == LanternaGUI.ACTION.SPACE) getModel().usePowerUp();
     }
 }
