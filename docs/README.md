@@ -140,17 +140,18 @@ As the result of the **MVC** (Model-View-Controller) pattern some of the control
 Also, in order to access a certain model's parameter it is mandatory to start by making a request to its controller.
 
 ## Testing
+We didn't make any tests for the [**PowerUpsViewer**](../src/main/java/com/aor/crossyroad/viewer/shop/PowerUpViewer.java) and [**SkinsViewer**](../src/main/java/com/aor/crossyroad/viewer/shop/SkinsViewer.java) classes because of the three color choice, since Mockito didn't accept all three colors per test. We also used Property based testing for [**Position**](../src/main/java/com/aor/crossyroad/model/Position.java) and [**Arena**](../src/main/java/com/aor/crossyroad/model/game/arena/Arena.java) borders.
 
 ### Screenshot of coverage report
 <p align="center" justify="center">
   <img src="images/screenshots/codeCoverage.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 3. Code coverage screenshot</i></b>
+  <b><i>Fig 7. Code coverage screenshot</i></b>
 </p>
 
 ### Link to mutation testing report
-[Mutation tests](../build/reports/pitest/)
+[Mutation tests](../build/reports/pitest/202212240704/index.html)
 
 ### Self-evaluation
 
