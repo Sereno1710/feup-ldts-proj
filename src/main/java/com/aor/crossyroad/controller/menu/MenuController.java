@@ -9,7 +9,6 @@ import com.aor.crossyroad.model.menu.Menu;
 import com.aor.crossyroad.states.GameState;
 import com.aor.crossyroad.states.InstructionsState;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class MenuController extends Controller<Menu> {
@@ -47,22 +46,23 @@ public class MenuController extends Controller<Menu> {
         Random random= new Random();
         int ran= random.nextInt(4);
         switch (ran) {
-            case 0 -> {
+            case 0 :{
                 if (getModel().getChicken().getPosition().getY() + 1 < 30)
                     getModel().getChicken().setPosition(getModel().getChicken().getPosition().getDown());
                 getModel().getChicken().setDirection('*');
+                break;
             }
-            case 1 -> {
+            case 1 : {
                 if (getModel().getChicken().getPosition().getY() - 1 > 22)
                     getModel().getChicken().setPosition(getModel().getChicken().getPosition().getUp());
                 getModel().getChicken().setDirection('&');
             }
-            case 2 -> {
+            case 2 : {
                 if (getModel().getChicken().getPosition().getX() - 1 > 2)
                     getModel().getChicken().setPosition(getModel().getChicken().getPosition().getLeft());
                 getModel().getChicken().setDirection('/');
             }
-            case 3 -> {
+            case 3 : {
                 if (getModel().getChicken().getPosition().getX() + 1 < 35)
                     getModel().getChicken().setPosition(getModel().getChicken().getPosition().getRight());
                 getModel().getChicken().setDirection('%');

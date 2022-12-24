@@ -45,11 +45,14 @@ public class Skins {
         Skins skins = (Skins) o;
         return currentOption==skins.currentOption && options.equals(skins.options) && shopState.equals(skins.getShopState());
 
-        //return currentOption==skins.currentOption && options.equals(skins.options) || shopState.equals(skins.getShopState());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(options, shopState, currentOption);
+    }
+
+    public int getCurrentOption() {
+        return currentOption;
     }
 }
