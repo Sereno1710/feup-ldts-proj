@@ -29,4 +29,5 @@ public class ArenaTest {
     Arbitrary<LanternaGUI.ACTION> moveActions() {
         return Arbitraries.of(LanternaGUI.ACTION.UP, LanternaGUI.ACTION.RIGHT, LanternaGUI.ACTION.DOWN, LanternaGUI.ACTION.LEFT);
     }
+
 }

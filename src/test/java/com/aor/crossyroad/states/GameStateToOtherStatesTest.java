@@ -45,7 +45,8 @@ public class GameStateToOtherStatesTest {
         gameController.getModel().resetTime();
         gameController.step(game, LanternaGUI.ACTION.NONE,0);
         State actual=game.getState();
-        State expected = new GameOverState(new GameOver("0","0"));
+        Integer CoinAmount= gameState.getModel().getCoinAmount()/2;
+        State expected = new GameOverState(new GameOver(CoinAmount.toString(),"0"));
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());

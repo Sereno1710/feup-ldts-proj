@@ -6,6 +6,7 @@ import com.aor.crossyroad.viewer.game.ChickenViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ChickenViewerTest {

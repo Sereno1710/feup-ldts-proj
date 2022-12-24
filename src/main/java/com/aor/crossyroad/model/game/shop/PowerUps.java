@@ -80,4 +80,7 @@ public class PowerUps {
     public int hashCode() {
         return Objects.hash(options, shopState, currentOption);
     }
+
+    public int getCurrentOption() {return  currentOption;
+    }
 }

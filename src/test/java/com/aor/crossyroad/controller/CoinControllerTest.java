@@ -60,5 +60,7 @@ public class CoinControllerTest {
     void CoinRandomize() throws IOException {
         coinController.step(game, LanternaGUI.ACTION.NONE,100000);
         assertNotEquals(arena.getRoadsRight().get(0).getCoins().get(0).getPosition(),new Position(15,36));
+        coinController.step(game, LanternaGUI.ACTION.NONE,9000);
+        assertNotEquals(arena.getRoadsRight().get(0).getCoins().get(0).getPosition(),new Position(15,36));
     }
 }

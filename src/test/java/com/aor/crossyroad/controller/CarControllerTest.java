@@ -17,7 +17,6 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -32,7 +31,6 @@ public class CarControllerTest {
         @BeforeEach
         void setUp() {
             arena = new Arena(10, 10);
-
             chicken = new Chicken(2, 2);
             arena.setChicken(chicken);
 
@@ -51,9 +49,38 @@ public class CarControllerTest {
                 i.getCars().add(car);
                 i.setCars(i.getCars());}
             arena.setRoadsLeft(arena.getRoadsLeft());
+            arena.setScore(10);
             controller.step(game, LanternaGUI.ACTION.NONE, 1000);
             assertNotEquals(new Position(5, 3), car.getPosition());
         }
+        @Test
+        void CarLeftBackToBeginning() throws IOException {
+            Car car = new CarLeft(1, 6);
+            for (Road i: arena.getRoadsLeft()){
+                i.getCars().add(car);
+                i.setCars(i.getCars());
+            break;}
+            arena.setRoadsLeft(arena.getRoadsLeft());
+            long time=100;
+            while(car.getPosition().equals(new Position(1,6))){
+                time+=300;
+                controller.step(game, LanternaGUI.ACTION.NONE, time);}
+            assertEquals(new Position(38, 6), car.getPosition());
+    }
+    @Test
+    void CarRightBackToBeginning() throws IOException {
+        Car car = new CarRight(38, 5);
+        for (Road i: arena.getRoadsRight()){
+            i.getCars().add(car);
+            i.setCars(i.getCars());
+            break;}
+        arena.setRoadsRight(arena.getRoadsRight());
+        long time=100;
+        while(car.getPosition().equals(new Position(38,5))){
+            time+=300;
+            controller2.step(game, LanternaGUI.ACTION.NONE, time);}
+        assertEquals(new Position(1, 5), car.getPosition());
+    }
         @Test
         void moveCarsRight() throws IOException {
             Car car = new CarRight(4, 4);

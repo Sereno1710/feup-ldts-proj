@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class GameOverControllerTest {
     private GameOverController gameOverController;
@@ -32,5 +33,12 @@ public class GameOverControllerTest {
         assertEquals(gameOverController.getModel().getCurrentOption(),0);
         gameOverController.step(game, LanternaGUI.ACTION.UP,900);
         assertEquals(gameOverController.getModel().getCurrentOption(),1);
+    }
+    @Test
+    void FixingMutationTesting() throws IOException {
+        gameOverController.step(game, LanternaGUI.ACTION.UP,0);
+        assertNotEquals(0,gameOverController.getModel().getCurrentOption());
+        gameOverController.step(game, LanternaGUI.ACTION.DOWN,0);
+        assertNotEquals(1,gameOverController.getModel().getCurrentOption());
     }
 }

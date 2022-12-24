@@ -30,8 +30,9 @@ public class MenuControllerTest {
     }
     @Test
     void MenuActionDownAndUP() throws IOException {
-        menuController.step(game, LanternaGUI.ACTION.DOWN,0);
+        menuController.step(game, LanternaGUI.ACTION.DOWN,300);
         assertEquals(menuController.getModel().getCurrentOption(),1);
+        menuController.setLastMovement(400);
         menuController.step(game, LanternaGUI.ACTION.DOWN,600);
         assertEquals(menuController.getModel().getCurrentOption(),2);
         menuController.step(game, LanternaGUI.ACTION.UP,1200);

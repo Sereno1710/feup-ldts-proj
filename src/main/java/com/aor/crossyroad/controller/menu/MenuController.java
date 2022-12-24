@@ -18,6 +18,10 @@ public class MenuController extends Controller<Menu> {
         super(menu);
     }
 
+    public void setLastMovement(long lastMovement) {
+        this.lastMovement = lastMovement;
+    }
+
     public long getLastMovement() {
         return lastMovement;
     }

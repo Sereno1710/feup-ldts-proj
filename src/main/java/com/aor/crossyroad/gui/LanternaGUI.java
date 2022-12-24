@@ -103,7 +103,7 @@ public class LanternaGUI {
         TextGraphics tg = screen.newTextGraphics();
         if (text == " " || text == "  ") tg.setBackgroundColor(TextColor.Factory.fromString(color));
         else if (text=="SHOP$"){
-            for (int i = 0; i < text.length(); i++) {
+            for (int i = 0; i <= text.length()-1; i++) {
                 tg.setBackgroundColor(tg.getCharacter(position.getX() + i, position.getY()).getBackgroundColor());
                 tg.setForegroundColor(TextColor.Factory.fromString(color));
             }

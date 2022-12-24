@@ -249,4 +249,12 @@ public class Arena {
         Arena arena = (Arena) o;
         return width == arena.width && height == arena.height  && score==arena.getScore() && lastSafe==arena.lastSafe;
     }
+
+    public void setScore(int i) {
+        this.score=score;
+    }
+
+    public List<PowerUpPatient> getPowerUps() {
+        return powerUps;
+    }
 }
