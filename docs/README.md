@@ -1,4 +1,4 @@
-## LDTS_T06_G04 - Crossy Road
+# LDTS_T06_G04 - Crossy Road
 
 Crossy Road is an endless arcade hopper game that derives its name and concept from the age-old “why did the chicken cross the road?” joke. The goal is to move the game character (Chicken) as much time as possible through a hazardous path of busy roads and tree-crowded sidewalks. At the bottom and top of the screen there are two safezones where the difficulty increases every time the character manages to get from one to the other.
 
