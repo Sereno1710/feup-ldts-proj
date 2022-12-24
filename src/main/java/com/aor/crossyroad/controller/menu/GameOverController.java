@@ -15,21 +15,20 @@ public class GameOverController extends Controller<GameOver> {
     }
 
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
-            case UP:
-                getModel().previousOption();
-                break;
-            case DOWN:
-                getModel().nextOption();
-                break;
-            case SELECT:
-                if (getModel().isSelectedExit()) {game.setState(null);}
-                if (getModel().isSelectedStart()){
-                    GameState gameState= new GameState(new Arena(40,40));
+            case UP -> getModel().previousOption();
+            case DOWN -> getModel().nextOption();
+            case SELECT -> {
+                if (getModel().isSelectedExit()) {
+                    game.setState(null);
+                }
+                if (getModel().isSelectedStart()) {
+                    GameState gameState = new GameState(new Arena(40, 40));
                     gameState.getModel().setCoinAmount(getModel().getCoins());
                     game.setState(gameState);
                 }
+            }
         }
     }
 

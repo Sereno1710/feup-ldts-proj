@@ -1,7 +1,7 @@
 package com.aor.crossyroad.controller;
 
 import com.aor.crossyroad.Game;
-import com.aor.crossyroad.controller.game.ChickenController;
+import com.aor.crossyroad.controller.game.elements.ChickenController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
@@ -103,19 +103,19 @@ public class ChickenControllerTest {
             assertEquals(new Position(15,15),chicken.getPosition());
         }
         @Test
-        void VerifySafeZoneTop() throws IOException, URISyntaxException, FontFormatException {
+        void VerifySafeZoneTop() throws IOException {
             chicken.setPosition(new Position(15,4));
             controller.step(game, LanternaGUI.ACTION.UP,0);
             assertEquals('T',arena.getLastSafe());
         }
         @Test
-        void VerifySafeZoneBot() throws IOException, URISyntaxException, FontFormatException {
+        void VerifySafeZoneBot() throws IOException {
             chicken.setPosition(new Position(15,31));
             controller.step(game, LanternaGUI.ACTION.DOWN,0);
             assertEquals('B',arena.getLastSafe());
         }
         @Test
-        void VerifyTreeRandomizer() throws IOException, URISyntaxException, FontFormatException {
+        void VerifyTreeRandomizer() throws IOException {
             List<Tree> notexpected;
             notexpected=arena.getSidewalks().get(0).getTrees();
             chicken.setPosition(new Position(15,4));

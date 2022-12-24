@@ -1,6 +1,7 @@
-package com.aor.crossyroad.controller.game;
+package com.aor.crossyroad.controller.game.elements;
 
 import com.aor.crossyroad.Game;
+import com.aor.crossyroad.controller.game.GameController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.Position;
 import com.aor.crossyroad.model.game.arena.Arena;
@@ -33,7 +34,7 @@ public class ChickenController extends GameController {
         getModel().getChicken().setDirection('*');
     }
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         if (action == LanternaGUI.ACTION.UP) {
             moveChickenUp();
             getModel().setLastSafe(getModel().getChicken());

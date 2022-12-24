@@ -9,15 +9,7 @@ public class CoinsPowerUp implements PowerUpImmediate {
     public static int getCost() {
         return cost;
     }
-    public static int getBonusMultiplier() {
-        return bonusMultiplier;
-    }
 
-    public static long getTotalTime() {
-        return totalTime;
-    }
-
-    @Override
     public void applyPowerUp(Arena arena) {
         arena.setCoinMultiplier(bonusMultiplier, totalTime);
         arena.setSpecialUp(true);

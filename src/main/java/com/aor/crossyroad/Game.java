@@ -8,17 +8,19 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+@SuppressWarnings("ALL")
 public class Game {
+    @SuppressWarnings("rawtypes")
     private State state;
-    private LanternaGUI lanternaGUI;
-    public Game() throws FontFormatException, IOException, URISyntaxException {
+
+    public Game() {
 
         this.state = new MenuState(new Menu());
     }
     public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 30;
         int frameTime = 1000 / FPS;
-        this.lanternaGUI = new LanternaGUI(40,40);
+        LanternaGUI lanternaGUI = new LanternaGUI(40, 40);
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
 
@@ -33,10 +35,12 @@ public class Game {
         }
         lanternaGUI.close();
     }
+    @SuppressWarnings("rawtypes")
     public void setState(State state) {
         this.state = state;
     }
 
+    @SuppressWarnings("rawtypes")
     public State getState() {
         return state;
     }

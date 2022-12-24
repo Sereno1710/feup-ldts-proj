@@ -1,6 +1,6 @@
 package com.aor.crossyroad.controller;
 
-import com.aor.crossyroad.controller.game.ChickenController;
+import com.aor.crossyroad.controller.game.elements.ChickenController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.elements.Chicken;
@@ -13,7 +13,6 @@ import java.util.List;
 public class ArenaTest {
     @Property
     void allArenasAreClosed(@ForAll @IntRange(min = 3, max = 50) int width, @ForAll @IntRange(min = 3, max = 50) int height, @ForAll List<LanternaGUI.@From("moveActions") ACTION> actions) throws IOException {
-
         Arena arena = new Arena(width, height);
         arena.setChicken(new Chicken(1,1));
         ChickenController controller = new ChickenController(arena);

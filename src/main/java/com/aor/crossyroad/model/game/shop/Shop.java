@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Shop {
     private Position position;
     private final GameState gameState;
-    private List<String> options;
+    private final List<String> options;
     private int currentOption=0;
     public Shop(GameState gameState){
         this.options= Arrays.asList("Power-Ups","Skins","Exit");
@@ -21,9 +21,7 @@ public class Shop {
     public Position getPosition() {
         return position;
     }
-    public void setPosition(Position position) {
-        this.position = position;
-    }
+
     public void nextOption() {currentOption++;if (currentOption > this.options.size() - 1) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = this.options.size() - 1;}
     public String getOption(int i) {

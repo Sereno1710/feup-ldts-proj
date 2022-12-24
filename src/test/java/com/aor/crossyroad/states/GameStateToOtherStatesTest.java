@@ -17,28 +17,31 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings("ALL")
 public class GameStateToOtherStatesTest {
     private GameController gameController;
     private Game game;
     private GameState gameState;
-    private Arena arena;
+
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         game=new Game();
-        arena= new Arena(40,40);
+        Arena arena = new Arena(40, 40);
         gameState=new GameState(arena);
         game.setState(gameState);
         gameController= new ArenaController(arena,gameState);
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToMenu() throws IOException {
         gameController.step(game, LanternaGUI.ACTION.QUIT,0);
         State actual=game.getState();
-        State expected = new MenuState(new Menu());
+        State<Menu> expected = new MenuState(new Menu());
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToGameOver() throws IOException {
         gameController.getModel().setDefaultTime(2);
@@ -46,11 +49,12 @@ public class GameStateToOtherStatesTest {
         gameController.step(game, LanternaGUI.ACTION.NONE,0);
         State actual=game.getState();
         Integer CoinAmount= gameState.getModel().getCoinAmount()/2;
-        State expected = new GameOverState(new GameOver(CoinAmount.toString(),"0"));
+        State<GameOver> expected = new GameOverState(new GameOver(CoinAmount.toString(),"0"));
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());
     }
+    @SuppressWarnings("rawtypes")
     @Test
     void ChangeToShop() throws IOException {
         gameController.step(game, LanternaGUI.ACTION.DOWN,0);
@@ -58,7 +62,7 @@ public class GameStateToOtherStatesTest {
         gameController.step(game, LanternaGUI.ACTION.DOWN,0);
         gameController.step(game, LanternaGUI.ACTION.NONE,0);
         State actual=game.getState();
-        State expected = new ShopState(new Shop(gameState));
+        State<Shop> expected = new ShopState(new Shop(gameState));
         assertEquals(actual.getController(),expected.getController());
         assertEquals(actual.getViewer(),expected.getViewer());
         assertEquals(actual.getModel(),expected.getModel());

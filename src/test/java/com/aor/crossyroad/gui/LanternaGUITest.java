@@ -10,13 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class LanternaGUITest {
-        private Screen screen;
-        private LanternaGUI gui;
+    private LanternaGUI gui;
         private TextGraphics textgraphics;
         @BeforeEach
         void setUp() {
 
-            screen = Mockito.mock(Screen.class);
+            Screen screen = Mockito.mock(Screen.class);
             textgraphics = Mockito.mock(TextGraphics.class);
             Mockito.when(screen.newTextGraphics()).thenReturn(textgraphics);
             gui = new LanternaGUI(screen);

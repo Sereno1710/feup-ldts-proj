@@ -1,6 +1,10 @@
 package com.aor.crossyroad.controller.game;
 
 import com.aor.crossyroad.Game;
+import com.aor.crossyroad.controller.game.elements.CarLeftController;
+import com.aor.crossyroad.controller.game.elements.CarRightController;
+import com.aor.crossyroad.controller.game.elements.ChickenController;
+import com.aor.crossyroad.controller.game.elements.CoinController;
 import com.aor.crossyroad.gui.LanternaGUI;
 import com.aor.crossyroad.model.game.arena.Arena;
 import com.aor.crossyroad.model.game.shop.Shop;

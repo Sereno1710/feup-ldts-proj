@@ -19,29 +19,26 @@ public class ShopController extends Controller<Shop> {
         super(shop);
     }
     @Override
-    public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
+    public void step(Game game, LanternaGUI.ACTION action, long time) {
         switch (action) {
-            case UP:
-                getModel().previousOption();
-                break;
-            case DOWN:
-                getModel().nextOption();
-                break;
-            case SELECT:
+            case UP -> getModel().previousOption();
+            case DOWN -> getModel().nextOption();
+            case SELECT -> {
                 if (getModel().isSelectedExit()) {
                     GameState gameState = getModel().getGameState();
                     gameState.getModel().resetTime();
                     int x = gameState.getModel().getChicken().getPosition().getX();
-                    int y= gameState.getModel().getChicken().getPosition().getY() - 1;
-                    gameState.getModel().setChicken(new Chicken(x,y));
+                    int y = gameState.getModel().getChicken().getPosition().getY() - 1;
+                    gameState.getModel().setChicken(new Chicken(x, y));
                     game.setState(gameState);
                 }
-                if (getModel().isSelectedPowerUp()){
+                if (getModel().isSelectedPowerUp()) {
                     game.setState(new PowerUpsState(new PowerUps(new ShopState(getModel()))));
                 }
                 if (getModel().isSelectedSkins()) {
                     game.setState(new SkinsState(new Skins(new ShopState(getModel()))));
                 }
+            }
         }
     }
 }

@@ -14,15 +14,14 @@ import java.io.IOException;
 class ArenaViewerTest {
     private LanternaGUI gui;
     private GameViewer viewer;
-    private Arena arena;
-    private Chicken chicken;
+
     @BeforeEach
     void setUp() {
-        arena = new Arena(10, 10);
+        Arena arena = new Arena(10, 10);
         gui = Mockito.mock(LanternaGUI.class);
         viewer = new GameViewer(arena);
         arena.LineCreator();
-        chicken=new Chicken(5,8);
+        Chicken chicken = new Chicken(5, 8);
         arena.setChicken(chicken);
         arena.RandomizeSidewalks();
     }
