@@ -13,6 +13,7 @@ import com.aor.crossyroad.states.GameState;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 public class Arena {
     private long totalTime = 0;
@@ -109,7 +110,7 @@ public class Arena {
     public void LineCreator() {
         int i = 4;
         List<Road> roadsLeft = new ArrayList<>();
-        List<Road> roadsRight=new ArrayList<>();
+        List<Road> roadsRight = new ArrayList<>();
         List<Sidewalk> sidewalks = new ArrayList<>();
         while (i >=  4 && i <= 31){
             if((i+3) % 5 == 0){
@@ -152,11 +153,11 @@ public class Arena {
             r.clearCoins();
         }
         for(int i=0;i<2;i++){
-            Random r=new Random();
-            int randNum=r.nextInt(roadsLeft.size());
+            Random r = new Random();
+            int randNum = r.nextInt(roadsLeft.size());
             roadsLeft.get(randNum).addCoin();
-            r=new Random();
-            randNum=r.nextInt(roadsRight.size());
+            r = new Random();
+            randNum = r.nextInt(roadsRight.size());
             roadsRight.get(randNum).addCoin();
         }
     }
@@ -210,15 +211,15 @@ public class Arena {
     }
 
     public void setCoinMultiplier(int bonusMultiplier, long totalTime) {
-        this.bonusMultiplier=bonusMultiplier;
-        this.totalTime=totalTime;
+        this.bonusMultiplier = bonusMultiplier;
+        this.totalTime = totalTime;
     }
     public void checkTotalBonusTime(){
-        if (totalTime ==0){
+        if (totalTime == 0){
             setCoinMultiplier(1,0);
             setSpecialUp(false);
         }
-        else if (totalTime>0){
+        else if (totalTime > 0){
             this.totalTime--;
         }
     }
@@ -247,6 +248,6 @@ public class Arena {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Arena arena = (Arena) o;
-        return width == arena.width && height == arena.height  && score==arena.getScore() && lastSafe==arena.lastSafe;
+        return width == arena.width && height == arena.height  && Objects.equals(score, arena.getScore()) && lastSafe==arena.lastSafe;
     }
 }

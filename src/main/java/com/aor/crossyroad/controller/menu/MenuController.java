@@ -26,7 +26,7 @@ public class MenuController extends Controller<Menu> {
     public void step(Game game, LanternaGUI.ACTION action, long time) throws IOException {
         switch (action) {
             case NONE:
-                if(time-lastMovement>300){
+                if(time-lastMovement > 300){
                     lastMovement=time;
                     RandomMovement();
                 }
